@@ -9,4 +9,8 @@ public class Docente extends Utente{
     }
 
     public void visualizza(){}
+    public void approvaRichiesta(){}
+    public void rifiutaRichiesta(){}
+    public void approvaTesi(){}
+    public void rifiutaTesi(){}
 }
