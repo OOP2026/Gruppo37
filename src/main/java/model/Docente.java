@@ -39,7 +39,7 @@ public class Docente extends Utente{
     }
     public void approvaTesi(int n){
         Tesi t=this.tesi.get(n);
-        t.rifiuta();
+        t.approva();
     }
     public void rifiutaTesi(int n){
         Tesi t=this.tesi.get(n);

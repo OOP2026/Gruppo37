@@ -15,10 +15,11 @@ public class Studente extends Utente {
     }
 
     public void visualizza(){
-        System.out.println();
+        //visualizza docenti e tirocini disponibili
     }
 
     public void nomeStudenete(){
+        if (this!=null)
         System.out.println(this.nome);
     }
 }

@@ -25,6 +25,7 @@ public class Richiesta {
     public Studente ottieniStudente() {
         if (this.stato.equals("Approvata"))
             return this.studente;
+        return null;
     }
 
     public Tirocinio ottieniTirocinio(){
