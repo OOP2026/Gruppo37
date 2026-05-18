@@ -6,12 +6,26 @@ public class Richiesta {
     private Date dataRichiesta;
     private Tirocinio tirocinio;
     private Studente studente;
+    private Docente docente;
 
-    public Richiesta(Date dataRichiesta, Tirocinio tirocinio, Studente studente) {
+    public Richiesta(Date dataRichiesta, Tirocinio tirocinio, Studente studente, Docente docente) {
         this.stato.inAttesa();
         this.dataRichiesta=dataRichiesta;
         this.tirocinio=tirocinio;
         this.studente=studente;
+        this.docente=docente;
+    }
+
+    public void aggiungiTircoinio(Tirocinio t){
+        this.tirocinio=t;
+    }
+
+    public void aggiungiStudente(Studente s){
+        this.studente=s;
+    }
+
+    public void aggiungiDocente(Docente d){
+        this.docente=d;
     }
 
     public void approva() {
@@ -22,13 +36,7 @@ public class Richiesta {
         this.stato.rifiutata();
     }
 
-    public Studente ottieniStudente() {
-        if (this.stato.equals("Approvata"))
-            return this.studente;
-        return null;
-    }
-
-    public Tirocinio ottieniTirocinio(){
-        return this.tirocinio;
+    public Stato getStato() {
+        return stato;
     }
 }

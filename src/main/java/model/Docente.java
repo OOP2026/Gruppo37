@@ -2,47 +2,39 @@ package model;
 import java.util.*;
 
 public class Docente extends Utente{
-    protected String elencoArgomentiTirocinio;
-    protected ArrayList<Richiesta> richieste;
-    protected ArrayList<Tesi> tesi;
+    protected String argomentoTirocinio;
+    protected ArrayList<Tirocinio> tirocini= new ArrayList();
 
-    public Docente(String nome, String cognome, String email, String login, String password, String elencoArgomentiTirocinio){
+    public Docente(String nome, String cognome, String email, String login,
+                   String password, String argomentoTirocinio){
         super(nome,cognome,email,login,password);
-        this.elencoArgomentiTirocinio=elencoArgomentiTirocinio;
+        this.argomentoTirocinio=argomentoTirocinio;
     }
 
-    public void aggiungiRichiesta (Richiesta richieste){
-        this.richieste.add(richieste);
-    }
-
-    public void aggiungiTesi(Tesi tesi){
-        this.tesi.add(tesi);
+    public void creaTirocinio(String nomeTirocinio, Spazio spazioTirocinio, boolean disponibile, boolean inCorso){
+        Tirocinio t= new Tirocinio(nomeTirocinio, spazioTirocinio, disponibile,  inCorso);
+        tirocini.add(t);
     }
 
     public void visualizza(){
-        for(Richiesta r: richieste){
-            Studente s=r.ottieniStudente();
-            s.nomeStudenete();
-        }
-        for(Richiesta r: richieste){
-            Tirocinio t=r.ottieniTirocinio();
-            t.getNomeTirocinio();
+        for(Tirocinio t:tirocini){
+            if(t.getInCorsoTirocinio()) {
+                System.out.println(t.getNomeTirocinio());
+                t.vediStudenti();
+            }
         }
     }
-    public void approvaRichiesta(int n){
-        Richiesta r=this.richieste.get(n);
+
+    public void approvaRichiesta(Richiesta r){
         r.approva();
     }
-    public void rifiutaRichiesta(int n){
-        Richiesta r=this.richieste.get(n);
+    public void rifiutaRichiesta(Richiesta r){
         r.rifiuta();
     }
-    public void approvaTesi(int n){
-        Tesi t=this.tesi.get(n);
+    public void approvaTesi(Tesi t){
         t.approva();
     }
-    public void rifiutaTesi(int n){
-        Tesi t=this.tesi.get(n);
+    public void rifiutaTesi(Tesi t){
         t.rifiuta();
     }
 }
