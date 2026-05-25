@@ -4,23 +4,19 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
-public class HomePageStudente{
+public class HomePageDocente extends JDialog {
     private JFrame frame;
     private JPanel panel;
+    private JButton esciButton;
     private JLabel nome;
     private JLabel cognome;
-    private JLabel dataSeduta;
-    private JButton creaTesiButton;
-    private JButton prenotaSedutaButton;
-    private JButton continuaTesiButton;
-    private JButton creaRichiestaButton;
-    private JButton esciButton;
+    private JButton visualizzaTirociniButton;
+    private JButton creaTirocinioButton;
 
-    public HomePageStudente(JFrame frameHome, int controller) {
-        frame = new JFrame("HomePageStudente");
+    public HomePageDocente(JFrame frameHome, int controller) {
+        frame=new JFrame("HomePageDocente");
         frame.setContentPane(panel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
 

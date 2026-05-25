@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 public class Home {
     private static JFrame frame;
     //private static Controller controller;;
+    private int controller;
     private JPanel panel;
     private JLabel login;
     private JLabel password;
@@ -19,8 +20,19 @@ public class Home {
     public Home() {
         accedi.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                //JOptionPane.showMessageDialog(frame, "ciao");
-                HomePageStudente homePageStudente  = new HomePageStudente(frame);
+                frame.setVisible(false);
+                if("Studente".equals(stuDoc.getSelectedItem())) {
+                    HomePageStudente homePageStudente = new HomePageStudente(frame, controller);
+                }
+                else{
+                    HomePageDocente homePageDocente = new HomePageDocente(frame, controller);
+                }
+            }
+        });
+        registrati.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                frame.setVisible(false);
+                Registrazione registrazione = new Registrazione(frame, controller);
             }
         });
     }
