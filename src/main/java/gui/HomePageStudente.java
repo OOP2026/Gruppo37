@@ -1,5 +1,6 @@
 package gui;
 
+import controller.Controller;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,7 +18,7 @@ public class HomePageStudente{
     private JButton creaRichiestaButton;
     private JButton esciButton;
 
-    public HomePageStudente(JFrame frameHome, int controller) {
+    public HomePageStudente(JFrame frameHome, Controller controller) {
         frame = new JFrame("HomePageStudente");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,5 +1,6 @@
 package gui;
 
+import controller.Controller;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +11,7 @@ public class Registrazione extends JDialog {
     private JButton buttonOK;
     private JButton buttonCancel;
 
-    public Registrazione(JFrame frameHome, int controller) {
+    public Registrazione(JFrame frameHome, Controller controller) {
         frame=new JFrame("Registrazione");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

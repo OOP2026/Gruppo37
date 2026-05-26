@@ -53,6 +53,7 @@ Nuova ASSOCIAZIONE= Docente e Tirocinio con "CREARE" 1:N (trova parola migliore)
 Aggiungere= metodo Studente: visualizzaRichiesta e creaRichiesta e creaTesi e prenotaSeduta
 Toglere= metodo Studente: visualizza
 Docente: l'att elencoArgomentiTirocinio diventa: argomentoTirocinio
+Tirocinio: l'att spazioTirocinio diventa: enteTirocinio
 Aggiungere= metodo Docente: creaTirocinio
 Tesi; att testo
 

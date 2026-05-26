@@ -3,15 +3,15 @@ import java.util.*;
 
 public class Tirocinio {
     private String nomeTirocinio;
-    private Spazio spazioTirocinio;
+    private Ente enteTirocinio;
     private boolean disponibile;
     private boolean inCorso;
     private ArrayList<Studente> studenti=new ArrayList();
 
 
-    public Tirocinio(String nomeTirocinio, Spazio spazioTirocinio, boolean disponibile,  boolean inCorso) {
+    public Tirocinio(String nomeTirocinio, Ente enteTirocinio, boolean disponibile, boolean inCorso) {
         this.nomeTirocinio=nomeTirocinio;
-        this.spazioTirocinio=spazioTirocinio;
+        this.enteTirocinio=enteTirocinio;
         this.disponibile=disponibile;
         this.inCorso=inCorso;
     }

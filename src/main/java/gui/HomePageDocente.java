@@ -1,5 +1,6 @@
 package gui;
 
+import controller.Controller;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +14,7 @@ public class HomePageDocente extends JDialog {
     private JButton visualizzaTirociniButton;
     private JButton creaTirocinioButton;
 
-    public HomePageDocente(JFrame frameHome, int controller) {
+    public HomePageDocente(JFrame frameHome, Controller controller) {
         frame=new JFrame("HomePageDocente");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

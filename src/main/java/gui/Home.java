@@ -1,13 +1,13 @@
 package gui;
 
+import controller.Controller;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Home {
     private static JFrame frame;
-    //private static Controller controller;;
-    private int controller;
+    private static Controller controller;
     private JPanel panel;
     private JLabel login;
     private JLabel password;
@@ -20,12 +20,16 @@ public class Home {
     public Home() {
         accedi.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                frame.setVisible(false);
-                if("Studente".equals(stuDoc.getSelectedItem())) {
-                    HomePageStudente homePageStudente = new HomePageStudente(frame, controller);
+                if(loginS.getText().equals("")||passwordS.getText().equals("")){
+                    JOptionPane.showMessageDialog(frame, "Non hai riempito tutti i campi");
                 }
-                else{
-                    HomePageDocente homePageDocente = new HomePageDocente(frame, controller);
+                else {
+                    frame.setVisible(false);
+                    if ("Studente".equals(stuDoc.getSelectedItem())) {
+                        HomePageStudente homePageStudente = new HomePageStudente(frame, controller);
+                    } else {
+                        HomePageDocente homePageDocente = new HomePageDocente(frame, controller);
+                    }
                 }
             }
         });

@@ -11,7 +11,7 @@ public class Docente extends Utente{
         this.argomentoTirocinio=argomentoTirocinio;
     }
 
-    public void creaTirocinio(String nomeTirocinio, Spazio spazioTirocinio, boolean disponibile, boolean inCorso){
+    public void creaTirocinio(String nomeTirocinio, Ente spazioTirocinio, boolean disponibile, boolean inCorso){
         Tirocinio t= new Tirocinio(nomeTirocinio, spazioTirocinio, disponibile,  inCorso);
         tirocini.add(t);
     }

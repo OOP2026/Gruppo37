@@ -1,5 +1,5 @@
 package model;
 
-public enum Spazio {
+public enum Ente {
     Interno, Esterno;
 }
