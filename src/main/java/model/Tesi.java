@@ -1,18 +1,19 @@
 package model;
 
-import java.io.BufferedWriter;
 import java.util.*;
 
 public class Tesi {
-    private BufferedWriter testo;
+    private String titolo;
+    private String testo;
     private Stato stato;
     private boolean caricata;
     private Studente studente;
     private Docente docente;
 
-    public Tesi(BufferedWriter testo, boolean caricata){
+    public Tesi(String titolo,String testo, boolean caricata){
+        this.titolo = titolo;
         this.testo = testo;
-        this.stato.inAttesa();
+        this.stato = Stato.InAttesa;
         this.caricata=caricata;
     }
 
@@ -25,10 +26,21 @@ public class Tesi {
     }
 
     public void approva() {
-        this.stato.approvata();
+        this.stato=Stato.Approvata;
     }
 
     public void rifiuta(){
-        this.stato.rifiutata();
+
+        this.stato=Stato.Rifiutata;
+    }
+
+    public String getTitolo() {
+        return titolo;
+    }
+    public String getTesto() {
+        return testo;
+    }
+    public void caricaTesi(){
+        this.caricata=true;
     }
 }

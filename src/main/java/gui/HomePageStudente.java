@@ -24,6 +24,9 @@ public class HomePageStudente{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        nome.setText(controller.getNome(true));
+        cognome.setText(controller.getCognome(true));
+        dataSeduta.setText("");
 
         esciButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -31,6 +34,24 @@ public class HomePageStudente{
                 frame.dispose();
             }
 
+        });
+
+        creaTesiButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                frame.setVisible(false);
+                ScritturaTesi scritturaTesi=new ScritturaTesi(frame,controller,true);
+            }
+        });
+
+        continuaTesiButton.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e){
+               if(controller.notNullTesi()==true){
+                   frame.setVisible(false);
+                   ScritturaTesi scritturaTesi=new ScritturaTesi(frame,controller,false);
+               }else{
+                   JOptionPane.showMessageDialog(frame, "Non hai mai creato una tesi");
+               }
+           }
         });
     }
 }

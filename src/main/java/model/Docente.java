@@ -34,7 +34,5 @@ public class Docente extends Utente{
     public void approvaTesi(Tesi t){
         t.approva();
     }
-    public void rifiutaTesi(Tesi t){
-        t.rifiuta();
-    }
+    public void rifiutaTesi(Tesi t){t.rifiuta();}
 }

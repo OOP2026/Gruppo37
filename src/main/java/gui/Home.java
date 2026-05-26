@@ -20,13 +20,25 @@ public class Home {
     public Home() {
         accedi.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                    frame.setVisible(false);
+                if(loginS.getText().equals("")||passwordS.getText().equals("")){
+                    JOptionPane.showMessageDialog(frame, "Non hai riempito tutti i campi");
+                }else {
                     if ("Studente".equals(stuDoc.getSelectedItem())) {
-
-                        HomePageStudente homePageStudente = new HomePageStudente(frame, controller);
+                        if (controller.accediUtente(loginS.getText(), passwordS.getText(), true)) {
+                            HomePageStudente homePageStudente = new HomePageStudente(frame, controller);
+                            frame.setVisible(false);
+                        } else {
+                            JOptionPane.showMessageDialog(frame, "Nessun login e password associabili a questo Studente");
+                        }
                     } else {
-                        HomePageDocente homePageDocente = new HomePageDocente(frame, controller);
+                        if (controller.accediUtente(loginS.getText(), passwordS.getText(), false)) {
+                            HomePageDocente homePageDocente = new HomePageDocente(frame, controller);
+                            frame.setVisible(false);
+                        } else {
+                            JOptionPane.showMessageDialog(frame, "Nessun login e password associabili a questo Docente");
+                        }
                     }
+                }
             }
         });
         registrati.addActionListener(new ActionListener(){

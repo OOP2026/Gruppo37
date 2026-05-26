@@ -19,4 +19,11 @@ public class Utente {
     public boolean login(String login, String password) {
         return ( login.equals(this.login) && password.equals(this.password));
     }
+
+    public String getNomeUtente(){
+        return this.nome;
+    }
+    public String getCognomeUtente(){
+        return this.cognome;
+    }
 }

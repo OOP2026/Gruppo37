@@ -20,6 +20,8 @@ public class HomePageDocente extends JDialog {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        nome.setText(controller.getNome(false));
+        cognome.setText(controller.getCognome(false));
 
         esciButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){

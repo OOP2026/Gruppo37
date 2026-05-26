@@ -9,7 +9,7 @@ public class Richiesta {
     private Docente docente;
 
     public Richiesta(Date dataRichiesta, Tirocinio tirocinio, Studente studente, Docente docente) {
-        this.stato.inAttesa();
+        this.stato=Stato.InAttesa;
         this.dataRichiesta=dataRichiesta;
         this.tirocinio=tirocinio;
         this.studente=studente;
@@ -28,12 +28,10 @@ public class Richiesta {
         this.docente=d;
     }
 
-    public void approva() {
-        this.stato.approvata();
-    }
+    public void approva() {this.stato=Stato.Approvata;}
 
     public void rifiuta(){
-        this.stato.rifiutata();
+        this.stato=Stato.Rifiutata;
     }
 
     public Stato getStato() {
