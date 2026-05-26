@@ -10,6 +10,17 @@ public class Registrazione extends JDialog {
     private JPanel panel;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JLabel nome;
+    private JLabel cognome;
+    private JLabel password;
+    private JLabel login;
+    private JTextField nomeS;
+    private JTextField cognomeS;
+    private JTextField loginS;
+    private JPasswordField passwordS;
+    private JComboBox stuDoc;
+    private JLabel email;
+    private JTextField emailS;
 
     public Registrazione(JFrame frameHome, Controller controller) {
         frame=new JFrame("Registrazione");
@@ -23,5 +34,40 @@ public class Registrazione extends JDialog {
                 frameHome.setVisible(true);
                 frame.dispose();
             }
-    });}
+    });
+        buttonOK.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if(loginS.getText().equals("")||passwordS.getText().equals("")||nomeS.getText().equals("")
+                        ||cognomeS.getText().equals("")||emailS.getText().equals("")){
+                    JOptionPane.showMessageDialog(frame, "Non hai riempito tutti i campi");
+                }
+                else{
+                    if("Studente".equals(stuDoc.getSelectedItem())){
+                        if(controller.aggiungiUtente(loginS.getText(),passwordS.getText(),nomeS.getText(),
+                                cognomeS.getText(),emailS.getText(),true)){
+                            frameHome.setVisible(true);
+                            frame.dispose();
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(frame, "Qualscosa e' andato storto");
+                        }
+
+                    }
+                    else{
+                        if(controller.aggiungiUtente(loginS.getText(),passwordS.getText(),nomeS.getText(),
+                                cognomeS.getText(),emailS.getText(),false)){
+                            frameHome.setVisible(true);
+                            frame.dispose();
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(frame,"Qualcosa e' andato storto");
+                        }
+                    }
+                }
+            }
+        });
+
+
+
+    }
 }

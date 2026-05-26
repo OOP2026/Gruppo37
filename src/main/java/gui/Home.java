@@ -20,17 +20,13 @@ public class Home {
     public Home() {
         accedi.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                if(loginS.getText().equals("")||passwordS.getText().equals("")){
-                    JOptionPane.showMessageDialog(frame, "Non hai riempito tutti i campi");
-                }
-                else {
                     frame.setVisible(false);
                     if ("Studente".equals(stuDoc.getSelectedItem())) {
+
                         HomePageStudente homePageStudente = new HomePageStudente(frame, controller);
                     } else {
                         HomePageDocente homePageDocente = new HomePageDocente(frame, controller);
                     }
-                }
             }
         });
         registrati.addActionListener(new ActionListener(){
@@ -49,6 +45,7 @@ public class Home {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        controller=new Controller();
     }
 
 }
