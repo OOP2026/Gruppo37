@@ -34,4 +34,12 @@ public class Tirocinio {
     public boolean getInCorsoTirocinio(){
         return this.inCorso;
     }
+
+    public Ente getEnteTirocinio(){
+        return this.enteTirocinio;
+    }
+
+    public boolean getDisponibileTirocinio(){
+        return this.disponibile;
+    }
 }

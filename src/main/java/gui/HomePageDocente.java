@@ -30,5 +30,19 @@ public class HomePageDocente extends JDialog {
             }
 
         });
+
+        creaTirocinioButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                frame.setVisible(false);
+                CreaTirocinio creaTirocinio= new CreaTirocinio(frame,controller);
+            }
+        });
+
+        visualizzaTirociniButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                frame.setVisible(false);
+                VediTirocinio vediTirocinio= new VediTirocinio(frame,controller);
+            }
+        });
     }
 }
