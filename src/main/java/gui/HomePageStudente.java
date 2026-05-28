@@ -26,7 +26,7 @@ public class HomePageStudente{
         frame.setVisible(true);
         nome.setText(controller.getNome(true));
         cognome.setText(controller.getCognome(true));
-        dataSeduta.setText("");
+        dataSeduta.setText(controller.getDataSeduta());
 
         esciButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -58,6 +58,13 @@ public class HomePageStudente{
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
                 CreaRichiesta creaRichiesta=new CreaRichiesta(frame, controller);
+            }
+        });
+
+        prenotaSedutaButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                frame.setVisible(false);
+                PrenotaSeduta prenotaSeduta=new PrenotaSeduta(frame, controller);
             }
         });
     }

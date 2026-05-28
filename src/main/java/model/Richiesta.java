@@ -37,4 +37,11 @@ public class Richiesta {
     public Stato getStato() {
         return stato;
     }
+
+    public Tirocinio getTirocinio(){
+        return tirocinio;
+    }
+    public Studente getStudente(){
+        return studente;
+    }
 }

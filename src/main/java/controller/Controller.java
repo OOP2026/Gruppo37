@@ -2,12 +2,16 @@ package controller;
 
 import model.*;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Controller {
 	private Studente studente;
 	private Docente docente;
 	private Tesi tesi;
 	private Tirocinio tirocinio;
 	private Richiesta richiesta;
+	private SedutaLaurea sedutaLaurea;
 
 
 
@@ -119,7 +123,60 @@ public class Controller {
 
 	public boolean verificaNomeTirocinio(String nome){
 		if(tirocinio.getNomeTirocinio().equals(nome)){
+			if(tirocinio.getDisponibileTirocinio()==true){
 			richiesta= new Richiesta(null, tirocinio, studente, docente);
+			return true;
+		}}
+		return false;
+	}
+
+	public String getTirocinio(){
+		return richiesta.getTirocinio().getNomeTirocinio();
+	}
+
+	public ArrayList<String> getStudenteETirocinio() {
+		ArrayList<String> arrayStudente = new ArrayList<>();
+		if (Stato.InAttesa.equals(richiesta.getStato())) {
+			Studente s = richiesta.getStudente();
+			arrayStudente.add(s.getNomeUtente());
+			arrayStudente.add(s.getCognomeUtente());
+			return arrayStudente;
+		}
+		return null;
+	}
+
+	public boolean verificaRichiesta(String nomeStudente,String cognomeStudente,
+										String nomeTirocinio){
+		if(nomeStudente.equals(richiesta.getStudente().getNomeUtente()) &&
+				cognomeStudente.equals(richiesta.getStudente().getCognomeUtente()) &&
+				nomeTirocinio.equals(richiesta.getTirocinio())){
+			return true;
+		}
+		return false;
+	}
+
+	public void cambiaStatoRichiesta(boolean stato){
+		if(stato){
+			richiesta.approva();
+		}else{
+			richiesta.rifiuta();
+		}
+	}
+
+	public String getDataSeduta(){
+		if(sedutaLaurea==null){
+			return"";
+		}
+		return String.valueOf(sedutaLaurea.getDataSeduta());
+	}
+
+	public String getLuogoSeduta(){
+		return sedutaLaurea.getLuogoSeduta();
+	}
+
+	public boolean verificaSeduta(String data, String luogo){
+		if(data.equals(String.valueOf(sedutaLaurea.getDataSeduta())) && luogo.equals(sedutaLaurea.getLuogoSeduta())){
+			studente.prenotaSedutaLaurea(sedutaLaurea);
 			return true;
 		}
 		return false;

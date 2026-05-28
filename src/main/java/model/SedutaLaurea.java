@@ -9,4 +9,11 @@ public class SedutaLaurea {
         this.dataSeduta=dataSeduta;
         this.luogoSeduta=luogoSeduta;
     }
+
+    public Date getDataSeduta() {
+        return dataSeduta;
+    }
+    public String getLuogoSeduta() {
+        return luogoSeduta;
+    }
 }

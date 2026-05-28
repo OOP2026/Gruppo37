@@ -42,7 +42,7 @@ public class CreaRichiesta extends JDialog {
                     if(controller.verificaNomeTirocinio(nomeTirocinio.getText())){
                         JOptionPane.showMessageDialog(frame,"Tirocino creato con sucesso");
                     }else{
-                        JOptionPane.showMessageDialog(frame,"Tirocinio inesistente");
+                        JOptionPane.showMessageDialog(frame,"Tirocinio inesistente o al completo");
                     }
                 }
             }
