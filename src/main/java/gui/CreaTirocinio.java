@@ -22,7 +22,9 @@ public class CreaTirocinio extends JDialog {
 
         buttonCrea.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(nomeS.getText().equals("")) {
+                if (nomeS.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Non hai riempito il campo");
+                } else {
                     if (controller.creaTirocinio(nomeS.getText(), (String) ente.getSelectedItem())) {
                         frame.dispose();
                         frameHomeD.setVisible(true);
@@ -30,8 +32,6 @@ public class CreaTirocinio extends JDialog {
                     } else {
                         JOptionPane.showMessageDialog(frame, "Si è verificato un errore");
                     }
-                }else{
-                    JOptionPane.showMessageDialog(frame, "Non hai riempito il campo");
                 }
             }
         });

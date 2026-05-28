@@ -7,6 +7,7 @@ public class Controller {
 	private Docente docente;
 	private Tesi tesi;
 	private Tirocinio tirocinio;
+	private Richiesta richiesta;
 
 
 
@@ -114,6 +115,14 @@ public class Controller {
 
 	public boolean leggiInCorsoTirocinio(){
 		return tirocinio.getInCorsoTirocinio();
+	}
+
+	public boolean verificaNomeTirocinio(String nome){
+		if(tirocinio.getNomeTirocinio().equals(nome)){
+			richiesta= new Richiesta(null, tirocinio, studente, docente);
+			return true;
+		}
+		return false;
 	}
 }
 

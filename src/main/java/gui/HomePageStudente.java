@@ -53,5 +53,12 @@ public class HomePageStudente{
                }
            }
         });
+
+        creaRichiestaButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                frame.setVisible(false);
+                CreaRichiesta creaRichiesta=new CreaRichiesta(frame, controller);
+            }
+        });
     }
 }

@@ -13,6 +13,7 @@ public class HomePageDocente extends JDialog {
     private JLabel cognome;
     private JButton visualizzaTirociniButton;
     private JButton creaTirocinioButton;
+    private JButton approvaRichiesteButton;
 
     public HomePageDocente(JFrame frameHome, Controller controller) {
         frame=new JFrame("HomePageDocente");
@@ -42,6 +43,13 @@ public class HomePageDocente extends JDialog {
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
                 VediTirocinio vediTirocinio= new VediTirocinio(frame,controller);
+            }
+        });
+
+        approvaRichiesteButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                frame.setVisible(false);
+                ApprovaRichiesta approvaRichiesta=new ApprovaRichiesta(frame, controller);
             }
         });
     }
