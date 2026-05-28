@@ -33,7 +33,7 @@ public class HomePageStudente{
                 frameHome.setVisible(true);
                 frame.dispose();
             }
-
+            
         });
 
         creaTesiButton.addActionListener(new ActionListener(){
