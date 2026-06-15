@@ -7,6 +7,9 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 import java.util.ArrayList;
 
+/**
+ * The type Approva richiesta.
+ */
 public class ApprovaRichiesta extends JDialog {
     private JFrame frame;
     private JPanel panel;
@@ -18,6 +21,12 @@ public class ApprovaRichiesta extends JDialog {
     private JTextField nomeTirocinioTextField;
     private JTextField cognomeStudenteTextField;
 
+    /**
+     * Instantiates a new Approva richiesta.
+     *
+     * @param frameHomeD the frame home d
+     * @param controller the controller
+     */
     public ApprovaRichiesta(JFrame frameHomeD, Controller controller) {
         frame = new JFrame("ApprovaRichiesta");
         frame.setContentPane(panel);

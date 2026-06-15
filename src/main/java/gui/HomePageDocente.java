@@ -5,6 +5,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The type Home page docente.
+ */
 public class HomePageDocente extends JDialog {
     private JFrame frame;
     private JPanel panel;
@@ -15,6 +18,12 @@ public class HomePageDocente extends JDialog {
     private JButton creaTirocinioButton;
     private JButton approvaRichiesteButton;
 
+    /**
+     * Instantiates a new Home page docente.
+     *
+     * @param frameHome  the frame home
+     * @param controller the controller
+     */
     public HomePageDocente(JFrame frameHome, Controller controller) {
         frame=new JFrame("HomePageDocente");
         frame.setContentPane(panel);

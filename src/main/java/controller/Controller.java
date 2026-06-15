@@ -5,6 +5,9 @@ import model.*;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * The type Controller.
+ */
 public class Controller {
 	private Studente studente;
 	private Docente docente;
@@ -14,11 +17,24 @@ public class Controller {
 	private SedutaLaurea sedutaLaurea;
 
 
-
-	public Controller() {
+    /**
+     * Instantiates a new Controller.
+     */
+    public Controller() {
 	}
 
-	public boolean aggiungiUtente(String login, String password, String nome, String cognome, String email, boolean stuDoc){
+    /**
+     * Aggiungi utente boolean.
+     *
+     * @param login    the login
+     * @param password the password
+     * @param nome     the nome
+     * @param cognome  the cognome
+     * @param email    the email
+     * @param stuDoc   the stu doc
+     * @return the boolean
+     */
+    public boolean aggiungiUtente(String login, String password, String nome, String cognome, String email, boolean stuDoc){
 		if(stuDoc==true)
 		{
 			studente=new Studente(nome,cognome,email,login,password,null);
@@ -29,7 +45,15 @@ public class Controller {
 		return true;
 	}
 
-	public boolean accediUtente(String login, String password, boolean stuDoc){
+    /**
+     * Accedi utente boolean.
+     *
+     * @param login    the login
+     * @param password the password
+     * @param stuDoc   the stu doc
+     * @return the boolean
+     */
+    public boolean accediUtente(String login, String password, boolean stuDoc){
 		if(stuDoc==true){
 			if(studente==null){
 				return false;
@@ -49,7 +73,13 @@ public class Controller {
 		return false;
 		}
 
-	public String getNome(boolean stuDoc) {
+    /**
+     * Gets nome.
+     *
+     * @param stuDoc the stu doc
+     * @return the nome
+     */
+    public String getNome(boolean stuDoc) {
 		if (stuDoc == true){
 			return studente.getNomeUtente();
 	}else{
@@ -57,7 +87,13 @@ public class Controller {
 	}
 	}
 
-	public String getCognome(boolean stuDoc) {
+    /**
+     * Gets cognome.
+     *
+     * @param stuDoc the stu doc
+     * @return the cognome
+     */
+    public String getCognome(boolean stuDoc) {
 		if (stuDoc == true){
 			return studente.getCognomeUtente();
 		}
@@ -66,31 +102,66 @@ public class Controller {
 		}
 	}
 
-	public boolean salvaTesi(String titolo, String testo){
+    /**
+     * Salva tesi boolean.
+     *
+     * @param titolo the titolo
+     * @param testo  the testo
+     * @return the boolean
+     */
+    public boolean salvaTesi(String titolo, String testo){
 		tesi = new Tesi(titolo, testo, false);
 		return true;
 	}
 
-	public boolean caricaTesi(){
+    /**
+     * Carica tesi boolean.
+     *
+     * @return the boolean
+     */
+    public boolean caricaTesi(){
 		tesi.caricaTesi();
 		return true;
 	}
 
-	public boolean notNullTesi(){
+    /**
+     * Not null tesi boolean.
+     *
+     * @return the boolean
+     */
+    public boolean notNullTesi(){
 		if(tesi==null){
 			return false;
 		}
 		return true;
 	}
 
-	public String getTitolo(){
+    /**
+     * Get titolo string.
+     *
+     * @return the string
+     */
+    public String getTitolo(){
 		return tesi.getTitolo();
 	}
-	public String getTesto(){
+
+    /**
+     * Get testo string.
+     *
+     * @return the string
+     */
+    public String getTesto(){
 		return tesi.getTesto();
 	}
 
-	public boolean creaTirocinio(String nome, String ente){
+    /**
+     * Crea tirocinio boolean.
+     *
+     * @param nome the nome
+     * @param ente the ente
+     * @return the boolean
+     */
+    public boolean creaTirocinio(String nome, String ente){
 		if("Interno".equals(ente)) {
 			tirocinio = new Tirocinio(nome, Ente.Interno, true, false);
 			return true;
@@ -100,11 +171,21 @@ public class Controller {
 		}
 	}
 
-	public String leggiNomeTirocinio(){
+    /**
+     * Leggi nome tirocinio string.
+     *
+     * @return the string
+     */
+    public String leggiNomeTirocinio(){
 		return tirocinio.getNomeTirocinio();
 	}
 
-	public String leggiEnteTirocinio(){
+    /**
+     * Leggi ente tirocinio string.
+     *
+     * @return the string
+     */
+    public String leggiEnteTirocinio(){
 		if(Ente.Interno.equals(tirocinio.getEnteTirocinio()))
 		{
 			return "Interno";
@@ -113,15 +194,31 @@ public class Controller {
 		}
 	}
 
-	public boolean leggiDisponibilitaTirocinio(){
+    /**
+     * Leggi disponibilita tirocinio boolean.
+     *
+     * @return the boolean
+     */
+    public boolean leggiDisponibilitaTirocinio(){
 		return tirocinio.getDisponibileTirocinio();
 	}
 
-	public boolean leggiInCorsoTirocinio(){
+    /**
+     * Leggi in corso tirocinio boolean.
+     *
+     * @return the boolean
+     */
+    public boolean leggiInCorsoTirocinio(){
 		return tirocinio.getInCorsoTirocinio();
 	}
 
-	public boolean verificaNomeTirocinio(String nome){
+    /**
+     * Verifica nome tirocinio boolean.
+     *
+     * @param nome the nome
+     * @return the boolean
+     */
+    public boolean verificaNomeTirocinio(String nome){
 		if(tirocinio.getNomeTirocinio().equals(nome)){
 			if(tirocinio.getDisponibileTirocinio()==true){
 			richiesta= new Richiesta(null, tirocinio, studente, docente);
@@ -130,11 +227,21 @@ public class Controller {
 		return false;
 	}
 
-	public String getTirocinio(){
+    /**
+     * Get tirocinio string.
+     *
+     * @return the string
+     */
+    public String getTirocinio(){
 		return richiesta.getTirocinio().getNomeTirocinio();
 	}
 
-	public ArrayList<String> getStudenteETirocinio() {
+    /**
+     * Gets studente e tirocinio.
+     *
+     * @return the studente e tirocinio
+     */
+    public ArrayList<String> getStudenteETirocinio() {
 		ArrayList<String> arrayStudente = new ArrayList<>();
 		if (Stato.InAttesa.equals(richiesta.getStato())) {
 			Studente s = richiesta.getStudente();
@@ -145,7 +252,15 @@ public class Controller {
 		return null;
 	}
 
-	public boolean verificaRichiesta(String nomeStudente,String cognomeStudente,
+    /**
+     * Verifica richiesta boolean.
+     *
+     * @param nomeStudente    the nome studente
+     * @param cognomeStudente the cognome studente
+     * @param nomeTirocinio   the nome tirocinio
+     * @return the boolean
+     */
+    public boolean verificaRichiesta(String nomeStudente,String cognomeStudente,
 										String nomeTirocinio){
 		if(nomeStudente.equals(richiesta.getStudente().getNomeUtente()) &&
 				cognomeStudente.equals(richiesta.getStudente().getCognomeUtente()) &&
@@ -155,7 +270,12 @@ public class Controller {
 		return false;
 	}
 
-	public void cambiaStatoRichiesta(boolean stato){
+    /**
+     * Cambia stato richiesta.
+     *
+     * @param stato the stato
+     */
+    public void cambiaStatoRichiesta(boolean stato){
 		if(stato){
 			richiesta.approva();
 		}else{
@@ -163,18 +283,35 @@ public class Controller {
 		}
 	}
 
-	public String getDataSeduta(){
+    /**
+     * Get data seduta string.
+     *
+     * @return the string
+     */
+    public String getDataSeduta(){
 		if(sedutaLaurea==null){
 			return"";
 		}
 		return String.valueOf(sedutaLaurea.getDataSeduta());
 	}
 
-	public String getLuogoSeduta(){
+    /**
+     * Get luogo seduta string.
+     *
+     * @return the string
+     */
+    public String getLuogoSeduta(){
 		return sedutaLaurea.getLuogoSeduta();
 	}
 
-	public boolean verificaSeduta(String data, String luogo){
+    /**
+     * Verifica seduta boolean.
+     *
+     * @param data  the data
+     * @param luogo the luogo
+     * @return the boolean
+     */
+    public boolean verificaSeduta(String data, String luogo){
 		if(data.equals(String.valueOf(sedutaLaurea.getDataSeduta())) && luogo.equals(sedutaLaurea.getLuogoSeduta())){
 			studente.prenotaSedutaLaurea(sedutaLaurea);
 			return true;

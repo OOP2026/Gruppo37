@@ -11,6 +11,9 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noFields;
 import static com.tngtech.archunit.library.GeneralCodingRules.*;
 import static com.tngtech.archunit.library.GeneralCodingRules.BE_ANNOTATED_WITH_AN_INJECTION_ANNOTATION;
 
+/**
+ * The type Best practices test.
+ */
 @RunWith(ArchUnitRunner.class)
 @AnalyzeClasses(packages = "project")
 public class BestPracticesTest {
@@ -22,10 +25,16 @@ public class BestPracticesTest {
 //    public static final ArchRule generic_exception_are_not_thrown = noClasses()
 //            .should(THROW_GENERIC_EXCEPTIONS);
 
+    /**
+     * The constant java_util_logging_is_not_used.
+     */
     @ArchTest
     public static final ArchRule java_util_logging_is_not_used = noClasses()
             .should(USE_JAVA_UTIL_LOGGING);
 
+    /**
+     * The constant field_injection_is_not_used.
+     */
     @ArchTest
     public static final ArchRule field_injection_is_not_used = noFields()
             .should(BE_ANNOTATED_WITH_AN_INJECTION_ANNOTATION);

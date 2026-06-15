@@ -8,9 +8,15 @@ import org.junit.runner.RunWith;
 
 import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
 
+/**
+ * The type Layered architecture test.
+ */
 @RunWith(ArchUnitRunner.class)
 @AnalyzeClasses(packages = ".")
 public class LayeredArchitectureTest {
+    /**
+     * The constant layer_dependencies_are_respected.
+     */
     @ArchTest
     public static final ArchRule layer_dependencies_are_respected = layeredArchitecture()
 

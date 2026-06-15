@@ -6,6 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
+/**
+ * The type Home page studente.
+ */
 public class HomePageStudente{
     private JFrame frame;
     private JPanel panel;
@@ -18,6 +21,12 @@ public class HomePageStudente{
     private JButton creaRichiestaButton;
     private JButton esciButton;
 
+    /**
+     * Instantiates a new Home page studente.
+     *
+     * @param frameHome  the frame home
+     * @param controller the controller
+     */
     public HomePageStudente(JFrame frameHome, Controller controller) {
         frame = new JFrame("HomePageStudente");
         frame.setContentPane(panel);

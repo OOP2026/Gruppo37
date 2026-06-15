@@ -7,6 +7,9 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The type Prenota seduta.
+ */
 public class PrenotaSeduta extends JDialog {
     private JFrame frame;
     private JPanel panel;
@@ -16,6 +19,12 @@ public class PrenotaSeduta extends JDialog {
     private JTextField dataSedutaTextField;
     private JTextField luogoSedutaTextField;
 
+    /**
+     * Instantiates a new Prenota seduta.
+     *
+     * @param frameHomeS the frame home s
+     * @param controller the controller
+     */
     public PrenotaSeduta(JFrame frameHomeS, Controller controller) {
         frame = new JFrame("PrenotaSeduta");
         frame.setContentPane(panel);

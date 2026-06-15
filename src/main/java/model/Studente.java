@@ -1,26 +1,52 @@
 package model;
 import java.util.*;
 
+/**
+ * The type Studente.
+ */
 public class Studente extends Utente {
     private String matricola;
     private SedutaLaurea sedutaLaurea;
     private Richiesta ultimaRiciesta;
     private Tesi ultimaTesi;
 
+    /**
+     * Instantiates a new Studente.
+     *
+     * @param nome      the nome
+     * @param cognome   the cognome
+     * @param email     the email
+     * @param login     the login
+     * @param password  the password
+     * @param matricola the matricola
+     */
     public Studente(String nome, String cognome, String email, String login, String password, String matricola){
         super(nome,cognome,email,login,password);
         this.matricola=matricola;
     }
 
+    /**
+     * Prenota seduta laurea.
+     *
+     * @param sL the s l
+     */
     public void prenotaSedutaLaurea(SedutaLaurea sL){
         this.sedutaLaurea=sL;
     }
 
+    /**
+     * Crea richiesta.
+     *
+     * @param r the r
+     */
     public void creaRichiesta(Richiesta r) {
         this.ultimaRiciesta=r;
         r.aggiungiStudente(this);
     }
 
+    /**
+     * Visualizza richiesta.
+     */
     public void visualizzaRichiesta(){
         if(ultimaRiciesta.getStato().equals("Approvato")){
             System.out.println("Richiesta approvata");
@@ -33,11 +59,21 @@ public class Studente extends Utente {
         }
     }
 
+    /**
+     * Crea tesi.
+     *
+     * @param t the t
+     */
     public void creaTesi(Tesi t){
         this.ultimaTesi=t;
         t.aggiungiStudente(this);
     }
 
+    /**
+     * Get nome studenete string.
+     *
+     * @return the string
+     */
     public String getNomeStudenete(){
         return this.nome;
     }

@@ -5,6 +5,9 @@ import controller.Controller;
 import javax.swing.*;
 import java.awt.event.*;
 
+/**
+ * The type Crea tirocinio.
+ */
 public class CreaTirocinio extends JDialog {
     private JFrame frame;
     private JPanel panel;
@@ -13,6 +16,12 @@ public class CreaTirocinio extends JDialog {
     private JTextField nomeS;
     private JComboBox ente;
 
+    /**
+     * Instantiates a new Crea tirocinio.
+     *
+     * @param frameHomeD the frame home d
+     * @param controller the controller
+     */
     public CreaTirocinio(JFrame frameHomeD, Controller controller) {
         frame=new JFrame("CreaTirocinio");
         frame.setContentPane(panel);

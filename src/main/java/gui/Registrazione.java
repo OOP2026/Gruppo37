@@ -5,6 +5,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The type Registrazione.
+ */
 public class Registrazione extends JDialog {
     private JFrame frame;
     private JPanel panel;
@@ -22,6 +25,12 @@ public class Registrazione extends JDialog {
     private JLabel email;
     private JTextField emailS;
 
+    /**
+     * Instantiates a new Registrazione.
+     *
+     * @param frameHome  the frame home
+     * @param controller the controller
+     */
     public Registrazione(JFrame frameHome, Controller controller) {
         frame=new JFrame("Registrazione");
         frame.setContentPane(panel);

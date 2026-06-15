@@ -5,6 +5,9 @@ import controller.Controller;
 import javax.swing.*;
 import java.awt.event.*;
 
+/**
+ * The type Scrittura tesi.
+ */
 public class ScritturaTesi extends JDialog {
     private JFrame frame;
     private JPanel panel;
@@ -14,6 +17,13 @@ public class ScritturaTesi extends JDialog {
     private JTextField titolo;
     private JButton caricaButton;
 
+    /**
+     * Instantiates a new Scrittura tesi.
+     *
+     * @param frameHomeS the frame home s
+     * @param controller the controller
+     * @param primaVolta the prima volta
+     */
     public ScritturaTesi(JFrame frameHomeS, Controller controller, boolean primaVolta) {
         frame = new JFrame("ScritturaTesi");
         frame.setContentPane(panel);

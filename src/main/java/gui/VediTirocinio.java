@@ -8,12 +8,21 @@ import java.awt.event.ActionEvent;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * The type Vedi tirocinio.
+ */
 public class VediTirocinio extends JDialog {
     private JFrame frame;
     private JPanel panel;
     private JButton buttonEsci;
     private JTable table1;
 
+    /**
+     * Instantiates a new Vedi tirocinio.
+     *
+     * @param frameHomeD the frame home d
+     * @param controller the controller
+     */
     public VediTirocinio(JFrame frameHomeD, Controller controller) {
         frame = new JFrame("VediTirocinio");
         frame.setContentPane(panel);

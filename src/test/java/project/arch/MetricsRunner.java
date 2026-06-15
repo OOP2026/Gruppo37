@@ -11,7 +11,15 @@ import com.tngtech.archunit.library.metrics.MetricsComponents;
 
 import java.util.Set;
 
+/**
+ * The type Metrics runner.
+ */
 public class MetricsRunner {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         JavaClasses classes = new ClassFileImporter().withImportOption(ImportOption.Predefined.DO_NOT_INCLUDE_TESTS).importPackages("project");
         Set<JavaPackage> packages = classes.getPackage("project").getSubpackages();

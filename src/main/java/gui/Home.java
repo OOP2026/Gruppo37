@@ -5,6 +5,9 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * The type Home.
+ */
 public class Home {
     private static JFrame frame;
     private static Controller controller;
@@ -17,6 +20,9 @@ public class Home {
     private JButton registrati;
     private JComboBox stuDoc;
 
+    /**
+     * Instantiates a new Home.
+     */
     public Home() {
         accedi.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -50,6 +56,11 @@ public class Home {
     }
 
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         frame= new JFrame("Home");
         frame.setSize(400,400);

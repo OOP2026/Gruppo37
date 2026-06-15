@@ -6,6 +6,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 
+/**
+ * The type Crea richiesta.
+ */
 public class CreaRichiesta extends JDialog {
     private JFrame frame;
     private JPanel panel;
@@ -15,6 +18,12 @@ public class CreaRichiesta extends JDialog {
     private JTextField nomeTirocinio;
 
 
+    /**
+     * Instantiates a new Crea richiesta.
+     *
+     * @param frameHomePageS the frame home page s
+     * @param controller     the controller
+     */
     public CreaRichiesta(JFrame frameHomePageS, Controller controller) {
         frame = new JFrame("CreaRichiesta");
         frame.setContentPane(panel);
