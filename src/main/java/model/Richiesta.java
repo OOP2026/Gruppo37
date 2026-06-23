@@ -2,13 +2,29 @@ package model;
 import java.util.*;
 
 /**
- * The type Richiesta.
+ * La classe Richiesta.
+ * Rappresenta una richiesta ricevuta da un docente, inviata da uno studente per un determinato tirocinio.
  */
 public class Richiesta {
+    /**
+     *
+     */
     private Stato stato;
+    /**
+     *
+     */
     private Date dataRichiesta;
+    /**
+     *
+     */
     private Tirocinio tirocinio;
+    /**
+     *
+     */
     private Studente studente;
+    /**
+     *
+     */
     private Docente docente;
 
     /**

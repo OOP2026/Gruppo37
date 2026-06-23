@@ -1,15 +1,15 @@
 package model;
 
 /**
- * The enum Ente.
+ * L'enumerazione Ente.
  */
 public enum Ente {
     /**
-     * Interno ente.
+     * Informa che l'ente sia interno.
      */
     Interno,
     /**
-     * Esterno ente.
+     * Informa che l'ente sia esterno.
      */
     Esterno;
 }

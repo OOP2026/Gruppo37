@@ -3,33 +3,34 @@ package model;
 import java.util.ArrayList;
 
 /**
+ * La classe Azienda.
  * Rappresenta un'azienda esterna che puo' collabborare per promuovere i tirocini.
  */
 public class Azienda {
     /**
-     * The Referente aziendale.
+     * Rappresenta il referente aziendale
      */
     String referenteAziendale;
     /**
-     * The Tirocini.
+     * Rappresenta tutti i tirocini con cui ha collaborato l'azienda.
      */
     ArrayList<Tirocinio> tirocini;
 
     /**
-     * Instantiates a new Azienda.
+     * Costruttore della classe Azienda.
      *
-     * @param referenteAziendale the referente aziendale
+     * @param referenteAziendale il referente aziendale
      */
     public Azienda(String referenteAziendale) {
         this.referenteAziendale = referenteAziendale;
     }
 
     /**
-     * Aggiungi tirocinio.
+     * Inserisci un tirocinio insieme a tutti quelli in cui l'azienda collabora.
      *
-     * @param tirocini the tirocini
+     * @param tirocinio il tirocinio da inserire
      */
-    public void aggiungiTirocinio(Tirocinio tirocini){
-        this.tirocini.add(tirocini);
+    public void aggiungiTirocinio(Tirocinio tirocinio){
+        this.tirocini.add(tirocinio);
     }
 }

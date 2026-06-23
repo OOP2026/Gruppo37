@@ -2,21 +2,23 @@ package model;
 import java.util.*;
 
 /**
- * The type Coordinatore.
+ * La classe Coordinatore.
+ * Rappresenta un coordinatore del corso di laurea.
+ * Estende Docente.
  */
 public class Coordinatore extends Docente{
 
     /**
-     * Instantiates a new Coordinatore.
+     * Costruttore della classe Coordinatore.
      *
-     * @param nome                     the nome
-     * @param cognome                  the cognome
-     * @param email                    the email
-     * @param login                    the login
-     * @param password                 the password
-     * @param elencoArgomentiTirocinio the elenco argomenti tirocinio
+     * @param nome                     il nome del coordinatore
+     * @param cognome                  il cognome del coordinatore
+     * @param email                    l'email del coordinatore
+     * @param login                    il login del coordinatore
+     * @param password                 la password del coordinatore
+     * @param argomentiTirocinio       l'argomenti di tirocinio del coordinatore
      */
-    public Coordinatore(String nome, String cognome, String email, String login, String password, String elencoArgomentiTirocinio){
-        super(nome,cognome,email,login,password,elencoArgomentiTirocinio);
+    public Coordinatore(String nome, String cognome, String email, String login, String password, String argomentiTirocinio){
+        super(nome,cognome,email,login,password,argomentiTirocinio);
     }
 }
