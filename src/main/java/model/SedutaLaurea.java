@@ -2,17 +2,24 @@ package model;
 import java.util.*;
 
 /**
- * The type Seduta laurea.
+ * La classe SedutaLaurea.
+ * Rappresenta una seduta di laurea in cui gli studenti si possono prenotare.
  */
 public class SedutaLaurea {
+    /**
+     * Rappresenta la data in cui si svolgera' la seduta di laurea.
+     */
     private Date dataSeduta;
+    /**
+     * Rappresenta il luogo in cui si svolgera' la seduta di laurea.
+     */
     private String luogoSeduta;
 
     /**
-     * Instantiates a new Seduta laurea.
+     * Costruttore della classe SedutaLaurea.
      *
-     * @param dataSeduta  the data seduta
-     * @param luogoSeduta the luogo seduta
+     * @param dataSeduta  la data della seduta di laurea
+     * @param luogoSeduta il luogo della seduta di laurea
      */
     public SedutaLaurea(Date dataSeduta, String luogoSeduta){
         this.dataSeduta=dataSeduta;
@@ -20,18 +27,18 @@ public class SedutaLaurea {
     }
 
     /**
-     * Gets data seduta.
+     * Ottiene la data della seduta di laurea.
      *
-     * @return the data seduta
+     * @return la data della seduta di laurea
      */
     public Date getDataSeduta() {
         return dataSeduta;
     }
 
     /**
-     * Gets luogo seduta.
+     * Ottiene il luogo della seduta di laurea.
      *
-     * @return the luogo seduta
+     * @return il luogo della seduta di laurea
      */
     public String getLuogoSeduta() {
         return luogoSeduta;

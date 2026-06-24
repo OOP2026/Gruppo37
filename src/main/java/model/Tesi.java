@@ -3,22 +3,41 @@ package model;
 import java.util.*;
 
 /**
- * The type Tesi.
+ * La classe Tesi.
+ * Rappresenta una tesi ricevuta da un docente, sritta da uno studente
  */
 public class Tesi {
+    /**
+     * Rappresenta il titolo della tesi.
+     */
     private String titolo;
+    /**
+     * Rappresenta il testo della tesi.
+     */
     private String testo;
+    /**
+     * Rappresenta lo stato della tesi.
+     */
     private Stato stato;
+    /**
+     * Informa se la tesi e' stata caricata.
+     */
     private boolean caricata;
+    /**
+     * Rappresenta lo studente che scrive la tesi.
+     */
     private Studente studente;
+    /**
+     * Rappresenta il docente a cui viene inviata la tesi.
+     */
     private Docente docente;
 
     /**
-     * Instantiates a new Tesi.
+     * Costruttore della classe Tesi.
      *
-     * @param titolo   the titolo
-     * @param testo    the testo
-     * @param caricata the caricata
+     * @param titolo   il titolo della tesi
+     * @param testo    il testo della tesi
+     * @param caricata stabilisce se la tesi e' stata caricata
      */
     public Tesi(String titolo,String testo, boolean caricata){
         this.titolo = titolo;
@@ -28,32 +47,32 @@ public class Tesi {
     }
 
     /**
-     * Aggiungi studente.
+     * Aggiungie uno studente alla tesi.
      *
-     * @param s the s
+     * @param s lo studente che deve essere aggiunto alla tesi
      */
     public void aggiungiStudente(Studente s){
         this.studente=s;
     }
 
     /**
-     * Aggiungi docente.
+     * Aggiungie un docente alla tesi.
      *
-     * @param d the d
+     * @param d il docente che deeve essere aggiunto alla tesi
      */
     public void aggiungiDocente(Docente d){
         this.docente=d;
     }
 
     /**
-     * Approva.
+     * Approva la tesi.
      */
     public void approva() {
         this.stato=Stato.Approvata;
     }
 
     /**
-     * Rifiuta.
+     * Rifiuta la tesi.
      */
     public void rifiuta(){
 
@@ -61,25 +80,25 @@ public class Tesi {
     }
 
     /**
-     * Gets titolo.
+     * Ottiene il titolo della tesi.
      *
-     * @return the titolo
+     * @return il titolo della tesi
      */
     public String getTitolo() {
         return titolo;
     }
 
     /**
-     * Gets testo.
+     * Ottiene il testo della tesi.
      *
-     * @return the testo
+     * @return il testo della tesi
      */
     public String getTesto() {
         return testo;
     }
 
     /**
-     * Carica tesi.
+     * Carica la tesi.
      */
     public void caricaTesi(){
         this.caricata=true;

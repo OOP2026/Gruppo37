@@ -5,19 +5,23 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * The type Connessione database.
+ * La classe ConnessioneDatabase.
+ * Rappresenta la connessione del sistema al database.
  */
 public class ConnessioneDatabase {
     private static ConnessioneDatabase istance;
-    /**
-     * The Connection.
-     */
     public Connection connection=null;
     private String nome="";
     private String password="";
     private String url="";
     private String driver="org.postgresql.Driver";
 
+    /**
+     * Costruttore della classe ConnessioneDatabas.
+     * Questo costruttore e' privato, in modo tale da poter istanziare solo un oggetto di questo tipo.
+     *
+     * @throws SQLException e' un eccezione, in caso di fallimento della connessione al database
+     */
     private ConnessioneDatabase() throws SQLException {
         try{
             Class.forName(driver);
@@ -28,10 +32,10 @@ public class ConnessioneDatabase {
     }
 
     /**
-     * Gets instance.
+     * Ottiene l'stanza.
      *
-     * @return the instance
-     * @throws SQLException the sql exception
+     * @return l'instanza della conessione
+     * @throws SQLException e' un eccezione, in caso di fallimento della connessione al database
      */
     public static ConnessioneDatabase getInstance() throws SQLException {
         if(istance==null){
@@ -43,9 +47,9 @@ public class ConnessioneDatabase {
     }
 
     /**
-     * Gets connection.
+     * Ottiene la connessione al database.
      *
-     * @return the connection
+     * @return la connessione al database
      */
     public Connection getConnection() {
         return connection;

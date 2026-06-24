@@ -8,11 +8,11 @@ import java.util.ArrayList;
  */
 public class Azienda {
     /**
-     * Rappresenta il referente aziendale
+     * Rappresenta il referente aziendale.
      */
     String referenteAziendale;
     /**
-     * Rappresenta tutti i tirocini con cui ha collaborato l'azienda.
+     * Rappresentano tutti i tirocini con cui ha collaborato l'azienda.
      */
     ArrayList<Tirocinio> tirocini;
 

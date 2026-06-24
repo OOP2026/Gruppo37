@@ -2,38 +2,39 @@ package model;
 import java.util.ArrayList;
 
 /**
- * The type Utente.
+ * La classe Utente.
+ * Rappresenta un'utente del sistema.
  */
 public class Utente {
     /**
-     * The Nome.
+     * Rappresenta il nome dello studente.
      */
     protected String nome;
     /**
-     * The Cognome.
+     * Rappresenta il cognome dello studente.
      */
     protected String cognome;
     /**
-     * The Email.
+     * Rappresenta l'email dello studente.
      */
     protected String email;
     /**
-     * The Login.
+     * Rappresenta il login dello studente.
      */
     protected String login;
     /**
-     * The Password.
+     * Rappresenta la password dello studente.
      */
     protected String password;
 
     /**
-     * Instantiates a new Utente.
+     * Costruttore della classe Utente.
      *
-     * @param nome     the nome
-     * @param cognome  the cognome
-     * @param email    the email
-     * @param login    the login
-     * @param password the password
+     * @param nome     il nome dell'utente
+     * @param cognome  il cognome dell'utente
+     * @param email    l'email dell'utente
+     * @param login    il login dell'utente
+     * @param password la password dell'utente
      */
     public Utente(String nome, String cognome, String email, String login, String password) {
         this.nome=nome;
@@ -44,29 +45,29 @@ public class Utente {
     }
 
     /**
-     * Login boolean.
+     * Permette ad un utente di entrare nel sistema.
      *
-     * @param login    the login
-     * @param password the password
-     * @return the boolean
+     * @param login    il login dell'utente
+     * @param password la password dell'utente
+     * @return informa se l'accesso e' avvenuto con successo
      */
     public boolean login(String login, String password) {
         return ( login.equals(this.login) && password.equals(this.password));
     }
 
     /**
-     * Get nome utente string.
+     * Ottiene il nome dell'utente.
      *
-     * @return the string
+     * @return il nome dello studente
      */
     public String getNomeUtente(){
         return this.nome;
     }
 
     /**
-     * Get cognome utente string.
+     * Ottiene il cognome dell'utente.
      *
-     * @return the string
+     * @return il cognome dell'utente
      */
     public String getCognomeUtente(){
         return this.cognome;

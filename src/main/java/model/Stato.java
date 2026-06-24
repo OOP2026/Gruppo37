@@ -1,19 +1,19 @@
 package model;
 
 /**
- * The enum Stato.
+ * L'enumerazione Stato.
  */
 public enum Stato {
     /**
-     * Approvata stato.
+     * Informa che lo stato sia stato approvato.
      */
     Approvata,
     /**
-     * In attesa stato.
+     * Informa che lo stato sia in fase di risposta.
      */
     InAttesa,
     /**
-     * Rifiutata stato.
+     * Informa che lo stato e' stato rifiutato.
      */
     Rifiutata;
 }

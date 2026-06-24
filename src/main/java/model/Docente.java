@@ -12,7 +12,7 @@ public class Docente extends Utente{
      */
     protected String argomentoTirocinio;
     /**
-     * Rappresenta tutti i tirocini che il docente ha ideato.
+     * Rappresentano tutti i tirocini che il docente ha ideato.
      */
     protected ArrayList<Tirocinio> tirocini= new ArrayList();
 

@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * The type Controller.
+ * La classe Controller.
+ * Rappresenta il controller che segue i calcoli richiesti dalla gui.
  */
 public class Controller {
 	private Studente studente;
@@ -18,21 +19,21 @@ public class Controller {
 
 
     /**
-     * Instantiates a new Controller.
+     * Costruttore della classe Controller.
      */
     public Controller() {
 	}
 
     /**
-     * Aggiungi utente boolean.
+     * Aggiungi l'utente al sistema.
      *
-     * @param login    the login
-     * @param password the password
-     * @param nome     the nome
-     * @param cognome  the cognome
-     * @param email    the email
-     * @param stuDoc   the stu doc
-     * @return the boolean
+     * @param login    il login dell'utente
+     * @param password la password dell'utente
+     * @param nome     il nome dell'utente
+     * @param cognome  il cognome dell'utente
+     * @param email    l'email dell'utente
+     * @param stuDoc   informa se e' uno studente o un docente
+     * @return infroma se l'inserimento e' avvenuto con successo
      */
     public boolean aggiungiUtente(String login, String password, String nome, String cognome, String email, boolean stuDoc){
 		if(stuDoc==true)
@@ -46,12 +47,12 @@ public class Controller {
 	}
 
     /**
-     * Accedi utente boolean.
+     * Permette all'utente di accedere al sistema.
      *
-     * @param login    the login
-     * @param password the password
-     * @param stuDoc   the stu doc
-     * @return the boolean
+     * @param login    il login utente
+     * @param password la password utente
+     * @param stuDoc   informa se e' uno studente o un docente
+     * @return infroma se l'accesso e' avvenuto con successo
      */
     public boolean accediUtente(String login, String password, boolean stuDoc){
 		if(stuDoc==true){
@@ -74,10 +75,10 @@ public class Controller {
 		}
 
     /**
-     * Gets nome.
+     * Ottiene il nome dell'utente.
      *
-     * @param stuDoc the stu doc
-     * @return the nome
+     * @param stuDoc informa se e' uno studente o un docente
+     * @return il nome dell'utente
      */
     public String getNome(boolean stuDoc) {
 		if (stuDoc == true){
@@ -88,10 +89,10 @@ public class Controller {
 	}
 
     /**
-     * Gets cognome.
+     * Ottine il cognome dell'utente.
      *
-     * @param stuDoc the stu doc
-     * @return the cognome
+     * @param stuDoc informa se e' uno studente o un docente
+     * @return il cognome dell'utente
      */
     public String getCognome(boolean stuDoc) {
 		if (stuDoc == true){
@@ -103,11 +104,11 @@ public class Controller {
 	}
 
     /**
-     * Salva tesi boolean.
+     * Salva la tesi scritta dallo studente.
      *
-     * @param titolo the titolo
-     * @param testo  the testo
-     * @return the boolean
+     * @param titolo il titolo della tesi
+     * @param testo  il testo della tesi
+     * @return infroma se il salvataggio e' avvenuto con successo
      */
     public boolean salvaTesi(String titolo, String testo){
 		tesi = new Tesi(titolo, testo, false);
@@ -115,9 +116,9 @@ public class Controller {
 	}
 
     /**
-     * Carica tesi boolean.
+     * Carica la tesi.
      *
-     * @return the boolean
+     * @return infroma se il caricamento e' avvenuto con successo
      */
     public boolean caricaTesi(){
 		tesi.caricaTesi();
@@ -125,9 +126,9 @@ public class Controller {
 	}
 
     /**
-     * Not null tesi boolean.
+     * Indica se la tesi e' stata gia' salvata prima
      *
-     * @return the boolean
+     * @return infroma se la tesi era gia' stata salvata
      */
     public boolean notNullTesi(){
 		if(tesi==null){
@@ -137,29 +138,29 @@ public class Controller {
 	}
 
     /**
-     * Get titolo string.
+     * Ottiene il titolo della tesi.
      *
-     * @return the string
+     * @return il titolo della tesi
      */
     public String getTitolo(){
 		return tesi.getTitolo();
 	}
 
     /**
-     * Get testo string.
+     * Ottiene il testo della tesi.
      *
-     * @return the string
+     * @return il testo della tesi
      */
     public String getTesto(){
 		return tesi.getTesto();
 	}
 
     /**
-     * Crea tirocinio boolean.
+     * Crea un nuovo tirocinio.
      *
-     * @param nome the nome
-     * @param ente the ente
-     * @return the boolean
+     * @param nome il nome del tricoinio
+     * @param ente l'ente del tricoinio
+     * @return infroma se la creazione e' avvenuto con successo
      */
     public boolean creaTirocinio(String nome, String ente){
 		if("Interno".equals(ente)) {
@@ -172,18 +173,18 @@ public class Controller {
 	}
 
     /**
-     * Leggi nome tirocinio string.
+     * Leggi il nome del tirocinio.
      *
-     * @return the string
+     * @return il nome del tirocinio
      */
     public String leggiNomeTirocinio(){
 		return tirocinio.getNomeTirocinio();
 	}
 
     /**
-     * Leggi ente tirocinio string.
+     * Leggi l'ente del tirocinio.
      *
-     * @return the string
+     * @return l'ente del tricoinio
      */
     public String leggiEnteTirocinio(){
 		if(Ente.Interno.equals(tirocinio.getEnteTirocinio()))
@@ -195,28 +196,28 @@ public class Controller {
 	}
 
     /**
-     * Leggi disponibilita tirocinio boolean.
+     * Leggi la disponibilita' del tirocinio.
      *
-     * @return the boolean
+     * @return infroma se il tirocinio e' disponibile
      */
     public boolean leggiDisponibilitaTirocinio(){
 		return tirocinio.getDisponibileTirocinio();
 	}
 
     /**
-     * Leggi in corso tirocinio boolean.
+     * Leggi se il tirocinio e' incominciato
      *
-     * @return the boolean
+     * @return infroma se il tirocinio e' incominciato
      */
     public boolean leggiInCorsoTirocinio(){
 		return tirocinio.getInCorsoTirocinio();
 	}
 
     /**
-     * Verifica nome tirocinio boolean.
+     * Verifica se il tirocinio esiste.
      *
-     * @param nome the nome
-     * @return the boolean
+     * @param nome il nome del tirocinio
+     * @return infroma se la verifica e' avvenuta con successo
      */
     public boolean verificaNomeTirocinio(String nome){
 		if(tirocinio.getNomeTirocinio().equals(nome)){
@@ -228,18 +229,18 @@ public class Controller {
 	}
 
     /**
-     * Get tirocinio string.
+     * Ottiene il nome tirocinio.
      *
-     * @return the string
+     * @return il nome tirocinio
      */
     public String getTirocinio(){
 		return richiesta.getTirocinio().getNomeTirocinio();
 	}
 
     /**
-     * Gets studente e tirocinio.
+     * Ottiene gli studenti iscritti al tirocinio.
      *
-     * @return the studente e tirocinio
+     * @return glu studenti iscritti
      */
     public ArrayList<String> getStudenteETirocinio() {
 		ArrayList<String> arrayStudente = new ArrayList<>();
@@ -253,12 +254,12 @@ public class Controller {
 	}
 
     /**
-     * Verifica richiesta boolean.
+     * Verifica se la richiesta esiste.
      *
-     * @param nomeStudente    the nome studente
-     * @param cognomeStudente the cognome studente
-     * @param nomeTirocinio   the nome tirocinio
-     * @return the boolean
+     * @param nomeStudente    il nome dello studente
+     * @param cognomeStudente il cognome dello studente
+     * @param nomeTirocinio   il nome del tirocinio
+     * @return infroma se la verifica e' avvenuta con successo
      */
     public boolean verificaRichiesta(String nomeStudente,String cognomeStudente,
 										String nomeTirocinio){
@@ -271,9 +272,9 @@ public class Controller {
 	}
 
     /**
-     * Cambia stato richiesta.
+     * Cambia lo stato della richiesta.
      *
-     * @param stato the stato
+     * @param stato lo stato della richiesta
      */
     public void cambiaStatoRichiesta(boolean stato){
 		if(stato){
@@ -284,9 +285,9 @@ public class Controller {
 	}
 
     /**
-     * Get data seduta string.
+     * Ottiene la data della seduta di laurea.
      *
-     * @return the string
+     * @return la data della seduta di laurea
      */
     public String getDataSeduta(){
 		if(sedutaLaurea==null){
@@ -296,20 +297,20 @@ public class Controller {
 	}
 
     /**
-     * Get luogo seduta string.
+     * Ottiene il luogo della seduta di laurea.
      *
-     * @return the string
+     * @return il luogo della seduta di laurea
      */
     public String getLuogoSeduta(){
 		return sedutaLaurea.getLuogoSeduta();
 	}
 
     /**
-     * Verifica seduta boolean.
+     * Verifica se la seduta di lairea esiste.
      *
-     * @param data  the data
-     * @param luogo the luogo
-     * @return the boolean
+     * @param data  la data
+     * @param luogo il luogo
+     * @return infroma se la verifica e' avvenuta con successo
      */
     public boolean verificaSeduta(String data, String luogo){
 		if(data.equals(String.valueOf(sedutaLaurea.getDataSeduta())) && luogo.equals(sedutaLaurea.getLuogoSeduta())){

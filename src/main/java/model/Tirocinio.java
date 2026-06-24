@@ -2,23 +2,39 @@ package model;
 import java.util.*;
 
 /**
- * The type Tirocinio.
+ * La classe Tirocinio.
+ * Rappresenta un tirocinio a cui gli studenti si possono iscrivere.
  */
 public class Tirocinio {
+    /**
+     * Rappresenta il nome del tirocinio.
+     */
     private String nomeTirocinio;
+    /**
+     * Rappresenta l'ente che idea il tirocinio.
+     */
     private Ente enteTirocinio;
+    /**
+     * Informa se il tirocinio e' disponibile.
+     */
     private boolean disponibile;
+    /**
+     * Informa se il tirocinio e' incominciato.
+     */
     private boolean inCorso;
+    /**
+     * Rappresentano tutti gli studenti che si sono iscritti al triocinio
+     */
     private ArrayList<Studente> studenti=new ArrayList();
 
 
     /**
-     * Instantiates a new Tirocinio.
+     * Costruttore della classe Tirocinio.
      *
-     * @param nomeTirocinio the nome tirocinio
-     * @param enteTirocinio the ente tirocinio
-     * @param disponibile   the disponibile
-     * @param inCorso       the in corso
+     * @param nomeTirocinio il nome tirocinio
+     * @param enteTirocinio l'ente tirocinio
+     * @param disponibile   la disponibilita'
+     * @param inCorso       se il tirocinio e' gia' incominciato
      */
     public Tirocinio(String nomeTirocinio, Ente enteTirocinio, boolean disponibile, boolean inCorso) {
         this.nomeTirocinio=nomeTirocinio;
@@ -28,16 +44,16 @@ public class Tirocinio {
     }
 
     /**
-     * Aggiungi studente.
+     * Aggiungie uno studente al tirocinio.
      *
-     * @param studenti the studenti
+     * @param studenti lo studenti aggiunto al tirocinio
      */
     public void aggiungiStudente(Studente studenti){
         this.studenti.add(studenti);
     }
 
     /**
-     * Vedi studenti.
+     * Stampa tutti i nomi degli studenti iscritti al tirocinio.
      */
     public void vediStudenti() {
         for(Studente s: studenti){
@@ -47,36 +63,36 @@ public class Tirocinio {
     }
 
     /**
-     * Get nome tirocinio string.
+     * Ottiene il nome tirocinio.
      *
-     * @return the string
+     * @return il nome del tirocinio
      */
     public String getNomeTirocinio(){
         return this.nomeTirocinio;
     }
 
     /**
-     * Get in corso tirocinio boolean.
+     * Ottiene se il tirocinio e' incominciato.
      *
-     * @return the boolean
+     * @return se il tirocinio e' incominciato
      */
     public boolean getInCorsoTirocinio(){
         return this.inCorso;
     }
 
     /**
-     * Get ente tirocinio ente.
+     * Ottiene l'ente del tirocinio.
      *
-     * @return the ente
+     * @return l'ente del tirocinio
      */
     public Ente getEnteTirocinio(){
         return this.enteTirocinio;
     }
 
     /**
-     * Get disponibile tirocinio boolean.
+     * Ottiene la disponibilita' del tirocinio.
      *
-     * @return the boolean
+     * @return la disponibilita' del tirocinio
      */
     public boolean getDisponibileTirocinio(){
         return this.disponibile;

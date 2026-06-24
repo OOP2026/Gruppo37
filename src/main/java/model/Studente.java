@@ -2,23 +2,37 @@ package model;
 import java.util.*;
 
 /**
- * The type Studente.
+ * La classe Studente.
+ * Rappresenta un studente registrato ad un corso di laurea.
+ * Estende Utente.
  */
 public class Studente extends Utente {
+    /**
+     * Rappresenta la matricola dello studente.
+     */
     private String matricola;
+    /**
+     * Rappresenta la seduta di laurea a cui lo studente si e' prenotato.
+     */
     private SedutaLaurea sedutaLaurea;
+    /**
+     * Rappresenta l'ultima richiesta inviata dallo studente.
+     */
     private Richiesta ultimaRiciesta;
+    /**
+     * Rappresenta l'ultima tesi inviata dallo studente.
+     */
     private Tesi ultimaTesi;
 
     /**
-     * Instantiates a new Studente.
+     * Costruttore della classe Studente.
      *
-     * @param nome      the nome
-     * @param cognome   the cognome
-     * @param email     the email
-     * @param login     the login
-     * @param password  the password
-     * @param matricola the matricola
+     * @param nome      il nome dello studente
+     * @param cognome   il cognome dello studente
+     * @param email     l'email dello studente
+     * @param login     il login dello studente
+     * @param password  la password dello studente
+     * @param matricola la matricola dello studente
      */
     public Studente(String nome, String cognome, String email, String login, String password, String matricola){
         super(nome,cognome,email,login,password);
@@ -26,18 +40,18 @@ public class Studente extends Utente {
     }
 
     /**
-     * Prenota seduta laurea.
+     * Prenota una seduta laurea.
      *
-     * @param sL the s l
+     * @param sL la seduta di laurea a cui lo studente si vuole prenotare
      */
     public void prenotaSedutaLaurea(SedutaLaurea sL){
         this.sedutaLaurea=sL;
     }
 
     /**
-     * Crea richiesta.
+     * Crea una nuova richiesta.
      *
-     * @param r the r
+     * @param r la richiesta che lo studente vuole creare
      */
     public void creaRichiesta(Richiesta r) {
         this.ultimaRiciesta=r;
@@ -45,7 +59,7 @@ public class Studente extends Utente {
     }
 
     /**
-     * Visualizza richiesta.
+     * Visualizza lo stato della richiesta creata dallo studente.
      */
     public void visualizzaRichiesta(){
         if(ultimaRiciesta.getStato().equals("Approvato")){
@@ -60,9 +74,9 @@ public class Studente extends Utente {
     }
 
     /**
-     * Crea tesi.
+     * Crea una nuova tesi.
      *
-     * @param t the t
+     * @param t il tirocinio che lo studente vuole creare
      */
     public void creaTesi(Tesi t){
         this.ultimaTesi=t;
@@ -70,27 +84,11 @@ public class Studente extends Utente {
     }
 
     /**
-     * Get nome studenete string.
+     * Ottiene il nome dello studenete.
      *
-     * @return the string
+     * @return il nome dello studente
      */
     public String getNomeStudenete(){
         return this.nome;
     }
 }
-
-
-
-/*
-DA FARE:
-Aggiungere= att nel UML di Tirocinio: inCorso
-Studente e Tirocinio N:N
-Nuova ASSOCIAZIONE= Docente e Tirocinio con "CREARE" 1:N (trova parola migliore)
-Aggiungere= metodo Studente: visualizzaRichiesta e creaRichiesta e creaTesi e prenotaSeduta
-Toglere= metodo Studente: visualizza
-Docente: l'att elencoArgomentiTirocinio diventa: argomentoTirocinio
-Tirocinio: l'att spazioTirocinio diventa: enteTirocinio
-Aggiungere= metodo Docente: creaTirocinio
-Tesi; att testo, att titolo
-
- */

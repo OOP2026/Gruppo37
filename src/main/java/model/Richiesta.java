@@ -7,33 +7,33 @@ import java.util.*;
  */
 public class Richiesta {
     /**
-     *
+     * Rappresenta lo stato della richiesta.
      */
     private Stato stato;
     /**
-     *
+     * Rappresenta la data quando e' stata inviata la richiesta.
      */
     private Date dataRichiesta;
     /**
-     *
+     * Rappresenta il tirocinio al quale lo studente si riferisce.
      */
     private Tirocinio tirocinio;
     /**
-     *
+     * Rappresenta lo studente che invia la richiesta
      */
     private Studente studente;
     /**
-     *
+     * Rappresenta il docente che riceve la richiesta
      */
     private Docente docente;
 
     /**
-     * Instantiates a new Richiesta.
+     * Costruttore della classe Richiesta.
      *
-     * @param dataRichiesta the data richiesta
-     * @param tirocinio     the tirocinio
-     * @param studente      the studente
-     * @param docente       the docente
+     * @param dataRichiesta la data di invio richiesta
+     * @param tirocinio     il tirocinio a cui si riferisce la richiesta
+     * @param studente      lo studente a cui si riferisce la richiesta
+     * @param docente       il docente a cui si riferisce la richiesta
      */
     public Richiesta(Date dataRichiesta, Tirocinio tirocinio, Studente studente, Docente docente) {
         this.stato=Stato.InAttesa;
@@ -44,66 +44,66 @@ public class Richiesta {
     }
 
     /**
-     * Aggiungi tircoinio.
+     * Aggiungie un tircoinio alla richiesta.
      *
-     * @param t the t
+     * @param t il tirocinio che deve essere aggiunto alla richiesta
      */
     public void aggiungiTircoinio(Tirocinio t){
         this.tirocinio=t;
     }
 
     /**
-     * Aggiungi studente.
+     * Aggiungie uno studente alla richiesta.
      *
-     * @param s the s
+     * @param s lo studente che deve essere aggiunto alla richiesta
      */
     public void aggiungiStudente(Studente s){
         this.studente=s;
     }
 
     /**
-     * Aggiungi docente.
+     * Aggiungie un docente alla richiesta.
      *
-     * @param d the d
+     * @param d il docente che deve essere aggiunto alla richiesta
      */
     public void aggiungiDocente(Docente d){
         this.docente=d;
     }
 
     /**
-     * Approva.
+     * Approva la richiesta.
      */
     public void approva() {this.stato=Stato.Approvata;}
 
     /**
-     * Rifiuta.
+     * Rifiuta la richiesta.
      */
     public void rifiuta(){
         this.stato=Stato.Rifiutata;
     }
 
     /**
-     * Gets stato.
+     * Ottiene lo stato della richiesta.
      *
-     * @return the stato
+     * @return lo stato della richiesta
      */
     public Stato getStato() {
         return stato;
     }
 
     /**
-     * Get tirocinio tirocinio.
+     * Ottiene il tirocinio della richiesta.
      *
-     * @return the tirocinio
+     * @return il tirocinio della richiesta
      */
     public Tirocinio getTirocinio(){
         return tirocinio;
     }
 
     /**
-     * Get studente studente.
+     * Ottiene lo studente della richiesta.
      *
-     * @return the studente
+     * @return lo studente della richiesta
      */
     public Studente getStudente(){
         return studente;
