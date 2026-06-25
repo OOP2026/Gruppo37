@@ -6,7 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * The type Home page docente.
+ * La GUI HomePageDocente.
+ * L'interfaccia usata dal docente per poter accedere a tutte le attivita' che puo' compiere.
  */
 public class HomePageDocente extends JDialog {
     private JFrame frame;
@@ -19,10 +20,10 @@ public class HomePageDocente extends JDialog {
     private JButton approvaRichiesteButton;
 
     /**
-     * Instantiates a new Home page docente.
+     * Costruttore della GUI HomePageDocente.
      *
-     * @param frameHome  the frame home
-     * @param controller the controller
+     * @param frameHome  il frame della GUI della home
+     * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
      */
     public HomePageDocente(JFrame frameHome, Controller controller) {
         frame=new JFrame("HomePageDocente");
@@ -33,6 +34,9 @@ public class HomePageDocente extends JDialog {
         nome.setText(controller.getNome(false));
         cognome.setText(controller.getCognome(false));
 
+        /**
+         * Il bottone per uscire dal frame.
+         */
         esciButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frameHome.setVisible(true);
@@ -41,6 +45,9 @@ public class HomePageDocente extends JDialog {
 
         });
 
+        /**
+         * Il bottone per accedere al frame per creare un nuovo tirocinio.
+         */
         creaTirocinioButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
@@ -48,6 +55,9 @@ public class HomePageDocente extends JDialog {
             }
         });
 
+        /**
+         * Il bottone per accedere al frame per visualizzare tutti i tirocini creati dal docente.
+         */
         visualizzaTirociniButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
@@ -55,6 +65,9 @@ public class HomePageDocente extends JDialog {
             }
         });
 
+        /**
+         * Il bottone per accedere al frame per approvare le richieste.
+         */
         approvaRichiesteButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);

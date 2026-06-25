@@ -7,7 +7,8 @@ import java.awt.event.ActionListener;
 
 
 /**
- * The type Home page studente.
+ * La GUI HomePageStudente.
+ * L'interfaccia usata dal studente per poter accedere a tutte le attivita' che puo' compiere.
  */
 public class HomePageStudente{
     private JFrame frame;
@@ -22,10 +23,10 @@ public class HomePageStudente{
     private JButton esciButton;
 
     /**
-     * Instantiates a new Home page studente.
+     * Costruttore della GUI HomePageStudente.
      *
-     * @param frameHome  the frame home
-     * @param controller the controller
+     * @param frameHome  il frame della GUI della home
+     * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
      */
     public HomePageStudente(JFrame frameHome, Controller controller) {
         frame = new JFrame("HomePageStudente");
@@ -37,14 +38,19 @@ public class HomePageStudente{
         cognome.setText(controller.getCognome(true));
         dataSeduta.setText(controller.getDataSeduta());
 
+        /**
+         * Il bottone per uscire dal frame.
+         */
         esciButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frameHome.setVisible(true);
                 frame.dispose();
             }
-            
         });
 
+        /**
+         * Il bottone per accedere al frame per creare una nuova tesi.
+         */
         creaTesiButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
@@ -52,6 +58,9 @@ public class HomePageStudente{
             }
         });
 
+        /**
+         * Il bottone per accedere al frame per continuare una tesi gia' esistente.
+         */
         continuaTesiButton.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e){
                if(controller.notNullTesi()==true){
@@ -63,6 +72,9 @@ public class HomePageStudente{
            }
         });
 
+        /**
+         * Il bottone per accedere al frame per creare una nuova richiesta.
+         */
         creaRichiestaButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
@@ -70,6 +82,9 @@ public class HomePageStudente{
             }
         });
 
+        /**
+         * Il bottone per accedere al frame per prenotare una seduta di laurea.
+         */
         prenotaSedutaButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);

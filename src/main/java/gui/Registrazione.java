@@ -6,7 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * The type Registrazione.
+ * La GUI Registrazione.
+ * L'interfaccia usata dagli utenti per fare parte del sistema.
  */
 public class Registrazione extends JDialog {
     private JFrame frame;
@@ -26,10 +27,10 @@ public class Registrazione extends JDialog {
     private JTextField emailS;
 
     /**
-     * Instantiates a new Registrazione.
+     * Costruttore della GUI Registrazione.
      *
-     * @param frameHome  the frame home
-     * @param controller the controller
+     * @param frameHome  il frame della GUI della home
+     * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
      */
     public Registrazione(JFrame frameHome, Controller controller) {
         frame=new JFrame("Registrazione");
@@ -38,12 +39,19 @@ public class Registrazione extends JDialog {
         frame.pack();
         frame.setVisible(true);
 
+        /**
+         * Il bottone per tornare al frame precedente
+         */
         buttonCancel.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frameHome.setVisible(true);
                 frame.dispose();
             }
     });
+
+        /**
+         * Il bottone per creare un nuovo utente.
+         */
         buttonOK.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if(loginS.getText().equals("")||passwordS.getText().equals("")||nomeS.getText().equals("")

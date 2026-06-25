@@ -9,7 +9,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * The type Vedi tirocinio.
+ * La GUI VediTirocinio.
+ * L'interfaccia usata dai docenti per visualizzare i vari tirocini creati.
  */
 public class VediTirocinio extends JDialog {
     private JFrame frame;
@@ -18,10 +19,10 @@ public class VediTirocinio extends JDialog {
     private JTable table1;
 
     /**
-     * Instantiates a new Vedi tirocinio.
+     * Costruttore della GUI VediTirocinio.
      *
-     * @param frameHomeD the frame home d
-     * @param controller the controller
+     * @param frameHomeD il frame della GUI della home del docente
+     * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
      */
     public VediTirocinio(JFrame frameHomeD, Controller controller) {
         frame = new JFrame("VediTirocinio");
@@ -42,7 +43,9 @@ public class VediTirocinio extends JDialog {
                 controller.leggiDisponibilitaTirocinio(), controller.leggiInCorsoTirocinio()
                 });
 
-
+        /**
+         * Il bottone per tornare al frame precedente.
+         */
         buttonEsci.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();

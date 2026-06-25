@@ -6,7 +6,8 @@ import javax.swing.*;
 import java.awt.event.*;
 
 /**
- * The type Scrittura tesi.
+ * La GUI ScritturaTesi.
+ * L'interfaccia usata dagli studenti per scrivere una tesi.
  */
 public class ScritturaTesi extends JDialog {
     private JFrame frame;
@@ -18,11 +19,11 @@ public class ScritturaTesi extends JDialog {
     private JButton caricaButton;
 
     /**
-     * Instantiates a new Scrittura tesi.
+     * Costruttore della GUI ScritturaTesi.
      *
-     * @param frameHomeS the frame home s
-     * @param controller the controller
-     * @param primaVolta the prima volta
+     * @param frameHomeS il frame della GUI della home del studente
+     * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
+     * @param primaVolta indica se e' una nuova tesi o una vecchia
      */
     public ScritturaTesi(JFrame frameHomeS, Controller controller, boolean primaVolta) {
         frame = new JFrame("ScritturaTesi");
@@ -39,6 +40,9 @@ public class ScritturaTesi extends JDialog {
             testo.setText(controller.getTesto());
         }
 
+        /**
+         * Il bottone per salvare la tesi.
+         */
         buttonSalva.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(controller.salvaTesi(titolo.getText(), testo.getText())) {
@@ -51,6 +55,9 @@ public class ScritturaTesi extends JDialog {
             }
         });
 
+        /**
+         * Il bottone per tornare al frame precedente.
+         */
         buttonCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frameHomeS.setVisible(true);
@@ -58,6 +65,9 @@ public class ScritturaTesi extends JDialog {
             }
         });
 
+        /**
+         * Il bottone per caricare la tesi.
+         */
         caricaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(controller.salvaTesi(titolo.getText(), testo.getText()) && controller.caricaTesi()) {

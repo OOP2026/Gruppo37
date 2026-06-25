@@ -7,7 +7,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 
 /**
- * The type Crea richiesta.
+ * La GUI CreaRichiesta.
+ * E' l'interfaccia usata dagli studenti per creare richieste da inviare ai docenti..
  */
 public class CreaRichiesta extends JDialog {
     private JFrame frame;
@@ -19,10 +20,10 @@ public class CreaRichiesta extends JDialog {
 
 
     /**
-     * Instantiates a new Crea richiesta.
+     * Costruttore della GUI CreaRichiesta.
      *
-     * @param frameHomePageS the frame home page s
-     * @param controller     the controller
+     * @param frameHomePageS il frame della GUI della home del studente
+     * @param controller     il controller che ci permette di passare informazioni da un frame ad un altro
      */
     public CreaRichiesta(JFrame frameHomePageS, Controller controller) {
         frame = new JFrame("CreaRichiesta");
@@ -43,6 +44,9 @@ public class CreaRichiesta extends JDialog {
                 controller.leggiDisponibilitaTirocinio(), controller.leggiInCorsoTirocinio()
         });
 
+        /**
+         * Il bottone per creare una nuova richiesta.
+         */
         creaRichiestaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(nomeTirocinio.getText().isEmpty()){
@@ -57,6 +61,9 @@ public class CreaRichiesta extends JDialog {
             }
         });
 
+        /**
+        * Il bottone per tornare al frame precedente.
+        */
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();

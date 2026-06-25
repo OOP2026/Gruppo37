@@ -6,7 +6,8 @@ import javax.swing.*;
 import java.awt.event.*;
 
 /**
- * The type Crea tirocinio.
+ * La GUI CreaTirocinio.
+ * L'interfaccia usata dai docenti per creare nuovi tirocini.
  */
 public class CreaTirocinio extends JDialog {
     private JFrame frame;
@@ -17,10 +18,10 @@ public class CreaTirocinio extends JDialog {
     private JComboBox ente;
 
     /**
-     * Instantiates a new Crea tirocinio.
+     * Costruttore della GUI CreaTirocinio.
      *
-     * @param frameHomeD the frame home d
-     * @param controller the controller
+     * @param frameHomeD il frame della GUI della home del docente
+     * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
      */
     public CreaTirocinio(JFrame frameHomeD, Controller controller) {
         frame=new JFrame("CreaTirocinio");
@@ -29,6 +30,9 @@ public class CreaTirocinio extends JDialog {
         frame.pack();
         frame.setVisible(true);
 
+        /**
+         * Il bottone per creare un nuovo tirocinio.
+         */
         buttonCrea.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (nomeS.getText().isEmpty()) {
@@ -45,6 +49,9 @@ public class CreaTirocinio extends JDialog {
             }
         });
 
+        /**
+         * Il bottone per tornare al frame precedente.
+         */
         buttonCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();

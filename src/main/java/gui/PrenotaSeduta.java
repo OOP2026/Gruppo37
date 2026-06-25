@@ -8,7 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * The type Prenota seduta.
+ * La GUI PrenotaSeduta.
+ * L'interfaccia usata dagli studenti per prenotare una seduta di laurea.
  */
 public class PrenotaSeduta extends JDialog {
     private JFrame frame;
@@ -20,10 +21,10 @@ public class PrenotaSeduta extends JDialog {
     private JTextField luogoSedutaTextField;
 
     /**
-     * Instantiates a new Prenota seduta.
+     * Costruttore della GUI PrenotaSeduta.
      *
-     * @param frameHomeS the frame home s
-     * @param controller the controller
+     * @param frameHomeS il frame della GUI della home del studente
+     * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
      */
     public PrenotaSeduta(JFrame frameHomeS, Controller controller) {
         frame = new JFrame("PrenotaSeduta");
@@ -43,6 +44,9 @@ public class PrenotaSeduta extends JDialog {
                 controller.getDataSeduta(), controller.getLuogoSeduta()
         });
 
+        /**
+         * Il bottone per prenotare la seduta di laurea.
+         */
         buttonSalva.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(dataSedutaTextField.getText().isEmpty() || luogoSedutaTextField.getText().isEmpty()){
@@ -57,6 +61,9 @@ public class PrenotaSeduta extends JDialog {
             }
         });
 
+        /**
+         * Il bottone per tornare al frame precedente.
+         */
         buttonCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();

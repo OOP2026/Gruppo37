@@ -6,7 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- * The type Home.
+ * La GUI Home.
+ * L'interfaccia usata dagli utenti del sistema per accedere alla loro pagina personale.
  */
 public class Home {
     private static JFrame frame;
@@ -21,9 +22,13 @@ public class Home {
     private JComboBox stuDoc;
 
     /**
-     * Instantiates a new Home.
+     * Costruttore della GUI Home.
      */
     public Home() {
+
+        /**
+         * Il bottone per accedere alla pagina personale dell'utente.
+         */
         accedi.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if(loginS.getText().equals("")||passwordS.getText().equals("")){
@@ -47,6 +52,10 @@ public class Home {
                 }
             }
         });
+
+        /**
+         * Il bottone per accedere al frame per eseguire la registrazione.
+         */
         registrati.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
@@ -57,9 +66,9 @@ public class Home {
 
 
     /**
-     * The entry point of application.
+     * Il main.
+     * Serve per creare il primo frame.
      *
-     * @param args the input arguments
      */
     public static void main(String[] args) {
         frame= new JFrame("Home");

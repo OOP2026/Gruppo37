@@ -8,7 +8,8 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 /**
- * The type Approva richiesta.
+ * La GUI ApprovaRichiesta.
+ * E' l'interfaccia usata dal docente per approvare le richieste degli studenti.
  */
 public class ApprovaRichiesta extends JDialog {
     private JFrame frame;
@@ -22,10 +23,10 @@ public class ApprovaRichiesta extends JDialog {
     private JTextField cognomeStudenteTextField;
 
     /**
-     * Instantiates a new Approva richiesta.
+     * Costruttore della GUI ApprovaRichiesta.
      *
-     * @param frameHomeD the frame home d
-     * @param controller the controller
+     * @param frameHomeD il frame della GUI della home del docente
+     * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
      */
     public ApprovaRichiesta(JFrame frameHomeD, Controller controller) {
         frame = new JFrame("ApprovaRichiesta");
@@ -46,6 +47,9 @@ public class ApprovaRichiesta extends JDialog {
                 arrayList.get(0), arrayList.get(1), arrayList.get(2)
         });
 
+        /**
+         * Il bottone per salvare le modifiche.
+         */
         salvaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(nomeStudenteTextField.getText().isEmpty() || nomeTirocinioTextField.getText().isEmpty()) {
@@ -68,6 +72,9 @@ public class ApprovaRichiesta extends JDialog {
             }
         });
 
+        /**
+         * Il bottone per tornare al frame precedente.
+         */
         buttonCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
