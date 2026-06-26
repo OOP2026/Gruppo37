@@ -1,6 +1,8 @@
 package controller;
 
 import model.*;
+import implementazioneDao.*;
+import dao.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,7 +18,9 @@ public class Controller {
 	private Tirocinio tirocinio;
 	private Richiesta richiesta;
 	private SedutaLaurea sedutaLaurea;
-
+	private StudenteDAO studenteDAO =new StudenteImplementazionePostgresDAO();
+	private DocenteDAO docenteDAO = new DocenteImplementazionePostgresDAO();
+	
 
     /**
      * Costruttore della classe Controller.

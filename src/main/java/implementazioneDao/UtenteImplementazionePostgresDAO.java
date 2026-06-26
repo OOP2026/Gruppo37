@@ -3,5 +3,5 @@ package implementazioneDao;
 /**
  * The type Utente postgres dao.
  */
-public class UtentePostgresDao {
+public class UtenteImplementazionePostgresDAO {
 }
