@@ -4,6 +4,7 @@ import model.*;
 import implementazioneDao.*;
 import dao.*;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -42,9 +43,19 @@ public class Controller {
     public boolean aggiungiUtente(String login, String password, String nome, String cognome, String email, boolean stuDoc){
 		if(stuDoc==true)
 		{
-			studente=new Studente(nome,cognome,email,login,password,null);
+			try {
+				studenteDAO.aggiungiStudente(nome, cognome, email, login, password);
+			} catch (SQLException e0){
+				throw new RuntimeException(e0);
+			}
+				studente=new Studente(nome,cognome,email,login,password,null);
 		}
 		else{
+			try{
+			docenteDAO.aggiungiDocente(nome,cognome,email,login,password);
+			} catch (SQLException e1){
+				throw new RuntimeException(e1);
+			}
 			docente=new Docente(nome,cognome,email,login,password,null);
 		}
 		return true;
