@@ -13,7 +13,7 @@ public class ConnessioneDatabase {
     public Connection connection=null;
     private String nome=                                                                                                                                    "Nicola";
     private String password=                                                                                                                                "";
-    private String url="jdbc:postgresql://localhost:5432/Borsa";
+    private String url="jdbc:postgresql://localhost:5050/Sedute";
     private String driver="org.postgresql.Driver";
 
     /**
