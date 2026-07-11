@@ -22,7 +22,7 @@ public class DocenteImplementazionePostgresDAO implements DocenteDAO {
 
     @Override
     public void aggiungiDocente(String nome, String cognome, String email, String login, String password) throws SQLException {
-        String sql = "INSERT INTO \"Docente\" (\"Nome\", \"Cognome\", \"Email\", \"Login\", \"Password\", \"argomentoTirocinio\") VALUES (?,?,?,?,?,?);";
+        String sql = "INSERT INTO \"docente\" (\"nome\", \"cognome\", \"email\", \"login\", \"password\", \"argomentotirocinio\") VALUES (?,?,?,?,?,?);";
         try (PreparedStatement aggiungiDocentePS = connessione.prepareStatement(sql)) {
             aggiungiDocentePS.setString(1, nome);
             aggiungiDocentePS.setString(2, cognome);

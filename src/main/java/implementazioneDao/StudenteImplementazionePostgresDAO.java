@@ -20,7 +20,7 @@ public class StudenteImplementazionePostgresDAO implements StudenteDAO {
 
     @Override
     public void aggiungiStudente(String nome, String cognome, String email, String login, String password) throws SQLException {
-        String sql="INSERT INTO \"Studente\" (\"Nome\", \"Cognome\", \"Email\", \"Login\", \"Password\", \"Matricola\") VALUES (?,?,?,?,?,?);";
+        String sql="INSERT INTO \"studente\" (\"nome\", \"cognome\", \"email\", \"login\", \"password\", \"matricola\") VALUES (?,?,?,?,?,?);";
         try (PreparedStatement aggiungiStudentePS=connessione.prepareStatement(sql)){
             aggiungiStudentePS.setString(1,nome);
             aggiungiStudentePS.setString(2,cognome);

@@ -11,8 +11,8 @@ import java.sql.SQLException;
 public class ConnessioneDatabase {
     private static ConnessioneDatabase istance;
     public Connection connection=null;
-    private String nome=                                                                                                                                    "Nicola";
-    private String password=                                                                                                                                 "Nicola2007@";
+    private String nome=                                                                                                                                    "nicola";
+    private String password=                                                                                                                                 "password";
     private String url="jdbc:postgresql://localhost:5432/Sedute";
     private String driver="org.postgresql.Driver";
 
