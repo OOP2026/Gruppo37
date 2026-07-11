@@ -71,12 +71,14 @@ public class Controller {
      */
     public boolean accediUtente(String login, String password, boolean stuDoc){
 		if(stuDoc==true){
-			if(studente==null){
-				return false;
+			try {
+				ArrayList<String> info=new ArrayList<String>();
+				info= studenteDAO.accediStudente(login, password);
+				studente=new Studente(info.get(0),info.get(1),info.get(2),info.get(3),info.get(4),info.get(5));
+			}catch (SQLException e2){
+			throw new RuntimeException(e2);
 			}
-			if(studente.login(login,password)){
-				return true;
-			}
+			return true;
 		}
 		else{
 			if(docente==null){
