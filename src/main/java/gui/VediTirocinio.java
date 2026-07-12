@@ -24,7 +24,7 @@ public class VediTirocinio extends JDialog {
      * @param frameHomeD il frame della GUI della home del docente
      * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
      */
-    public VediTirocinio(JFrame frameHomeD, Controller controller) {
+    public VediTirocinio(JFrame frameHomeD, Controller controller,String nomeD) {
         frame = new JFrame("VediTirocinio");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

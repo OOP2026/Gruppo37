@@ -21,6 +21,7 @@ public class Controller {
 	private SedutaLaurea sedutaLaurea;
 	private StudenteDAO studenteDAO =new StudenteImplementazionePostgresDAO();
 	private DocenteDAO docenteDAO = new DocenteImplementazionePostgresDAO();
+	private TesiDAO tesiDAO = new TesiImplementazionePostgresDAO();
 	
 
     /**
@@ -69,27 +70,34 @@ public class Controller {
      * @param stuDoc   informa se e' uno studente o un docente
      * @return infroma se l'accesso e' avvenuto con successo
      */
-    public boolean accediUtente(String login, String password, boolean stuDoc){
-		if(stuDoc==true){
+    public String accediUtente(String login, String password, boolean stuDoc) {
+		if (stuDoc == true) {
 			try {
-				ArrayList<String> info=new ArrayList<String>();
-				info= studenteDAO.accediStudente(login, password);
-				studente=new Studente(info.get(0),info.get(1),info.get(2),info.get(3),info.get(4),info.get(5));
-			}catch (SQLException e2){
-			throw new RuntimeException(e2);
+				ArrayList info = new ArrayList();
+				info = studenteDAO.accediStudente(login, password);
+				if (info != null) {
+					studente = new Studente(info.get(0), info.get(1), info.get(2), info.get(3), info.get(4), info.get(5));
+					tesi= new Tesi(info.get(6), info.get(7), info.get(8), info.get(9), info.get(10));
+					return info.get(0);
+			    }
+			} catch (SQLException e2) {
+				throw new RuntimeException(e2);
 			}
-			return true;
-		}
-		else{
-			if(docente==null){
-				return false;
+			return null;
+		} else {
+			try {
+				ArrayList<String> info = new ArrayList<String>();
+				info = docenteDAO.accediDocente(login, password);
+				if (info != null) {
+					docente = new Docente(info.get(0), info.get(1), info.get(2), info.get(3), info.get(4), info.get(5));
+					return info.get(0);
+				}
+			} catch (SQLException e3) {
+				throw new RuntimeException(e3);
 			}
-			if(docente.login(login,password)){
-				return true;
-			}
+			return null;
 		}
-		return false;
-		}
+	}
 
     /**
      * Ottiene il nome dell'utente.
@@ -127,9 +135,14 @@ public class Controller {
      * @param testo  il testo della tesi
      * @return infroma se il salvataggio e' avvenuto con successo
      */
-    public boolean salvaTesi(String titolo, String testo){
+    public boolean salvaTesi(String titolo, String testo, String nomeS){
+		try{
+		tesiDAO.salvaTesi(titolo,testo,nomeS);
 		tesi = new Tesi(titolo, testo, false);
-		return true;
+		return true;}
+		catch(Exception e4){
+			throw new RuntimeException(e4);
+		}
 	}
 
     /**
@@ -137,9 +150,14 @@ public class Controller {
      *
      * @return infroma se il caricamento e' avvenuto con successo
      */
-    public boolean caricaTesi(){
-		tesi.caricaTesi();
-		return true;
+    public boolean caricaTesi(String nomeS){
+		try{
+			tesiDAO.caricaTesi(nomeS);
+			tesi.caricaTesi();
+			return true;}
+		catch(Exception e5){
+			throw new RuntimeException(e5);
+		}
 	}
 
     /**

@@ -25,7 +25,7 @@ public class ScritturaTesi extends JDialog {
      * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
      * @param primaVolta indica se e' una nuova tesi o una vecchia
      */
-    public ScritturaTesi(JFrame frameHomeS, Controller controller, boolean primaVolta) {
+    public ScritturaTesi(JFrame frameHomeS, Controller controller, boolean primaVolta,String nomeS) {
         frame = new JFrame("ScritturaTesi");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -45,12 +45,11 @@ public class ScritturaTesi extends JDialog {
          */
         buttonSalva.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(controller.salvaTesi(titolo.getText(), testo.getText())) {
+                if(controller.salvaTesi(titolo.getText(), testo.getText(), nomeS)){
                     frame.dispose();
                     frameHomeS.setVisible(true);
                     JOptionPane.showMessageDialog(frameHomeS, "Tesi salvata");
-                }
-                else{
+                }else{
                     JOptionPane.showMessageDialog(frame, "Riscontrato problema durante il salvataggio");}
             }
         });
@@ -70,7 +69,7 @@ public class ScritturaTesi extends JDialog {
          */
         caricaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(controller.salvaTesi(titolo.getText(), testo.getText()) && controller.caricaTesi()) {
+                if(controller.salvaTesi(titolo.getText(), testo.getText(),nomeS) && controller.caricaTesi(nomeS)) {
                     frame.dispose();
                     frameHomeS.setVisible(true);
                     JOptionPane.showMessageDialog(frameHomeS, "Tesi caricata");

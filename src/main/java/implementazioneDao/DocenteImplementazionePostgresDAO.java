@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DocenteImplementazionePostgresDAO implements DocenteDAO {
     private Connection connessione;
@@ -33,6 +34,29 @@ public class DocenteImplementazionePostgresDAO implements DocenteDAO {
 
             aggiungiDocentePS.executeUpdate();
             aggiungiDocentePS.close();
+        }
+    }
+
+    public ArrayList<String> accediDocente(String login, String password) throws SQLException {
+        String sql="SELECT \"nome\",\"cognome\",\"email\",\"login\", \"password\", \"argomentotirocinio\" FROM \"docente\" WHERE \"login\"=? AND \"password\"=?";
+        try(PreparedStatement accediStudentePS=connessione.prepareStatement(sql)) {
+            accediStudentePS.setString(1, login);
+            accediStudentePS.setString(2, password);
+            ResultSet rs=accediStudentePS.executeQuery();
+
+            if(rs.next()){
+                ArrayList<String> info=new ArrayList<String>();
+                info.add(rs.getString("nome"));
+                info.add(rs.getString("cognome"));
+                info.add(rs.getString("email"));
+                info.add(rs.getString("login"));
+                info.add(rs.getString("password"));
+                info.add(rs.getString("argomentotirocinio"));
+                return info;}
+            return null;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return null;
         }
     }
 }

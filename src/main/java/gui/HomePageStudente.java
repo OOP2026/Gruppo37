@@ -28,7 +28,7 @@ public class HomePageStudente{
      * @param frameHome  il frame della GUI della home
      * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
      */
-    public HomePageStudente(JFrame frameHome, Controller controller) {
+    public HomePageStudente(JFrame frameHome, Controller controller,String nomeS) {
         frame = new JFrame("HomePageStudente");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,7 +54,7 @@ public class HomePageStudente{
         creaTesiButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
-                ScritturaTesi scritturaTesi=new ScritturaTesi(frame,controller,true);
+                ScritturaTesi scritturaTesi=new ScritturaTesi(frame,controller,true,nomeS);
             }
         });
 
@@ -65,7 +65,7 @@ public class HomePageStudente{
            public void actionPerformed(ActionEvent e){
                if(controller.notNullTesi()==true){
                    frame.setVisible(false);
-                   ScritturaTesi scritturaTesi=new ScritturaTesi(frame,controller,false);
+                   ScritturaTesi scritturaTesi=new ScritturaTesi(frame,controller,false,nomeS);
                }else{
                    JOptionPane.showMessageDialog(frame, "Non hai mai creato una tesi");
                }
@@ -78,7 +78,7 @@ public class HomePageStudente{
         creaRichiestaButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
-                CreaRichiesta creaRichiesta=new CreaRichiesta(frame, controller);
+                CreaRichiesta creaRichiesta=new CreaRichiesta(frame, controller,nomeS);
             }
         });
 
@@ -88,7 +88,7 @@ public class HomePageStudente{
         prenotaSedutaButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
-                PrenotaSeduta prenotaSeduta=new PrenotaSeduta(frame, controller);
+                PrenotaSeduta prenotaSeduta=new PrenotaSeduta(frame, controller, nomeS);
             }
         });
     }

@@ -23,7 +23,7 @@ public class CreaTirocinio extends JDialog {
      * @param frameHomeD il frame della GUI della home del docente
      * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
      */
-    public CreaTirocinio(JFrame frameHomeD, Controller controller) {
+    public CreaTirocinio(JFrame frameHomeD, Controller controller,String nomeD) {
         frame=new JFrame("CreaTirocinio");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

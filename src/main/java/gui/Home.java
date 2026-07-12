@@ -35,15 +35,17 @@ public class Home {
                     JOptionPane.showMessageDialog(frame, "Non hai riempito tutti i campi");
                 }else {
                     if ("Studente".equals(stuDoc.getSelectedItem())) {
-                        if (controller.accediUtente(loginS.getText(), passwordS.getText(), true)) {
-                            HomePageStudente homePageStudente = new HomePageStudente(frame, controller);
+                        String nome=controller.accediUtente(loginS.getText(), passwordS.getText(), true);
+                        if (nome!=null) {
+                            HomePageStudente homePageStudente = new HomePageStudente(frame, controller,nome);
                             frame.setVisible(false);
                         } else {
                             JOptionPane.showMessageDialog(frame, "Nessun login e password associabili a questo Studente");
                         }
                     } else {
-                        if (controller.accediUtente(loginS.getText(), passwordS.getText(), false)) {
-                            HomePageDocente homePageDocente = new HomePageDocente(frame, controller);
+                        String nome=controller.accediUtente(loginS.getText(), passwordS.getText(), false);
+                        if (nome!=null) {
+                            HomePageDocente homePageDocente = new HomePageDocente(frame, controller,nome);
                             frame.setVisible(false);
                         } else {
                             JOptionPane.showMessageDialog(frame, "Nessun login e password associabili a questo Docente");
