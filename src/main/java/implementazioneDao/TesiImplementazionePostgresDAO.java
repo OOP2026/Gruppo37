@@ -20,7 +20,7 @@ public class TesiImplementazionePostgresDAO implements TesiDAO {
     }
 
     public void salvaTesi(String titolo, String testo, int idS) throws SQLException {
-        String sqlQ="SELECT \"idt\" FROM \"tesi\" WHERE \"idS\"=? AND \"stato\"<>Rifiutata";
+        String sqlQ="SELECT \"idt\" FROM \"tesi\" WHERE \"ids\"=? AND \"stato\"<>'Rifiutata'";
         String sql = "UPDATE \"tesi\" SET \"testo\"=?, \"titolo\"=? WHERE \"ids\"=? AND \"idt\"=?";
         try(PreparedStatement st = connessione.prepareStatement(sqlQ);){
             st.setInt(1,idS);
@@ -42,7 +42,7 @@ public class TesiImplementazionePostgresDAO implements TesiDAO {
                     aggiungiTesiPS.setInt(1,idS);
                     aggiungiTesiPS.setString(2,titolo);
                     aggiungiTesiPS.setString(3,testo);
-                    aggiungiTesiPS.setString(4,null);
+                    aggiungiTesiPS.setString(4,"inAttesa");
                     aggiungiTesiPS.setBoolean(5,false);
                     aggiungiTesiPS.executeUpdate();
                     aggiungiTesiPS.close();
@@ -52,7 +52,7 @@ public class TesiImplementazionePostgresDAO implements TesiDAO {
     }
 
     public void caricaTesi(int idS) throws SQLException {
-        String sql = "UPDATE \"tesi\" SET \"caricata\"=? WHERE \"idS\"=? AND \"stato\"<>Rifiutata";
+        String sql = "UPDATE \"tesi\" SET \"caricata\"=? WHERE \"idS\"=? AND \"stato\"<>'Rifiutata'";
         try (PreparedStatement salvaTesiPS = connessione.prepareStatement(sql)) {
             salvaTesiPS.setBoolean(1, true);
             salvaTesiPS.setInt(2, idS);
@@ -61,17 +61,24 @@ public class TesiImplementazionePostgresDAO implements TesiDAO {
         }
     }
 
-    public boolean notNullTesi(int idS) throws SQLException {
-        String sqlQ="EXISTS (SELECT 1 FROM \"tesi\" WHERE \"idS\"=? AND \"stato\"<>Rifiutata)";
+    public ArrayList<Object> notNullTesi(int idS) throws SQLException {
+        String sqlQ="SELECT \"ids\", \"idt\", \"titolo\", \"testo\", \"stato\", \"caricata\" FROM \"tesi\" " +
+                "WHERE \"idS\"=? AND \"stato\"<>'Rifiutata'";
+        ArrayList<Object> info = new ArrayList<>();
         try(PreparedStatement st = connessione.prepareStatement(sqlQ);) {
             st.setInt(1, idS);
             ResultSet rs = st.executeQuery();
             if(rs.next()) {
-                return rs.getBoolean(1);
-            } return false;
+                info.add(rs.getInt("ids"));
+                info.add(rs.getInt("idt"));
+                info.add(rs.getString("titolo"));
+                info.add(rs.getString("testo"));
+                info.add(rs.getString("stato"));
+                info.add(rs.getBoolean("caricata"));
+            } return info;
         } catch(SQLException e){
             e.printStackTrace();
-            return false;
+            return info;
         }
     }
 }

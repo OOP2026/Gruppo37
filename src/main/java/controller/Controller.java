@@ -166,11 +166,18 @@ public class Controller {
      *
      * @return infroma se la tesi era gia' stata salvata
      */
-    public boolean notNullTesi(int idS){
-		if(tesiDAO.notNullTesi(idS)){
-			return false;
+    public boolean notNullTesi(int idS) {
+		try {
+			ArrayList<Object> info = new ArrayList();
+			info=tesiDAO.notNullTesi(idS);
+		    if (info != null) {
+				tesi= new Tesi((String)info.get(2),(String)info.get(3),(boolean)info.get(5));
+				return false;
+			}
+			return true;
+	    } catch (Exception e5) {
+			throw new RuntimeException(e5);
 		}
-		return true;
 	}
 
     /**
