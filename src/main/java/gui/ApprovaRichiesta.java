@@ -28,7 +28,7 @@ public class ApprovaRichiesta extends JDialog {
      * @param frameHomeD il frame della GUI della home del docente
      * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
      */
-    public ApprovaRichiesta(JFrame frameHomeD, Controller controller,String nomeD) {
+    public ApprovaRichiesta(JFrame frameHomeD, Controller controller,int idD) {
         frame = new JFrame("ApprovaRichiesta");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -37,15 +37,16 @@ public class DocenteImplementazionePostgresDAO implements DocenteDAO {
         }
     }
 
-    public ArrayList<String> accediDocente(String login, String password) throws SQLException {
-        String sql="SELECT \"nome\",\"cognome\",\"email\",\"login\", \"password\", \"argomentotirocinio\" FROM \"docente\" WHERE \"login\"=? AND \"password\"=?";
+    public ArrayList<Object> accediDocente(String login, String password) throws SQLException {
+        String sql="SELECT \"idd\",\"nome\",\"cognome\",\"email\",\"login\", \"password\", \"argomentotirocinio\" FROM \"docente\" WHERE \"login\"=? AND \"password\"=?";
         try(PreparedStatement accediStudentePS=connessione.prepareStatement(sql)) {
             accediStudentePS.setString(1, login);
             accediStudentePS.setString(2, password);
             ResultSet rs=accediStudentePS.executeQuery();
 
             if(rs.next()){
-                ArrayList<String> info=new ArrayList<String>();
+                ArrayList<Object> info=new ArrayList();
+                info.add(rs.getInt("idd"));
                 info.add(rs.getString("nome"));
                 info.add(rs.getString("cognome"));
                 info.add(rs.getString("email"));

@@ -25,7 +25,7 @@ public class HomePageDocente extends JDialog {
      * @param frameHome  il frame della GUI della home
      * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
      */
-    public HomePageDocente(JFrame frameHome, Controller controller, String nomeD) {
+    public HomePageDocente(JFrame frameHome, Controller controller, int idD) {
         frame=new JFrame("HomePageDocente");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -51,7 +51,7 @@ public class HomePageDocente extends JDialog {
         creaTirocinioButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
-                CreaTirocinio creaTirocinio= new CreaTirocinio(frame,controller,nomeD);
+                CreaTirocinio creaTirocinio= new CreaTirocinio(frame,controller,idD);
             }
         });
 
@@ -61,7 +61,7 @@ public class HomePageDocente extends JDialog {
         visualizzaTirociniButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
-                VediTirocinio vediTirocinio= new VediTirocinio(frame,controller,nomeD);
+                VediTirocinio vediTirocinio= new VediTirocinio(frame,controller,idD);
             }
         });
 
@@ -71,7 +71,7 @@ public class HomePageDocente extends JDialog {
         approvaRichiesteButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
-                ApprovaRichiesta approvaRichiesta=new ApprovaRichiesta(frame, controller,nomeD);
+                ApprovaRichiesta approvaRichiesta=new ApprovaRichiesta(frame, controller,idD);
             }
         });
     }

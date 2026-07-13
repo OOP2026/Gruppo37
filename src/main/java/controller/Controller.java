@@ -70,32 +70,33 @@ public class Controller {
      * @param stuDoc   informa se e' uno studente o un docente
      * @return infroma se l'accesso e' avvenuto con successo
      */
-    public String accediUtente(String login, String password, boolean stuDoc) {
+    public int accediUtente(String login, String password, boolean stuDoc) {
 		if (stuDoc == true) {
 			try {
-				ArrayList info = new ArrayList();
+				ArrayList<Object> info = new ArrayList();
 				info = studenteDAO.accediStudente(login, password);
 				if (info != null) {
-					studente = new Studente(info.get(0), info.get(1), info.get(2), info.get(3), info.get(4), info.get(5));
-					tesi= new Tesi(info.get(6), info.get(7), info.get(8), info.get(9), info.get(10));
-					return info.get(0);
+					studente = new Studente((String)info.get(1),(String) info.get(2), (String)info.get(3), (String)info.get(4),
+							(String)info.get(5),(String)info.get(6));
+					return (int)info.get(0);
 			    }
 			} catch (SQLException e2) {
 				throw new RuntimeException(e2);
 			}
-			return null;
+			return 0;
 		} else {
 			try {
-				ArrayList<String> info = new ArrayList<String>();
+				ArrayList<Object> info = new ArrayList();
 				info = docenteDAO.accediDocente(login, password);
 				if (info != null) {
-					docente = new Docente(info.get(0), info.get(1), info.get(2), info.get(3), info.get(4), info.get(5));
-					return info.get(0);
+					docente = new Docente((String)info.get(1), (String)info.get(2), (String)info.get(3), (String)info.get(4),
+							(String)info.get(5),(String)info.get(6));
+					return (int)info.get(0);
 				}
 			} catch (SQLException e3) {
 				throw new RuntimeException(e3);
 			}
-			return null;
+			return 0;
 		}
 	}
 
@@ -135,9 +136,9 @@ public class Controller {
      * @param testo  il testo della tesi
      * @return infroma se il salvataggio e' avvenuto con successo
      */
-    public boolean salvaTesi(String titolo, String testo, String nomeS){
+    public boolean salvaTesi(String titolo, String testo, int idS){
 		try{
-		tesiDAO.salvaTesi(titolo,testo,nomeS);
+		tesiDAO.salvaTesi(titolo,testo,idS);
 		tesi = new Tesi(titolo, testo, false);
 		return true;}
 		catch(Exception e4){
@@ -150,9 +151,9 @@ public class Controller {
      *
      * @return infroma se il caricamento e' avvenuto con successo
      */
-    public boolean caricaTesi(String nomeS){
+    public boolean caricaTesi(int idS){
 		try{
-			tesiDAO.caricaTesi(nomeS);
+			tesiDAO.caricaTesi(idS);
 			tesi.caricaTesi();
 			return true;}
 		catch(Exception e5){
@@ -165,8 +166,8 @@ public class Controller {
      *
      * @return infroma se la tesi era gia' stata salvata
      */
-    public boolean notNullTesi(){
-		if(tesi==null){
+    public boolean notNullTesi(int idS){
+		if(tesiDAO.notNullTesi(idS)){
 			return false;
 		}
 		return true;

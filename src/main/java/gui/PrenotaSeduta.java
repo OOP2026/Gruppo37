@@ -26,7 +26,7 @@ public class PrenotaSeduta extends JDialog {
      * @param frameHomeS il frame della GUI della home del studente
      * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
      */
-    public PrenotaSeduta(JFrame frameHomeS, Controller controller, String nomeS) {
+    public PrenotaSeduta(JFrame frameHomeS, Controller controller, int idS) {
         frame = new JFrame("PrenotaSeduta");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

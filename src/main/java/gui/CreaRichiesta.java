@@ -25,7 +25,7 @@ public class CreaRichiesta extends JDialog {
      * @param frameHomePageS il frame della GUI della home del studente
      * @param controller     il controller che ci permette di passare informazioni da un frame ad un altro
      */
-    public CreaRichiesta(JFrame frameHomePageS, Controller controller, String nomeS) {
+    public CreaRichiesta(JFrame frameHomePageS, Controller controller, int IdS) {
         frame = new JFrame("CreaRichiesta");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

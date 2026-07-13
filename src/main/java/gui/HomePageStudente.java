@@ -28,7 +28,7 @@ public class HomePageStudente{
      * @param frameHome  il frame della GUI della home
      * @param controller il controller che ci permette di passare informazioni da un frame ad un altro
      */
-    public HomePageStudente(JFrame frameHome, Controller controller,String nomeS) {
+    public HomePageStudente(JFrame frameHome, Controller controller,int idS) {
         frame = new JFrame("HomePageStudente");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,7 +54,7 @@ public class HomePageStudente{
         creaTesiButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
-                ScritturaTesi scritturaTesi=new ScritturaTesi(frame,controller,true,nomeS);
+                ScritturaTesi scritturaTesi=new ScritturaTesi(frame,controller,true,idS);
             }
         });
 
@@ -63,9 +63,9 @@ public class HomePageStudente{
          */
         continuaTesiButton.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e){
-               if(controller.notNullTesi()==true){
+               if(controller.notNullTesi(idS)==true){
                    frame.setVisible(false);
-                   ScritturaTesi scritturaTesi=new ScritturaTesi(frame,controller,false,nomeS);
+                   ScritturaTesi scritturaTesi=new ScritturaTesi(frame,controller,false,idS);
                }else{
                    JOptionPane.showMessageDialog(frame, "Non hai mai creato una tesi");
                }
@@ -78,7 +78,7 @@ public class HomePageStudente{
         creaRichiestaButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
-                CreaRichiesta creaRichiesta=new CreaRichiesta(frame, controller,nomeS);
+                CreaRichiesta creaRichiesta=new CreaRichiesta(frame, controller,idS);
             }
         });
 
@@ -88,7 +88,7 @@ public class HomePageStudente{
         prenotaSedutaButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
-                PrenotaSeduta prenotaSeduta=new PrenotaSeduta(frame, controller, nomeS);
+                PrenotaSeduta prenotaSeduta=new PrenotaSeduta(frame, controller, idS);
             }
         });
     }
