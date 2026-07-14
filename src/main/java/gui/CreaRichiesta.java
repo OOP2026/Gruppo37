@@ -5,6 +5,7 @@ import controller.Controller;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 /**
  * La GUI CreaRichiesta.
@@ -25,7 +26,7 @@ public class CreaRichiesta extends JDialog {
      * @param frameHomePageS il frame della GUI della home del studente
      * @param controller     il controller che ci permette di passare informazioni da un frame ad un altro
      */
-    public CreaRichiesta(JFrame frameHomePageS, Controller controller, int IdS) {
+    public CreaRichiesta(JFrame frameHomePageS, Controller controller, int idS) {
         frame = new JFrame("CreaRichiesta");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,10 +40,13 @@ public class CreaRichiesta extends JDialog {
                 }
         ));
         DefaultTableModel model = (DefaultTableModel) table1.getModel();
-        model.addRow(new Object[]{
-                controller.leggiNomeTirocinio(), controller.leggiEnteTirocinio(),
-                controller.leggiDisponibilitaTirocinio(), controller.leggiInCorsoTirocinio()
-        });
+        ArrayList<String> nomeT = controller.leggiNomeTirocinio();
+        ArrayList<String> ente=controller.leggiEnteTirocinio();
+        ArrayList<Boolean> disponibile=controller.leggiDisponibilitaTirocinio();
+        ArrayList<Boolean> inCorso=controller.leggiInCorsoTirocinio();
+        if(nomeT != null && ente != null && disponibile != null && inCorso != null)
+            for (int i = 0; i < nomeT.size(); i++)
+        model.addRow(new Object[]{nomeT.get(i), ente.get(i), disponibile.get(i), inCorso.get(i)});
 
         /**
          * Il bottone per creare una nuova richiesta.
@@ -52,8 +56,8 @@ public class CreaRichiesta extends JDialog {
                 if(nomeTirocinio.getText().isEmpty()){
                     JOptionPane.showMessageDialog(frame,"Non hai riempito il campo");
                 }else{
-                    if(controller.verificaNomeTirocinio(nomeTirocinio.getText())){
-                        JOptionPane.showMessageDialog(frame,"Tirocino creato con sucesso");
+                    if(controller.verificaNomeTirocinio(nomeTirocinio.getText(), idS)){
+                        JOptionPane.showMessageDialog(frame,"Richiesta creato con sucesso");
                     }else{
                         JOptionPane.showMessageDialog(frame,"Tirocinio inesistente o al completo");
                     }

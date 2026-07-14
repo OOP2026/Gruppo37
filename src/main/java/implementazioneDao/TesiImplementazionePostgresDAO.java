@@ -52,18 +52,18 @@ public class TesiImplementazionePostgresDAO implements TesiDAO {
     }
 
     public void caricaTesi(int idS) throws SQLException {
-        String sql = "UPDATE \"tesi\" SET \"caricata\"=? WHERE \"idS\"=? AND \"stato\"<>'Rifiutata'";
-        try (PreparedStatement salvaTesiPS = connessione.prepareStatement(sql)) {
-            salvaTesiPS.setBoolean(1, true);
-            salvaTesiPS.setInt(2, idS);
-            salvaTesiPS.executeUpdate();
-            salvaTesiPS.close();
+        String sql = "UPDATE \"tesi\" SET \"caricata\"=? WHERE \"ids\"=? AND \"stato\"<>'Rifiutata'";
+        try (PreparedStatement caricaTesiPS = connessione.prepareStatement(sql)) {
+            caricaTesiPS.setBoolean(1, true);
+            caricaTesiPS.setInt(2, idS);
+            caricaTesiPS.executeUpdate();
+            caricaTesiPS.close();
         }
     }
 
     public ArrayList<Object> notNullTesi(int idS) throws SQLException {
         String sqlQ="SELECT \"ids\", \"idt\", \"titolo\", \"testo\", \"stato\", \"caricata\" FROM \"tesi\" " +
-                "WHERE \"idS\"=? AND \"stato\"<>'Rifiutata'";
+                "WHERE \"ids\"=? AND \"stato\"<>'Rifiutata'";
         ArrayList<Object> info = new ArrayList<>();
         try(PreparedStatement st = connessione.prepareStatement(sqlQ);) {
             st.setInt(1, idS);
@@ -75,10 +75,11 @@ public class TesiImplementazionePostgresDAO implements TesiDAO {
                 info.add(rs.getString("testo"));
                 info.add(rs.getString("stato"));
                 info.add(rs.getBoolean("caricata"));
-            } return info;
+                return info;}
+            return null;
         } catch(SQLException e){
             e.printStackTrace();
-            return info;
+            return null;
         }
     }
 }

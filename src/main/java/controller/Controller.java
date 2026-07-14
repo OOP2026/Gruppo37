@@ -22,6 +22,8 @@ public class Controller {
 	private StudenteDAO studenteDAO =new StudenteImplementazionePostgresDAO();
 	private DocenteDAO docenteDAO = new DocenteImplementazionePostgresDAO();
 	private TesiDAO tesiDAO = new TesiImplementazionePostgresDAO();
+	private TirocinioDAO tirocinioDAO=new TirocinioImplementazionePostgresDAO();
+	private RichiestaDAO richiestaDAO=new RichiestaImplementazionePostgresDAO();
 	
 
     /**
@@ -172,9 +174,9 @@ public class Controller {
 			info=tesiDAO.notNullTesi(idS);
 		    if (info != null) {
 				tesi= new Tesi((String)info.get(2),(String)info.get(3),(boolean)info.get(5));
-				return false;
-			}
-			return true;
+				return true;
+			}else{
+			return false;}
 	    } catch (Exception e5) {
 			throw new RuntimeException(e5);
 		}
@@ -205,13 +207,18 @@ public class Controller {
      * @param ente l'ente del tricoinio
      * @return infroma se la creazione e' avvenuto con successo
      */
-    public boolean creaTirocinio(String nome, String ente){
-		if("Interno".equals(ente)) {
+    public boolean creaTirocinio(String nome, String ente,int idD){
+		try{if("Interno".equals(ente)) {
+			tirocinioDAO.creaTirocinio(idD,nome,true);
 			tirocinio = new Tirocinio(nome, Ente.Interno, true, false);
 			return true;
 		}else{
+			tirocinioDAO.creaTirocinio(idD,nome,false);
 			tirocinio = new Tirocinio(nome, Ente.Esterno, true, false);
 			return true;
+		}
+	} catch (SQLException e6) {
+			throw new RuntimeException(e6);
 		}
 	}
 
@@ -220,8 +227,12 @@ public class Controller {
      *
      * @return il nome del tirocinio
      */
-    public String leggiNomeTirocinio(){
-		return tirocinio.getNomeTirocinio();
+    public ArrayList<String> leggiNomeTirocinio(){
+		try{ArrayList<String> nomeTirocinio=tirocinioDAO.getNomeTirocinio();
+		return nomeTirocinio;
+		}catch(SQLException e7){
+			throw new RuntimeException(e7);
+		}
 	}
 
     /**
@@ -229,12 +240,11 @@ public class Controller {
      *
      * @return l'ente del tricoinio
      */
-    public String leggiEnteTirocinio(){
-		if(Ente.Interno.equals(tirocinio.getEnteTirocinio()))
-		{
-			return "Interno";
-		}else{
-			return "Esterno";
+    public ArrayList<String> leggiEnteTirocinio(){
+		try{ArrayList<String> ente=tirocinioDAO.getEnte();
+			return ente;
+		}catch(SQLException e8){
+			throw new RuntimeException(e8);
 		}
 	}
 
@@ -243,8 +253,12 @@ public class Controller {
      *
      * @return infroma se il tirocinio e' disponibile
      */
-    public boolean leggiDisponibilitaTirocinio(){
-		return tirocinio.getDisponibileTirocinio();
+    public ArrayList<Boolean> leggiDisponibilitaTirocinio(){
+		try{ArrayList<Boolean> disponibile=tirocinioDAO.getDisponibile();
+			return disponibile;
+		}catch(SQLException e9){
+			throw new RuntimeException(e9);
+		}
 	}
 
     /**
@@ -252,8 +266,12 @@ public class Controller {
      *
      * @return infroma se il tirocinio e' incominciato
      */
-    public boolean leggiInCorsoTirocinio(){
-		return tirocinio.getInCorsoTirocinio();
+    public ArrayList<Boolean> leggiInCorsoTirocinio(){
+		try{ArrayList<Boolean> inCorso=tirocinioDAO.getInCorso();
+			return inCorso;
+		}catch(SQLException e10){
+			throw new RuntimeException(e10);
+		}
 	}
 
     /**
@@ -262,13 +280,17 @@ public class Controller {
      * @param nome il nome del tirocinio
      * @return infroma se la verifica e' avvenuta con successo
      */
-    public boolean verificaNomeTirocinio(String nome){
-		if(tirocinio.getNomeTirocinio().equals(nome)){
-			if(tirocinio.getDisponibileTirocinio()==true){
+    public boolean verificaNomeTirocinio(String nome,int idS){
+		try{ArrayList<Integer> info=tirocinioDAO.verificaNomeTirocinio(nome);
+			if(info!=null){
+			richiestaDAO.creaRichiesta(info.get(1),idS,info.get(0));
 			richiesta= new Richiesta(null, tirocinio, studente, docente);
 			return true;
-		}}
+		}
 		return false;
+		}catch(SQLException e11){
+		throw new RuntimeException(e11);
+		}
 	}
 
     /**

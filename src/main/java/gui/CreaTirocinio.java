@@ -38,7 +38,7 @@ public class CreaTirocinio extends JDialog {
                 if (nomeS.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(frame, "Non hai riempito il campo");
                 } else {
-                    if (controller.creaTirocinio(nomeS.getText(), (String) ente.getSelectedItem())) {
+                    if (controller.creaTirocinio(nomeS.getText(), (String) ente.getSelectedItem(),idD)) {
                         frame.dispose();
                         frameHomeD.setVisible(true);
                         JOptionPane.showMessageDialog(frame, "Tirocinio creato con successo");
