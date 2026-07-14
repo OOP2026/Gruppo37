@@ -22,8 +22,8 @@ public class StudenteImplementazionePostgresDAO implements StudenteDAO {
 
     @Override
     public void aggiungiStudente(String nome, String cognome, String email, String login, String password) throws SQLException {
-        String sql="INSERT INTO \"studente\" (\"nome\", \"cognome\", \"email\", \"login\", \"password\", \"matricola\") " +
-                "VALUES (?,?,?,?,?,?);";
+        String sql="INSERT INTO \"studente\" (\"nome\", \"cognome\", \"email\", \"login\", \"password\", \"matricola\", \"idseduta\") " +
+                "VALUES (?,?,?,?,?,?,?);";
         try (PreparedStatement aggiungiStudentePS=connessione.prepareStatement(sql)){
             aggiungiStudentePS.setString(1,nome);
             aggiungiStudentePS.setString(2,cognome);
@@ -31,6 +31,7 @@ public class StudenteImplementazionePostgresDAO implements StudenteDAO {
             aggiungiStudentePS.setString(4,login);
             aggiungiStudentePS.setString(5,password);
             aggiungiStudentePS.setString(6,null);
+            aggiungiStudentePS.setString(7,null);
 
             aggiungiStudentePS.executeUpdate();
             aggiungiStudentePS.close();
@@ -60,6 +61,16 @@ public class StudenteImplementazionePostgresDAO implements StudenteDAO {
         }catch(SQLException e){
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public void aggiungiSeduta(int idS, int idSeduta) throws SQLException {
+        String sql="UPDATE FROM \"studente\" SET \"idseduta\"=? WHERE \"ids\"=? ";
+        try (PreparedStatement aggiungiSedutaPS=connessione.prepareStatement(sql)){
+            aggiungiSedutaPS.setInt(1, idSeduta);
+            aggiungiSedutaPS.setInt(2, idS);
+            aggiungiSedutaPS.executeUpdate();
+            aggiungiSedutaPS.close();
         }
     }
 }

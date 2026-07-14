@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  * La GUI PrenotaSeduta.
@@ -40,9 +41,11 @@ public class PrenotaSeduta extends JDialog {
                 }
         ));
         DefaultTableModel model = (DefaultTableModel) table1.getModel();
-        model.addRow(new Object[]{
-                controller.getDataSeduta(), controller.getLuogoSeduta()
-        });
+        ArrayList<String> dataS = controller.getDataSeduta();
+        ArrayList<String> luogoS=controller.getLuogoSeduta();
+        if(dataS != null && luogoS != null)
+            for (int i = 0; i < dataS.size(); i++)
+                model.addRow(new Object[]{dataS.get(i), luogoS.get(i)});
 
         /**
          * Il bottone per prenotare la seduta di laurea.
@@ -52,7 +55,7 @@ public class PrenotaSeduta extends JDialog {
                 if(dataSedutaTextField.getText().isEmpty() || luogoSedutaTextField.getText().isEmpty()){
                     JOptionPane.showMessageDialog(frame, "Non hai riempito tutti i vcampi");
                 }else{
-                    if(controller.verificaSeduta(dataSedutaTextField.getText(), luogoSedutaTextField.getText())){
+                    if(controller.verificaSeduta(dataSedutaTextField.getText(), luogoSedutaTextField.getText(), idS)){
                         JOptionPane.showMessageDialog(frame, "Seduta di Laurea prenotata");
                     }else{
                         JOptionPane.showMessageDialog(frame, "Si è verificato un errore");

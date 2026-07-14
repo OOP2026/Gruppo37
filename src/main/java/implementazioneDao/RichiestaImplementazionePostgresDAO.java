@@ -62,9 +62,9 @@ public class RichiestaImplementazionePostgresDAO implements RichiestaDAO {
                 "FROM richiesta r " +
                 "JOIN tirocinio t ON r.idt = t.idt " +
                 "JOIN studente s ON r.ids = s.ids " +
-                "WHERE r.stato = 'InAttesa' AND t.nometirocinio=?" +
-                "AND s.nome=? AND s.cognome=?";;
-                String sqlU = "UPDATE richiesta SET stato=? WHERE idr=?";
+                "WHERE r.stato = 'InAttesa' AND t.nometirocinio=? " +
+                "AND s.nome=? AND s.cognome=?";
+                String sqlU = "UPDATE \"richiesta\" SET \"stato\"=? WHERE \"idr\"=?";
                 try(PreparedStatement verificaRichiestaPS=connessione.prepareStatement(sqlQ)) {
                     verificaRichiestaPS.setString(1, tirocinio);
                     verificaRichiestaPS.setString(2, nome);
@@ -72,17 +72,17 @@ public class RichiestaImplementazionePostgresDAO implements RichiestaDAO {
                     ResultSet rs = verificaRichiestaPS.executeQuery();
                     if (rs.next()) {
                         int idR = rs.getInt("idr");
-                        PreparedStatement updateStatoPS = connessione.prepareStatement(sqlU);
+                        try(PreparedStatement updateStatoPS = connessione.prepareStatement(sqlU)){
                         if(stato){
-                            updateStatoPS.setInt(1, "Approvata");
+                            updateStatoPS.setString(1, "Approvata");
                         }else{
-                            updateStatoPS.setInt(1, "Rifiutata");
+                            updateStatoPS.setString(1, "Rifiutata");
                         }
                         updateStatoPS.setInt(2, idR);
-                        updateStatoPS.executeQuery();
+                        updateStatoPS.executeUpdate();
                         updateStatoPS.close();
                         return true;
-                    }
+                    }}
                 }return false;
     }
 }

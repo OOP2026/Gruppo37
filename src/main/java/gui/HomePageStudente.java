@@ -36,7 +36,7 @@ public class HomePageStudente{
         frame.setVisible(true);
         nome.setText(controller.getNome(true));
         cognome.setText(controller.getCognome(true));
-        dataSeduta.setText(controller.getDataSeduta());
+        dataSeduta.setText(controller.getDataSedutaScritta());
 
         /**
          * Il bottone per uscire dal frame.

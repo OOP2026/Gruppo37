@@ -24,6 +24,7 @@ public class Controller {
 	private TesiDAO tesiDAO = new TesiImplementazionePostgresDAO();
 	private TirocinioDAO tirocinioDAO=new TirocinioImplementazionePostgresDAO();
 	private RichiestaDAO richiestaDAO=new RichiestaImplementazionePostgresDAO();
+	private SedutaLaureaDAO sedutaLaureaDAO=new SedutaLaureaImplementazionePostgresDAO();
 	
 
     /**
@@ -330,8 +331,8 @@ public class Controller {
 			return true;
 		}
 		return false;
-		}catch(SQLException e12){
-			throw new RuntimeException(e12);
+		}catch(SQLException e13){
+			throw new RuntimeException(e13);
 		}
 	}
 
@@ -348,12 +349,12 @@ public class Controller {
 		}
 	}
 
-    /**
-     * Ottiene la data della seduta di laurea.
-     *
-     * @return la data della seduta di laurea
-     */
-    public String getDataSeduta(){
+	/**
+	 * Ottiene la data della seduta di laurea.
+	 *
+	 * @return la data della seduta di laurea
+	 */
+	public String getDataSedutaScritta(){
 		if(sedutaLaurea==null){
 			return"";
 		}
@@ -361,12 +362,29 @@ public class Controller {
 	}
 
     /**
+     * Ottiene la data della seduta di laurea.
+     *
+     * @return la data della seduta di laurea
+     */
+    public ArrayList<String> getDataSeduta(){
+		try{ArrayList<String> data=sedutaLaureaDAO.getDataSeduta();
+			return data;
+		}catch(SQLException e12){
+			throw new RuntimeException(e12);
+		}
+	}
+
+    /**
      * Ottiene il luogo della seduta di laurea.
      *
      * @return il luogo della seduta di laurea
      */
-    public String getLuogoSeduta(){
-		return sedutaLaurea.getLuogoSeduta();
+    public ArrayList<String> getLuogoSeduta(){
+		try{ArrayList<String> luogo=sedutaLaureaDAO.getLuogoSeduta();
+			return luogo;
+		}catch(SQLException e12){
+			throw new RuntimeException(e12);
+		}
 	}
 
     /**
@@ -376,12 +394,18 @@ public class Controller {
      * @param luogo il luogo
      * @return infroma se la verifica e' avvenuta con successo
      */
-    public boolean verificaSeduta(String data, String luogo){
-		if(data.equals(String.valueOf(sedutaLaurea.getDataSeduta())) && luogo.equals(sedutaLaurea.getLuogoSeduta())){
-			studente.prenotaSedutaLaurea(sedutaLaurea);
-			return true;
+    public boolean verificaSeduta(String data, String luogo,int idS){
+		try{
+			int idSeduta= sedutaLaureaDAO.verificaSeduta(data,luogo);
+			if(idSeduta!=0){
+				studente.prenotaSedutaLaurea(sedutaLaurea);
+				studenteDAO.aggiungiSeduta(idS, idSeduta);
+				return true;
+			}
+			return false;
+		}catch(SQLException e12){
+		throw new RuntimeException(e12);
 		}
-		return false;
 	}
 }
 
