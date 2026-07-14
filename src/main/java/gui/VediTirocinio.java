@@ -4,6 +4,7 @@ import controller.Controller;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -38,10 +39,13 @@ public class VediTirocinio extends JDialog {
                 }
         ));
         DefaultTableModel model = (DefaultTableModel) table1.getModel();
-        model.addRow(new Object[]{
-                controller.leggiNomeTirocinio(), controller.leggiEnteTirocinio(),
-                controller.leggiDisponibilitaTirocinio(), controller.leggiInCorsoTirocinio()
-                });
+        ArrayList<String> nomeT = controller.leggiNomeTirocinio(idD);
+        ArrayList<String> ente=controller.leggiEnteTirocinio(idD);
+        ArrayList<Boolean> disponibile=controller.leggiDisponibilitaTirocinio(idD);
+        ArrayList<Boolean> inCorso=controller.leggiInCorsoTirocinio(idD);
+        if(nomeT != null && ente != null && disponibile != null && inCorso != null)
+            for (int i = 0; i < nomeT.size(); i++)
+                model.addRow(new Object[]{nomeT.get(i), ente.get(i), disponibile.get(i), inCorso.get(i)});
 
         /**
          * Il bottone per tornare al frame precedente.

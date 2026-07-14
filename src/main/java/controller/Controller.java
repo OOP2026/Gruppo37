@@ -227,8 +227,8 @@ public class Controller {
      *
      * @return il nome del tirocinio
      */
-    public ArrayList<String> leggiNomeTirocinio(){
-		try{ArrayList<String> nomeTirocinio=tirocinioDAO.getNomeTirocinio();
+    public ArrayList<String> leggiNomeTirocinio(int idD){
+		try{ArrayList<String> nomeTirocinio=tirocinioDAO.getNomeTirocinio(idD);
 		return nomeTirocinio;
 		}catch(SQLException e7){
 			throw new RuntimeException(e7);
@@ -240,8 +240,8 @@ public class Controller {
      *
      * @return l'ente del tricoinio
      */
-    public ArrayList<String> leggiEnteTirocinio(){
-		try{ArrayList<String> ente=tirocinioDAO.getEnte();
+    public ArrayList<String> leggiEnteTirocinio(int idD){
+		try{ArrayList<String> ente=tirocinioDAO.getEnte(idD);
 			return ente;
 		}catch(SQLException e8){
 			throw new RuntimeException(e8);
@@ -253,8 +253,8 @@ public class Controller {
      *
      * @return infroma se il tirocinio e' disponibile
      */
-    public ArrayList<Boolean> leggiDisponibilitaTirocinio(){
-		try{ArrayList<Boolean> disponibile=tirocinioDAO.getDisponibile();
+    public ArrayList<Boolean> leggiDisponibilitaTirocinio(int idD){
+		try{ArrayList<Boolean> disponibile=tirocinioDAO.getDisponibile(idD);
 			return disponibile;
 		}catch(SQLException e9){
 			throw new RuntimeException(e9);
@@ -266,8 +266,8 @@ public class Controller {
      *
      * @return infroma se il tirocinio e' incominciato
      */
-    public ArrayList<Boolean> leggiInCorsoTirocinio(){
-		try{ArrayList<Boolean> inCorso=tirocinioDAO.getInCorso();
+    public ArrayList<Boolean> leggiInCorsoTirocinio(int idD){
+		try{ArrayList<Boolean> inCorso=tirocinioDAO.getInCorso(idD);
 			return inCorso;
 		}catch(SQLException e10){
 			throw new RuntimeException(e10);
@@ -305,17 +305,14 @@ public class Controller {
     /**
      * Ottiene gli studenti iscritti al tirocinio.
      *
-     * @return glu studenti iscritti
+     * @return gli studenti iscritti
      */
-    public ArrayList<String> getStudenteETirocinio() {
-		ArrayList<String> arrayStudente = new ArrayList<>();
-		if (Stato.InAttesa.equals(richiesta.getStato())) {
-			Studente s = richiesta.getStudente();
-			arrayStudente.add(s.getNomeUtente());
-			arrayStudente.add(s.getCognomeUtente());
-			return arrayStudente;
+    public ArrayList<String> getStudenteETirocinio(int idD) {
+		try{ArrayList<String> info=richiestaDAO.getStudenteETirocinio(idD);
+			return info;
+		}catch(SQLException e12){
+			throw new RuntimeException(e12);
 		}
-		return null;
 	}
 
     /**
@@ -327,13 +324,15 @@ public class Controller {
      * @return infroma se la verifica e' avvenuta con successo
      */
     public boolean verificaRichiesta(String nomeStudente,String cognomeStudente,
-										String nomeTirocinio){
-		if(nomeStudente.equals(richiesta.getStudente().getNomeUtente()) &&
-				cognomeStudente.equals(richiesta.getStudente().getCognomeUtente()) &&
-				nomeTirocinio.equals(richiesta.getTirocinio())){
+										String nomeTirocinio, boolean stato){
+		try{
+		if(richiestaDAO.verificaRichiesta(nomeStudente,cognomeStudente,nomeTirocinio,stato)){
 			return true;
 		}
 		return false;
+		}catch(SQLException e12){
+			throw new RuntimeException(e12);
+		}
 	}
 
     /**

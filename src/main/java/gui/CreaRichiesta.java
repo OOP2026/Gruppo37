@@ -40,10 +40,10 @@ public class CreaRichiesta extends JDialog {
                 }
         ));
         DefaultTableModel model = (DefaultTableModel) table1.getModel();
-        ArrayList<String> nomeT = controller.leggiNomeTirocinio();
-        ArrayList<String> ente=controller.leggiEnteTirocinio();
-        ArrayList<Boolean> disponibile=controller.leggiDisponibilitaTirocinio();
-        ArrayList<Boolean> inCorso=controller.leggiInCorsoTirocinio();
+        ArrayList<String> nomeT = controller.leggiNomeTirocinio(0);
+        ArrayList<String> ente=controller.leggiEnteTirocinio(0);
+        ArrayList<Boolean> disponibile=controller.leggiDisponibilitaTirocinio(0);
+        ArrayList<Boolean> inCorso=controller.leggiInCorsoTirocinio(0);
         if(nomeT != null && ente != null && disponibile != null && inCorso != null)
             for (int i = 0; i < nomeT.size(); i++)
         model.addRow(new Object[]{nomeT.get(i), ente.get(i), disponibile.get(i), inCorso.get(i)});

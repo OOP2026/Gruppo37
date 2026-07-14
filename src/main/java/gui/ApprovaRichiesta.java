@@ -38,30 +38,32 @@ public class ApprovaRichiesta extends JDialog {
                 new Object[][]{
                 },
                 new String[]{
-                        "Nome Studente", "Cognome Studente", "Tirocinio"
+                        "Nome Studente", "Cognome Studente", "Nome Tirocinio"
                 }
         ));
         DefaultTableModel model = (DefaultTableModel) table1.getModel();
-        ArrayList arrayList=controller.getStudenteETirocinio();
-        model.addRow(new Object[]{
-                arrayList.get(0), arrayList.get(1), arrayList.get(2)
-        });
+        ArrayList<String> info=controller.getStudenteETirocinio(idD);
+        if(info != null)
+            for (int i = 0; i < info.size()/3; i++)
+                model.addRow(new Object[]{info.get(i), info.get(++i), info.get(++i)});
 
         /**
          * Il bottone per salvare le modifiche.
          */
         salvaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(nomeStudenteTextField.getText().isEmpty() || nomeTirocinioTextField.getText().isEmpty()) {
+                if(nomeStudenteTextField.getText().isEmpty() || nomeTirocinioTextField.getText().isEmpty() ||
+                        cognomeStudenteTextField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(frame, "Non hai riempito tutti i campi");
                 }else{
-                    if(controller.verificaRichiesta(nomeStudenteTextField.getText(),cognomeStudenteTextField.getText(),
-                            nomeTirocinioTextField.getText())){
+                    boolean stato;
                         if("Approva".equals(statoRichiestaBox.getSelectedItem())){
-                            controller.cambiaStatoRichiesta(true);
+                            stato=true;
                         }else{
-                            controller.cambiaStatoRichiesta(false);
+                            stato=false;
                         }
+                    if(controller.verificaRichiesta(nomeStudenteTextField.getText(),cognomeStudenteTextField.getText(),
+                            nomeTirocinioTextField.getText(), stato)){
                         frame.dispose();
                         frameHomeD.setVisible(true);
                         JOptionPane.showMessageDialog(frame, "Modificato stato della Richiesta");

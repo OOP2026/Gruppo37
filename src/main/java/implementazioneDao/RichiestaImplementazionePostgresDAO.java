@@ -22,7 +22,7 @@ public class RichiestaImplementazionePostgresDAO implements RichiestaDAO {
     }
 
     public void creaRichiesta(int idT, int idS, int idD)throws SQLException {
-        String sql="INSERT INTO \"richiesta\" (\"ids\", \"idd\", \"idt\", \"stato\", \"dataRichiesta\") " +
+        String sql="INSERT INTO \"richiesta\" (\"ids\", \"idd\", \"idt\", \"stato\", \"data\") " +
                 "VALUES (?,?,?,?,?);";
         try (PreparedStatement creaRichiestaPS=connessione.prepareStatement(sql)){
             creaRichiestaPS.setInt(1,idS);
@@ -34,5 +34,55 @@ public class RichiestaImplementazionePostgresDAO implements RichiestaDAO {
             creaRichiestaPS.executeUpdate();
             creaRichiestaPS.close();
         }
+    }
+
+    public ArrayList<String> getStudenteETirocinio(int idD) throws SQLException{
+        ArrayList<String> info=new ArrayList<>();
+        String sql =
+                "SELECT s.nome, s.cognome, t.nometirocinio " +
+                        "FROM richiesta r " +
+                        "JOIN tirocinio t ON r.idt = t.idt " +
+                        "JOIN studente s ON r.ids = s.ids " +
+                        "WHERE r.idd = ? AND r.stato = 'InAttesa'";
+
+        try (PreparedStatement getStudenteETirocinioPS=connessione.prepareStatement(sql)){
+            getStudenteETirocinioPS.setInt(1,idD);
+            ResultSet rs=getStudenteETirocinioPS.executeQuery();
+            while (rs.next()) {
+                info.add(rs.getString("nome"));
+                info.add(rs.getString("cognome"));
+                info.add(rs.getString("nometirocinio"));
+            }
+        }
+        return info;
+    }
+
+    public boolean verificaRichiesta(String nome,String cognome, String tirocinio, boolean stato) throws SQLException{
+        String sqlQ="SELECT idr " +
+                "FROM richiesta r " +
+                "JOIN tirocinio t ON r.idt = t.idt " +
+                "JOIN studente s ON r.ids = s.ids " +
+                "WHERE r.stato = 'InAttesa' AND t.nometirocinio=?" +
+                "AND s.nome=? AND s.cognome=?";;
+                String sqlU = "UPDATE richiesta SET stato=? WHERE idr=?";
+                try(PreparedStatement verificaRichiestaPS=connessione.prepareStatement(sqlQ)) {
+                    verificaRichiestaPS.setString(1, tirocinio);
+                    verificaRichiestaPS.setString(2, nome);
+                    verificaRichiestaPS.setString(3, cognome);
+                    ResultSet rs = verificaRichiestaPS.executeQuery();
+                    if (rs.next()) {
+                        int idR = rs.getInt("idr");
+                        PreparedStatement updateStatoPS = connessione.prepareStatement(sqlU);
+                        if(stato){
+                            updateStatoPS.setInt(1, "Approvata");
+                        }else{
+                            updateStatoPS.setInt(1, "Rifiutata");
+                        }
+                        updateStatoPS.setInt(2, idR);
+                        updateStatoPS.executeQuery();
+                        updateStatoPS.close();
+                        return true;
+                    }
+                }return false;
     }
 }

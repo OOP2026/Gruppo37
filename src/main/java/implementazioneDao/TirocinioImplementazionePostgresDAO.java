@@ -40,52 +40,96 @@ public class TirocinioImplementazionePostgresDAO implements TirocinioDAO{
         }
     }
 
-    public ArrayList<String> getNomeTirocinio() throws SQLException{
-        String sql="SELECT \"nometirocinio\" FROM \"tirocinio\"";
-        try(PreparedStatement aggiungiTirocinioPS=connessione.prepareStatement(sql)){
-            ResultSet rs=aggiungiTirocinioPS.executeQuery();
-            ArrayList<String> tirocinio=new ArrayList<>();
-            while(rs.next()){
-                tirocinio.add(rs.getString("nomeTirocinio"));
+    public ArrayList<String> getNomeTirocinio(int idD) throws SQLException{
+        ArrayList<String> tirocinio=new ArrayList<>();
+        if (idD == 0) {
+            String sql = "SELECT \"nometirocinio\" FROM \"tirocinio\"";
+            try (PreparedStatement aggiungiTirocinioPS = connessione.prepareStatement(sql)) {
+                ResultSet rs = aggiungiTirocinioPS.executeQuery();
+                while (rs.next()) {
+                    tirocinio.add(rs.getString("nometirocinio"));
+                }
             }
-            return tirocinio;
+        } else {
+            String sql = "SELECT \"nometirocinio\" FROM \"tirocinio\" WHERE idd=?";
+            try (PreparedStatement aggiungiTirocinioPS = connessione.prepareStatement(sql)) {
+                aggiungiTirocinioPS.setInt(1, idD);
+                ResultSet rs = aggiungiTirocinioPS.executeQuery();
+                while (rs.next()) {
+                    tirocinio.add(rs.getString("nometirocinio"));
+                }
+            }
         }
+        return tirocinio;
     }
 
-    public ArrayList<String> getEnte() throws SQLException{
-        String sql="SELECT \"ente\" FROM \"tirocinio\"";
-        try(PreparedStatement aggiungiTirocinioPS=connessione.prepareStatement(sql)){
-            ResultSet rs=aggiungiTirocinioPS.executeQuery();
-            ArrayList<String> tirocinio=new ArrayList<>();
-            while(rs.next()){
-                tirocinio.add(rs.getString("ente"));
+    public ArrayList<String> getEnte(int idD) throws SQLException {
+        ArrayList<String> tirocinio=new ArrayList<>();
+        if (idD == 0) {
+            String sql = "SELECT \"ente\" FROM \"tirocinio\"";
+            try (PreparedStatement aggiungiTirocinioPS = connessione.prepareStatement(sql)) {
+                ResultSet rs = aggiungiTirocinioPS.executeQuery();
+                while (rs.next()) {
+                    tirocinio.add(rs.getString("ente"));
+                }
             }
-            return tirocinio;
+        } else {
+            String sql = "SELECT \"ente\" FROM \"tirocinio\" WHERE idd=?";
+            try (PreparedStatement aggiungiTirocinioPS = connessione.prepareStatement(sql)) {
+                aggiungiTirocinioPS.setInt(1, idD);
+                ResultSet rs = aggiungiTirocinioPS.executeQuery();
+                while (rs.next()) {
+                    tirocinio.add(rs.getString("ente"));
+                }
+            }
         }
+        return tirocinio;
     }
 
-    public ArrayList<Boolean> getDisponibile() throws SQLException{
-        String sql="SELECT \"disponibile\" FROM \"tirocinio\"";
-        try(PreparedStatement aggiungiTirocinioPS=connessione.prepareStatement(sql)){
-            ResultSet rs=aggiungiTirocinioPS.executeQuery();
-            ArrayList<Boolean> tirocinio=new ArrayList<>();
-            while(rs.next()){
-                tirocinio.add(rs.getBoolean("disponibile"));
+    public ArrayList<Boolean> getDisponibile(int idD) throws SQLException{
+        ArrayList<Boolean> tirocinio=new ArrayList<>();
+        if (idD == 0) {
+            String sql = "SELECT \"disponibile\" FROM \"tirocinio\"";
+            try (PreparedStatement aggiungiTirocinioPS = connessione.prepareStatement(sql)) {
+                ResultSet rs = aggiungiTirocinioPS.executeQuery();
+                while (rs.next()) {
+                    tirocinio.add(rs.getBoolean("disponibile"));
+                }
             }
-            return tirocinio;
+        } else {
+            String sql = "SELECT \"disponibile\" FROM \"tirocinio\" WHERE idd=?";
+            try (PreparedStatement aggiungiTirocinioPS = connessione.prepareStatement(sql)) {
+                aggiungiTirocinioPS.setInt(1, idD);
+                ResultSet rs = aggiungiTirocinioPS.executeQuery();
+                while (rs.next()) {
+                    tirocinio.add(rs.getBoolean("disponibile"));
+                }
+            }
         }
-
+        return tirocinio;
     }
-    public ArrayList<Boolean> getInCorso() throws SQLException{
-        String sql="SELECT \"incorso\" FROM \"tirocinio\"";
-        try(PreparedStatement aggiungiTirocinioPS=connessione.prepareStatement(sql)){
-            ResultSet rs=aggiungiTirocinioPS.executeQuery();
-            ArrayList<Boolean> tirocinio=new ArrayList<>();
-            while(rs.next()){
-                tirocinio.add(rs.getBoolean("incorso"));
+
+    public ArrayList<Boolean> getInCorso(int idD) throws SQLException{
+        ArrayList<Boolean> tirocinio=new ArrayList<>();
+        if (idD == 0) {
+            String sql = "SELECT \"incorso\" FROM \"tirocinio\"";
+            try (PreparedStatement aggiungiTirocinioPS = connessione.prepareStatement(sql)) {
+                ResultSet rs = aggiungiTirocinioPS.executeQuery();
+                while (rs.next()) {
+                    tirocinio.add(rs.getBoolean("incorso"));
+                }
             }
-            return tirocinio;
+        } else {
+            String sql = "SELECT \"incorso\" FROM \"tirocinio\" WHERE idd=?";
+            try (PreparedStatement aggiungiTirocinioPS = connessione.prepareStatement(sql)) {
+                aggiungiTirocinioPS.setInt(1, idD);
+                ResultSet rs = aggiungiTirocinioPS.executeQuery();
+                while (rs.next()) {
+                    tirocinio.add(rs.getBoolean("incorso"));
+                }
+            }
         }
+        return tirocinio;
     }
 
     public ArrayList<Integer> verificaNomeTirocinio(String nome) throws SQLException{
