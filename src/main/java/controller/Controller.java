@@ -49,6 +49,7 @@ public class Controller {
 		{
 			try {
 				studenteDAO.aggiungiStudente(nome, cognome, email, login, password);
+
 			} catch (SQLException e0){
 				throw new RuntimeException(e0);
 			}
@@ -81,6 +82,10 @@ public class Controller {
 				if (info != null) {
 					studente = new Studente((String)info.get(1),(String) info.get(2), (String)info.get(3), (String)info.get(4),
 							(String)info.get(5),(String)info.get(6));
+					ArrayList<String> sed =sedutaLaureaDAO.accediSeduta((int)info.get(0));
+					if(sed!=null) {
+						sedutaLaurea=new SedutaLaurea(sed.get(0),sed.get(1));
+					}
 					return (int)info.get(0);
 			    }
 			} catch (SQLException e2) {
@@ -367,8 +372,12 @@ public class Controller {
      * @return la data della seduta di laurea
      */
     public ArrayList<String> getDataSeduta(){
-		try{ArrayList<String> data=sedutaLaureaDAO.getDataSeduta();
-			return data;
+		try{ArrayList<Object> data=sedutaLaureaDAO.getDataSeduta();
+			ArrayList<String> dataStringa=new ArrayList<>();
+			for (Object o : data) {
+				dataStringa.add(o.toString());
+			}
+			return dataStringa;
 		}catch(SQLException e12){
 			throw new RuntimeException(e12);
 		}
@@ -398,7 +407,7 @@ public class Controller {
 		try{
 			int idSeduta= sedutaLaureaDAO.verificaSeduta(data,luogo);
 			if(idSeduta!=0){
-				studente.prenotaSedutaLaurea(sedutaLaurea);
+				studente.prenotaSedutaLaurea(data, luogo);
 				studenteDAO.aggiungiSeduta(idS, idSeduta);
 				return true;
 			}

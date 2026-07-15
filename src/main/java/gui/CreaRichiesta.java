@@ -57,7 +57,7 @@ public class CreaRichiesta extends JDialog {
                     JOptionPane.showMessageDialog(frame,"Non hai riempito il campo");
                 }else{
                     if(controller.verificaNomeTirocinio(nomeTirocinio.getText(), idS)){
-                        JOptionPane.showMessageDialog(frame,"Richiesta creato con sucesso");
+                        JOptionPane.showMessageDialog(frame,"Richiesta creato con successo");
                     }else{
                         JOptionPane.showMessageDialog(frame,"Tirocinio inesistente o al completo");
                     }

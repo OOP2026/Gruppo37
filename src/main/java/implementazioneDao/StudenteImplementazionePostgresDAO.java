@@ -31,7 +31,7 @@ public class StudenteImplementazionePostgresDAO implements StudenteDAO {
             aggiungiStudentePS.setString(4,login);
             aggiungiStudentePS.setString(5,password);
             aggiungiStudentePS.setString(6,null);
-            aggiungiStudentePS.setString(7,null);
+            aggiungiStudentePS.setNull(7,java.sql.Types.INTEGER);
 
             aggiungiStudentePS.executeUpdate();
             aggiungiStudentePS.close();
@@ -65,7 +65,7 @@ public class StudenteImplementazionePostgresDAO implements StudenteDAO {
     }
 
     public void aggiungiSeduta(int idS, int idSeduta) throws SQLException {
-        String sql="UPDATE FROM \"studente\" SET \"idseduta\"=? WHERE \"ids\"=? ";
+        String sql="UPDATE \"studente\" SET \"idseduta\"=? WHERE \"ids\"=? ";
         try (PreparedStatement aggiungiSedutaPS=connessione.prepareStatement(sql)){
             aggiungiSedutaPS.setInt(1, idSeduta);
             aggiungiSedutaPS.setInt(2, idS);

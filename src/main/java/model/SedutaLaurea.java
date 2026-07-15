@@ -9,7 +9,7 @@ public class SedutaLaurea {
     /**
      * Rappresenta la data in cui si svolgera' la seduta di laurea.
      */
-    private Date dataSeduta;
+    private String dataSeduta;
     /**
      * Rappresenta il luogo in cui si svolgera' la seduta di laurea.
      */
@@ -21,7 +21,7 @@ public class SedutaLaurea {
      * @param dataSeduta  la data della seduta di laurea
      * @param luogoSeduta il luogo della seduta di laurea
      */
-    public SedutaLaurea(Date dataSeduta, String luogoSeduta){
+    public SedutaLaurea(String dataSeduta, String luogoSeduta){
         this.dataSeduta=dataSeduta;
         this.luogoSeduta=luogoSeduta;
     }
@@ -31,7 +31,7 @@ public class SedutaLaurea {
      *
      * @return la data della seduta di laurea
      */
-    public Date getDataSeduta() {
+    public String getDataSeduta() {
         return dataSeduta;
     }
 

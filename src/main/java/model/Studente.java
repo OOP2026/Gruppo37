@@ -42,10 +42,11 @@ public class Studente extends Utente {
     /**
      * Prenota una seduta laurea.
      *
-     * @param sL la seduta di laurea a cui lo studente si vuole prenotare
+     * @param data la data della seduta di laurea a cui lo studente si vuole prenotare
+     * @param luogo il luogo della seduta di laurea a cui lo studente si vuole prenotare
      */
-    public void prenotaSedutaLaurea(SedutaLaurea sL){
-        this.sedutaLaurea=sL;
+    public void prenotaSedutaLaurea(String data, String luogo){
+        SedutaLaurea sl = new SedutaLaurea(data,luogo);
     }
 
     /**
