@@ -44,7 +44,7 @@ public class ApprovaRichiesta extends JDialog {
         DefaultTableModel model = (DefaultTableModel) table1.getModel();
         ArrayList<String> info=controller.getStudenteETirocinio(idD);
         if(info != null)
-            for (int i = 0; i < info.size()/3; i++)
+            for (int i = 0; i < info.size(); i++)
                 model.addRow(new Object[]{info.get(i), info.get(++i), info.get(++i)});
 
         /**
