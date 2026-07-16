@@ -40,9 +40,7 @@ public class ScritturaTesi extends JDialog {
             testo.setText(controller.getTesto());
         }
 
-        /**
-         * Il bottone per salvare la tesi.
-         */
+
         buttonSalva.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(controller.salvaTesi(titolo.getText(), testo.getText(), idS)){
@@ -54,9 +52,7 @@ public class ScritturaTesi extends JDialog {
             }
         });
 
-        /**
-         * Il bottone per tornare al frame precedente.
-         */
+
         buttonCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frameHomeS.setVisible(true);
@@ -64,9 +60,7 @@ public class ScritturaTesi extends JDialog {
             }
         });
 
-        /**
-         * Il bottone per caricare la tesi.
-         */
+
         caricaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(controller.salvaTesi(titolo.getText(), testo.getText(),idS) && controller.caricaTesi(idS)) {

@@ -34,9 +34,7 @@ public class HomePageDocente extends JDialog {
         nome.setText(controller.getNome(false));
         cognome.setText(controller.getCognome(false));
 
-        /**
-         * Il bottone per uscire dal frame.
-         */
+
         esciButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frameHome.setVisible(true);
@@ -45,9 +43,7 @@ public class HomePageDocente extends JDialog {
 
         });
 
-        /**
-         * Il bottone per accedere al frame per creare un nuovo tirocinio.
-         */
+
         creaTirocinioButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
@@ -55,9 +51,7 @@ public class HomePageDocente extends JDialog {
             }
         });
 
-        /**
-         * Il bottone per accedere al frame per visualizzare tutti i tirocini creati dal docente.
-         */
+
         visualizzaTirociniButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
@@ -65,9 +59,7 @@ public class HomePageDocente extends JDialog {
             }
         });
 
-        /**
-         * Il bottone per accedere al frame per approvare le richieste.
-         */
+
         approvaRichiesteButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);

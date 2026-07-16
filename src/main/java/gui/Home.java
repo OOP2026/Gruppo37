@@ -31,7 +31,7 @@ public class Home {
          */
         accedi.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                if(loginS.getText().equals("")||passwordS.getText().equals("")){
+                if(loginS.getText().isEmpty()||passwordS.getText().isEmpty()){
                     JOptionPane.showMessageDialog(frame, "Non hai riempito tutti i campi");
                 }else {
                     if ("Studente".equals(stuDoc.getSelectedItem())) {
@@ -55,9 +55,7 @@ public class Home {
             }
         });
 
-        /**
-         * Il bottone per accedere al frame per eseguire la registrazione.
-         */
+
         registrati.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);

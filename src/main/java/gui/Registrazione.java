@@ -39,9 +39,7 @@ public class Registrazione extends JDialog {
         frame.pack();
         frame.setVisible(true);
 
-        /**
-         * Il bottone per tornare al frame precedente
-         */
+
         buttonCancel.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frameHome.setVisible(true);
@@ -49,13 +47,11 @@ public class Registrazione extends JDialog {
             }
     });
 
-        /**
-         * Il bottone per creare un nuovo utente.
-         */
+
         buttonOK.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                if(loginS.getText().equals("")||passwordS.getText().equals("")||nomeS.getText().equals("")
-                        ||cognomeS.getText().equals("")||emailS.getText().equals("")){
+                if(loginS.getText().isEmpty()||passwordS.getText().isEmpty()||nomeS.getText().isEmpty()
+                        ||cognomeS.getText().isEmpty()||emailS.getText().isEmpty()){
                     JOptionPane.showMessageDialog(frame, "Non hai riempito tutti i campi");
                 }
                 else{

@@ -1,5 +1,5 @@
 package model;
-import java.util.ArrayList;
+
 
 /**
  * La classe Utente.

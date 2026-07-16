@@ -47,21 +47,14 @@ public class ApprovaRichiesta extends JDialog {
             for (int i = 0; i < info.size(); i++)
                 model.addRow(new Object[]{info.get(i), info.get(++i), info.get(++i)});
 
-        /**
-         * Il bottone per salvare le modifiche.
-         */
+
         salvaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(nomeStudenteTextField.getText().isEmpty() || nomeTirocinioTextField.getText().isEmpty() ||
                         cognomeStudenteTextField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(frame, "Non hai riempito tutti i campi");
                 }else{
-                    boolean stato;
-                        if("Approva".equals(statoRichiestaBox.getSelectedItem())){
-                            stato=true;
-                        }else{
-                            stato=false;
-                        }
+                    boolean stato="Approva".equals(statoRichiestaBox.getSelectedItem());
                     if(controller.verificaRichiesta(nomeStudenteTextField.getText(),cognomeStudenteTextField.getText(),
                             nomeTirocinioTextField.getText(), stato)){
                         frame.dispose();
@@ -74,9 +67,7 @@ public class ApprovaRichiesta extends JDialog {
             }
         });
 
-        /**
-         * Il bottone per tornare al frame precedente.
-         */
+
         buttonCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();

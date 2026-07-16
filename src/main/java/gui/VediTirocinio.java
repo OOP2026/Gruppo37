@@ -47,9 +47,7 @@ public class VediTirocinio extends JDialog {
             for (int i = 0; i < nomeT.size(); i++)
                 model.addRow(new Object[]{nomeT.get(i), ente.get(i), disponibile.get(i), inCorso.get(i)});
 
-        /**
-         * Il bottone per tornare al frame precedente.
-         */
+
         buttonEsci.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();

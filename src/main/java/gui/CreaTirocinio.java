@@ -30,9 +30,7 @@ public class CreaTirocinio extends JDialog {
         frame.pack();
         frame.setVisible(true);
 
-        /**
-         * Il bottone per creare un nuovo tirocinio.
-         */
+
         buttonCrea.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (nomeS.getText().isEmpty()) {
@@ -49,9 +47,7 @@ public class CreaTirocinio extends JDialog {
             }
         });
 
-        /**
-         * Il bottone per tornare al frame precedente.
-         */
+
         buttonCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();

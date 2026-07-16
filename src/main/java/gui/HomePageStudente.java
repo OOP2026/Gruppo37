@@ -38,9 +38,7 @@ public class HomePageStudente{
         cognome.setText(controller.getCognome(true));
         dataSeduta.setText(controller.getDataSedutaScritta());
 
-        /**
-         * Il bottone per uscire dal frame.
-         */
+
         esciButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frameHome.setVisible(true);
@@ -48,9 +46,7 @@ public class HomePageStudente{
             }
         });
 
-        /**
-         * Il bottone per accedere al frame per creare una nuova tesi.
-         */
+
         creaTesiButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
@@ -58,12 +54,10 @@ public class HomePageStudente{
             }
         });
 
-        /**
-         * Il bottone per accedere al frame per continuare una tesi gia' esistente.
-         */
+
         continuaTesiButton.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e){
-               if(controller.notNullTesi(idS)==true){
+               if(controller.notNullTesi(idS)){
                    frame.setVisible(false);
                    ScritturaTesi scritturaTesi=new ScritturaTesi(frame,controller,false,idS);
                }else{
@@ -72,9 +66,7 @@ public class HomePageStudente{
            }
         });
 
-        /**
-         * Il bottone per accedere al frame per creare una nuova richiesta.
-         */
+
         creaRichiestaButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
@@ -82,9 +74,7 @@ public class HomePageStudente{
             }
         });
 
-        /**
-         * Il bottone per accedere al frame per prenotare una seduta di laurea.
-         */
+
         prenotaSedutaButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);

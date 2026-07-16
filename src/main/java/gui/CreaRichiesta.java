@@ -48,9 +48,7 @@ public class CreaRichiesta extends JDialog {
             for (int i = 0; i < nomeT.size(); i++)
         model.addRow(new Object[]{nomeT.get(i), ente.get(i), disponibile.get(i), inCorso.get(i)});
 
-        /**
-         * Il bottone per creare una nuova richiesta.
-         */
+
         creaRichiestaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(nomeTirocinio.getText().isEmpty()){
@@ -65,9 +63,7 @@ public class CreaRichiesta extends JDialog {
             }
         });
 
-        /**
-        * Il bottone per tornare al frame precedente.
-        */
+
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();

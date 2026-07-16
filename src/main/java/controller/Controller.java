@@ -6,7 +6,6 @@ import dao.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * La classe Controller.
@@ -45,7 +44,7 @@ public class Controller {
      * @return infroma se l'inserimento e' avvenuto con successo
      */
     public boolean aggiungiUtente(String login, String password, String nome, String cognome, String email, boolean stuDoc){
-		if(stuDoc==true)
+		if(stuDoc)
 		{
 			try {
 				studenteDAO.aggiungiStudente(nome, cognome, email, login, password);
@@ -75,9 +74,9 @@ public class Controller {
      * @return infroma se l'accesso e' avvenuto con successo
      */
     public int accediUtente(String login, String password, boolean stuDoc) {
-		if (stuDoc == true) {
+		if (stuDoc) {
 			try {
-				ArrayList<Object> info = new ArrayList();
+				ArrayList<Object> info;
 				info = studenteDAO.accediStudente(login, password);
 				if (info != null) {
 					studente = new Studente((String)info.get(1),(String) info.get(2), (String)info.get(3), (String)info.get(4),
@@ -94,7 +93,7 @@ public class Controller {
 			return 0;
 		} else {
 			try {
-				ArrayList<Object> info = new ArrayList();
+				ArrayList<Object> info;
 				info = docenteDAO.accediDocente(login, password);
 				if (info != null) {
 					docente = new Docente((String)info.get(1), (String)info.get(2), (String)info.get(3), (String)info.get(4),
@@ -115,7 +114,7 @@ public class Controller {
      * @return il nome dell'utente
      */
     public String getNome(boolean stuDoc) {
-		if (stuDoc == true){
+		if (stuDoc){
 			return studente.getNomeUtente();
 	}else{
 			return docente.getNomeUtente();
@@ -129,7 +128,7 @@ public class Controller {
      * @return il cognome dell'utente
      */
     public String getCognome(boolean stuDoc) {
-		if (stuDoc == true){
+		if (stuDoc){
 			return studente.getCognomeUtente();
 		}
 		else{
@@ -176,7 +175,7 @@ public class Controller {
      */
     public boolean notNullTesi(int idS) {
 		try {
-			ArrayList<Object> info = new ArrayList();
+			ArrayList<Object> info;
 			info=tesiDAO.notNullTesi(idS);
 		    if (info != null) {
 				tesi= new Tesi((String)info.get(2),(String)info.get(3),(boolean)info.get(5));
@@ -234,7 +233,8 @@ public class Controller {
      * @return il nome del tirocinio
      */
     public ArrayList<String> leggiNomeTirocinio(int idD){
-		try{ArrayList<String> nomeTirocinio=tirocinioDAO.getNomeTirocinio(idD);
+		try{ArrayList<String> nomeTirocinio;
+			nomeTirocinio=tirocinioDAO.getNomeTirocinio(idD);
 		return nomeTirocinio;
 		}catch(SQLException e7){
 			throw new RuntimeException(e7);
@@ -260,7 +260,8 @@ public class Controller {
      * @return infroma se il tirocinio e' disponibile
      */
     public ArrayList<Boolean> leggiDisponibilitaTirocinio(int idD){
-		try{ArrayList<Boolean> disponibile=tirocinioDAO.getDisponibile(idD);
+		try{ArrayList<Boolean> disponibile;
+			disponibile=tirocinioDAO.getDisponibile(idD);
 			return disponibile;
 		}catch(SQLException e9){
 			throw new RuntimeException(e9);
@@ -273,7 +274,8 @@ public class Controller {
      * @return infroma se il tirocinio e' incominciato
      */
     public ArrayList<Boolean> leggiInCorsoTirocinio(int idD){
-		try{ArrayList<Boolean> inCorso=tirocinioDAO.getInCorso(idD);
+		try{ArrayList<Boolean> inCorso;
+			inCorso=tirocinioDAO.getInCorso(idD);
 			return inCorso;
 		}catch(SQLException e10){
 			throw new RuntimeException(e10);
@@ -314,7 +316,8 @@ public class Controller {
      * @return gli studenti iscritti
      */
     public ArrayList<String> getStudenteETirocinio(int idD) {
-		try{ArrayList<String> info=richiestaDAO.getStudenteETirocinio(idD);
+		try{ArrayList<String> info;
+			info=richiestaDAO.getStudenteETirocinio(idD);
 			return info;
 		}catch(SQLException e12){
 			throw new RuntimeException(e12);
@@ -332,25 +335,9 @@ public class Controller {
     public boolean verificaRichiesta(String nomeStudente,String cognomeStudente,
 										String nomeTirocinio, boolean stato){
 		try{
-		if(richiestaDAO.verificaRichiesta(nomeStudente,cognomeStudente,nomeTirocinio,stato)){
-			return true;
-		}
-		return false;
+		return richiestaDAO.verificaRichiesta(nomeStudente,cognomeStudente,nomeTirocinio,stato);
 		}catch(SQLException e13){
 			throw new RuntimeException(e13);
-		}
-	}
-
-    /**
-     * Cambia lo stato della richiesta.
-     *
-     * @param stato lo stato della richiesta
-     */
-    public void cambiaStatoRichiesta(boolean stato){
-		if(stato){
-			richiesta.approva();
-		}else{
-			richiesta.rifiuta();
 		}
 	}
 
@@ -389,7 +376,8 @@ public class Controller {
      * @return il luogo della seduta di laurea
      */
     public ArrayList<String> getLuogoSeduta(){
-		try{ArrayList<String> luogo=sedutaLaureaDAO.getLuogoSeduta();
+		try{ArrayList<String> luogo;
+			luogo=sedutaLaureaDAO.getLuogoSeduta();
 			return luogo;
 		}catch(SQLException e12){
 			throw new RuntimeException(e12);

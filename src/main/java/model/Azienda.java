@@ -24,13 +24,4 @@ public class Azienda {
     public Azienda(String referenteAziendale) {
         this.referenteAziendale = referenteAziendale;
     }
-
-    /**
-     * Inserisci un tirocinio insieme a tutti quelli in cui l'azienda collabora.
-     *
-     * @param tirocinio il tirocinio da inserire
-     */
-    public void aggiungiTirocinio(Tirocinio tirocinio){
-        this.tirocini.add(tirocinio);
-    }
 }

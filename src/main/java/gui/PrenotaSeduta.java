@@ -47,9 +47,7 @@ public class PrenotaSeduta extends JDialog {
             for (int i = 0; i < dataS.size(); i++)
                 model.addRow(new Object[]{dataS.get(i), luogoS.get(i)});
 
-        /**
-         * Il bottone per prenotare la seduta di laurea.
-         */
+
         buttonSalva.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(dataSedutaTextField.getText().isEmpty() || luogoSedutaTextField.getText().isEmpty()){
@@ -64,9 +62,7 @@ public class PrenotaSeduta extends JDialog {
             }
         });
 
-        /**
-         * Il bottone per tornare al frame precedente.
-         */
+
         buttonCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();

@@ -14,7 +14,7 @@ public class Docente extends Utente{
     /**
      * Rappresentano tutti i tirocini che il docente ha ideato.
      */
-    protected ArrayList<Tirocinio> tirocini= new ArrayList();
+    protected ArrayList<Tirocinio> tirocini= new ArrayList<Tirocinio>();
 
     /**
      * Costruttore della classe Docente.
