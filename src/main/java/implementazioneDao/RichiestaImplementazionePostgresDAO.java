@@ -12,6 +12,7 @@ import java.util.ArrayList;
 /**
  * La classe RichiestaImplementazionePostgresDAO.
  * Gestidce i dati da passare al databse per conto della richiesta.
+ * E' implementata dalla calsse RichiestaDAO.
  */
 public class RichiestaImplementazionePostgresDAO implements RichiestaDAO {
     private Connection connessione;

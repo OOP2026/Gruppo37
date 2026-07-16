@@ -8,10 +8,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
+/**
+ * La classe TirocinioImplementazionePostgresDAO.
+ * Gestidce i dati da passare al databse per conto del tirocinio.
+ * E' implementata dalla calsse TirocinioDAO.
+ */
 public class TirocinioImplementazionePostgresDAO implements TirocinioDAO{
     private Connection connessione;
 
+    /**
+     * Costruttore della classe TirocinioImplementazionePostgresDAO.
+     */
     public TirocinioImplementazionePostgresDAO() {
         try {
             connessione = ConnessioneDatabase.getInstance().connection;
@@ -20,7 +27,14 @@ public class TirocinioImplementazionePostgresDAO implements TirocinioDAO{
         }
     }
 
-
+    /**
+     * Crea un nuovo tirocinio all'interno del database.
+     *
+     * @param idD l'identificativo del docente
+     * @param nome il nome del tirocinio
+     * @param ente l'ente che amministra il tirocinio
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
     public void creaTirocinio(int idD, String nome, boolean ente) throws SQLException{
         String sql="INSERT INTO \"tirocinio\" (\"idd\",\"nometirocinio\", \"ente\", \"disponibile\", \"incorso\") " +
                 "VALUES (?,?,?,?,?);";
@@ -40,6 +54,13 @@ public class TirocinioImplementazionePostgresDAO implements TirocinioDAO{
         }
     }
 
+    /**
+     * Ottiene i nomi di tutti i tirocini.
+     *
+     * @param idD l'identificativo del docente
+     * @return un array list contenente tutti i nomi dei tirocini
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
     public ArrayList<String> getNomeTirocinio(int idD) throws SQLException{
         ArrayList<String> tirocinio=new ArrayList<>();
         if (idD == 0) {
@@ -63,6 +84,13 @@ public class TirocinioImplementazionePostgresDAO implements TirocinioDAO{
         return tirocinio;
     }
 
+    /**
+     * Ottiene gli enti di tutti i tirocini.
+     *
+     * @param idD l'identificativo del docente
+     * @return un array list contenente tutti gli enti dei tirocini
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
     public ArrayList<String> getEnte(int idD) throws SQLException {
         ArrayList<String> tirocinio=new ArrayList<>();
         if (idD == 0) {
@@ -86,6 +114,13 @@ public class TirocinioImplementazionePostgresDAO implements TirocinioDAO{
         return tirocinio;
     }
 
+    /**
+     * Ottiene le disponibilita' di tutti i tirocini.
+     *
+     * @param idD l'identificativo del docente
+     * @return un array list contenente tutte le disponibilita' dei tirocini
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
     public ArrayList<Boolean> getDisponibile(int idD) throws SQLException{
         ArrayList<Boolean> tirocinio=new ArrayList<>();
         if (idD == 0) {
@@ -109,6 +144,13 @@ public class TirocinioImplementazionePostgresDAO implements TirocinioDAO{
         return tirocinio;
     }
 
+    /**
+     * Ottiene le informazioni sullo svolgimento di tutti i tirocini.
+     *
+     * @param idD l'identificativo del docente
+     * @return un array list contenente tutte le informazioni sullo svolgimento dei tirocini
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
     public ArrayList<Boolean> getInCorso(int idD) throws SQLException{
         ArrayList<Boolean> tirocinio=new ArrayList<>();
         if (idD == 0) {
@@ -132,6 +174,13 @@ public class TirocinioImplementazionePostgresDAO implements TirocinioDAO{
         return tirocinio;
     }
 
+    /**
+     * Verifica se esiste un determinato tirocinio.
+     *
+     * @param nome il nome del tirocinio
+     * @return informa se esiste il tirocinio
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
     public ArrayList<Integer> verificaNomeTirocinio(String nome) throws SQLException{
         String sql="SELECT \"idd\", \"idt\" FROM \"tirocinio\" WHERE \"nometirocinio\"=? AND \"disponibile\"=true";
         try(PreparedStatement verificaTirocinioPS=connessione.prepareStatement(sql)){;

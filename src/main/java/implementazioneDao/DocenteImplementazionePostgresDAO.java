@@ -11,6 +11,7 @@ import java.util.ArrayList;
 /**
  * La classe DocenteImplementazionePostgresDAO.
  * Gestidce i dati da passare al databse per conto del docente.
+ * E' implementata dalla calsse DocenteDAO.
  */
 public class DocenteImplementazionePostgresDAO implements DocenteDAO {
     private Connection connessione;

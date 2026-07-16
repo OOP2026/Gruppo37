@@ -8,9 +8,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * La classe TesiImplementazionePostgresDAO.
+ * Gestidce i dati da passare al databse per conto della tesi.
+ * E' implementata dalla calsse TesiDAO.
+ */
 public class TesiImplementazionePostgresDAO implements TesiDAO {
     private Connection connessione;
 
+    /**
+     * Costruttore della classe TesiImplementazionePostgresDAO.
+     */
     public TesiImplementazionePostgresDAO() {
         try {
             connessione = ConnessioneDatabase.getInstance().connection;
@@ -19,6 +27,14 @@ public class TesiImplementazionePostgresDAO implements TesiDAO {
         }
     }
 
+    /**
+     * Salva la tesi all'interno del database.
+     *
+     * @param titolo il titolo della tesi
+     * @param testo il testo della tesi
+     * @param idS l'identificativo dello studente
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
     public void salvaTesi(String titolo, String testo, int idS) throws SQLException {
         String sqlQ="SELECT \"idt\" FROM \"tesi\" WHERE \"ids\"=? AND \"stato\"<>'Rifiutata'";
         String sql = "UPDATE \"tesi\" SET \"testo\"=?, \"titolo\"=? WHERE \"ids\"=? AND \"idt\"=?";
@@ -51,6 +67,12 @@ public class TesiImplementazionePostgresDAO implements TesiDAO {
         }
     }
 
+    /**
+     * Cambia il valore di caricata in true.
+     *
+     * @param idS l'identificativo dello studente
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
     public void caricaTesi(int idS) throws SQLException {
         String sql = "UPDATE \"tesi\" SET \"caricata\"=? WHERE \"ids\"=? AND \"stato\"<>'Rifiutata'";
         try (PreparedStatement caricaTesiPS = connessione.prepareStatement(sql)) {
@@ -61,6 +83,13 @@ public class TesiImplementazionePostgresDAO implements TesiDAO {
         }
     }
 
+    /**
+     * Verifica se gia' esiste una tesi per un determinato studente.
+     *
+     * @param idS l'identificativo dello studente
+     * @return informa se gia' esiste una tesi per il rispettivo studente
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
     public ArrayList<Object> notNullTesi(int idS) throws SQLException {
         String sqlQ="SELECT \"ids\", \"idt\", \"titolo\", \"testo\", \"stato\", \"caricata\" FROM \"tesi\" " +
                 "WHERE \"ids\"=? AND \"stato\"<>'Rifiutata'";

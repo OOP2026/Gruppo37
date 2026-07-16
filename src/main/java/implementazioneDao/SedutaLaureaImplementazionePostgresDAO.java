@@ -12,6 +12,7 @@ import java.util.ArrayList;
 /**
  * La classe SedutaLaureaImplementazionePostgresDAO.
  * Gestidce i dati da passare al databse per conto della seduta di laurea.
+ * E' implementata dalla calsse SedutaLaureaDAO.
  */
 public class SedutaLaureaImplementazionePostgresDAO implements SedutaLaureaDAO {
     private Connection connessione;
