@@ -216,12 +216,11 @@ public class Controller {
 		try{if("Interno".equals(ente)) {
 			tirocinioDAO.creaTirocinio(idD,nome,true);
 			tirocinio = new Tirocinio(nome, Ente.Interno, true, false);
-			return true;
 		}else{
 			tirocinioDAO.creaTirocinio(idD,nome,false);
 			tirocinio = new Tirocinio(nome, Ente.Esterno, true, false);
-			return true;
 		}
+			return true;
 	} catch (SQLException e6) {
 			throw new RuntimeException(e6);
 		}
@@ -247,8 +246,7 @@ public class Controller {
      * @return l'ente del tricoinio
      */
     public ArrayList<String> leggiEnteTirocinio(int idD){
-		try{ArrayList<String> ente=tirocinioDAO.getEnte(idD);
-			return ente;
+		try{return tirocinioDAO.getEnte(idD);
 		}catch(SQLException e8){
 			throw new RuntimeException(e8);
 		}
