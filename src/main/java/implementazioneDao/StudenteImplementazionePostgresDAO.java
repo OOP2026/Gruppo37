@@ -105,4 +105,55 @@ public class StudenteImplementazionePostgresDAO implements StudenteDAO {
             aggiungiSedutaPS.close();
         }
     }
+
+    /**
+     * Verifica se lo studente esiste all'interno del database
+     *
+     * @param nome il nome dello studente
+     * @param cognome il cognome dello studente
+     * @return l'identificativo dello studente
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
+    public int verificaStudente(String nome,String cognome) throws SQLException{
+        String sql="SELECT \"ids\" FROM \"studente\" WHERE nome=? AND cognome=? ";
+        try(PreparedStatement verificaStudentePS=connessione.prepareStatement(sql)){
+            verificaStudentePS.setString(1, nome);
+            verificaStudentePS.setString(2, cognome);
+            ResultSet rs=verificaStudentePS.executeQuery();
+            if(rs.next()) {
+                return rs.getInt("ids");
+            }
+            return 0;
+        }
+    }
+
+    /**
+     * Recupera le informazioni dello studente.
+     *
+     * @param idD l'identificativo del docente
+     * @return le informazioni dello studente
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
+    public ArrayList<String> recuperaStudente(int idD) throws SQLException{
+        String sql =
+                "SELECT s.nome, s.cognome " +
+                        "FROM richiesta r " +
+                        "JOIN tesi t ON r.ids = t.ids " +
+                        "JOIN studente s ON t.ids = s.ids " +
+                        "WHERE r.idd = ? " +
+                        "AND r.stato = 'Approvata' " +
+                        "AND t.stato = 'inAttesa' " +
+                        "AND t.caricata = true";
+
+        try(PreparedStatement recuperaStudentePS=connessione.prepareStatement(sql)){
+            recuperaStudentePS.setInt(1, idD);
+            ResultSet rs=recuperaStudentePS.executeQuery();
+            ArrayList<String> studente = new ArrayList<>();
+            while (rs.next()) {
+                studente.add(rs.getString("nome"));
+                studente.add(rs.getString("cognome"));
+            }
+            return studente;
+        }
+    }
 }

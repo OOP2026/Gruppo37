@@ -427,14 +427,90 @@ public class Controller {
 		return String.valueOf(richiesta.getStato());
 	}
 
+	/**
+	 * Recupera le informazioni degli studenti e del loro tirocinio.
+	 *
+	 * @param idD l'identificativo del docente
+	 * @return le informazioni degli studenti e del loro tirocinio
+	 */
 	public ArrayList<Object> recuperaInfo(int idD){
 		try{ArrayList<Object> info;
 			info=tirocinioDAO.recuperaInfo(idD);
 			return info;
-		}catch(SQLException e7){
-			throw new RuntimeException(e7);
+		}catch(SQLException e13){
+			throw new RuntimeException(e13);
 		}
 	}
 
+	/**
+	 * Verifica se esite un determinato studente.
+	 *
+	 * @param nome il nome dello studente
+	 * @param cognome il cognome dello studente
+	 * @return l'identificativo dello studente
+	 */
+	public int verificaStudente(String nome,String cognome){
+		try{
+		return studenteDAO.verificaStudente(nome,cognome);
+		} catch (SQLException e14){
+			throw new RuntimeException(e14);
+		}
+	}
+
+	/**
+	 * Recupera le informazioni degli studenti.
+	 *
+	 * @param idD l'identificativo del docente
+	 * @return le informazioni degli studenti.
+	 */
+	public ArrayList<String> recuperaStudente(int idD){
+		try{
+			return studenteDAO.recuperaStudente(idD);
+		} catch (SQLException e15){
+			throw new RuntimeException(e15);
+		}
+	}
+
+	/**
+	 * Recupera il titolo della tesi.
+	 *
+	 * @param idS l'identificativo dello studente
+	 * @return il titolo della tesi
+	 */
+	public String getTitoloT(int idS){
+		try{
+			return tesiDAO.getTitoloT(idS);
+		} catch (SQLException e16){
+			throw new RuntimeException(e16);
+		}
+	}
+
+	/**
+	 * Recupera il testo della tesi.
+	 *
+	 * @param idS l'identificativo dello studente
+	 * @return il testo della tesi
+	 */
+	public String getTestoT(int idS){
+		try{
+			return tesiDAO.getTestoT(idS);
+		} catch (SQLException e16){
+			throw new RuntimeException(e16);
+		}
+	}
+
+	/**
+	 * Cambia lo stato della tesi.
+	 *
+	 * @param idS l'identificativo dello studente
+	 * @param stato lo stato della tesi
+	 */
+	public void statoTesi(int idS, boolean stato){
+		try{
+			tesiDAO.statoTesi(idS,stato);
+		} catch (SQLException e17){
+			throw new RuntimeException(e17);
+		}
+	}
 }
 

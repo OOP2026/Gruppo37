@@ -39,4 +39,23 @@ public interface StudenteDAO {
      * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
      */
     public void aggiungiSeduta(int idS, int idSeduta) throws SQLException;
+
+    /**
+     * Verifica se lo studente esiste all'interno del database
+     *
+     * @param nome il nome dello studente
+     * @param cognome il cognome dello studente
+     * @return l'identificativo dello studente
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
+    public int verificaStudente(String nome,String cognome) throws SQLException;
+
+    /**
+     * Recupera le informazioni dello studente.
+     *
+     * @param idD l'identificativo del docente
+     * @return le informazioni dello studente
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
+    public ArrayList<String> recuperaStudente(int idD) throws SQLException;
 }

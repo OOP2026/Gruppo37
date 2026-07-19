@@ -18,6 +18,7 @@ public class HomePageDocente extends JDialog {
     private JButton visualizzaTirociniButton;
     private JButton creaTirocinioButton;
     private JButton approvaRichiesteButton;
+    private JButton approvaTesiButton;
 
     /**
      * Costruttore della GUI HomePageDocente.
@@ -64,6 +65,13 @@ public class HomePageDocente extends JDialog {
             public void actionPerformed(ActionEvent e){
                 frame.setVisible(false);
                 ApprovaRichiesta approvaRichiesta=new ApprovaRichiesta(frame, controller,idD);
+            }
+        });
+
+        approvaTesiButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                frame.setVisible(false);
+                VediTesi vediTesi= new VediTesi(frame,controller,idD);
             }
         });
     }

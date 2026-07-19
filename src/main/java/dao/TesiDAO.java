@@ -35,4 +35,31 @@ public interface TesiDAO{
      * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
      */
     public ArrayList<Object> notNullTesi(int idS) throws SQLException;
+
+    /**
+     * Riceviamo il titolo della tesi.
+     *
+     * @param idS l'identificativo della tesi
+     * @return il titolo della tesi
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
+    public String getTitoloT(int idS) throws SQLException;
+
+    /**
+     * Riceviamo il testo della tesi.
+     *
+     * @param idS l'identificativo della tesi
+     * @return il testo della tesi
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
+    public String getTestoT(int idS) throws SQLException;
+
+    /**
+     * Cambia lo stato della tesi.
+     *
+     * @param idS l'identificativo della tesi
+     * @param stato
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
+    public void statoTesi(int idS, boolean stato) throws SQLException;
 }

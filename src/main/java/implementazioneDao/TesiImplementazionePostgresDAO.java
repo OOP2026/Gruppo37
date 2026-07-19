@@ -111,4 +111,59 @@ public class TesiImplementazionePostgresDAO implements TesiDAO {
             return null;
         }
     }
+
+    /**
+     * Riceviamo il titolo della tesi.
+     *
+     * @param idS l'identificativo della tesi
+     * @return il titolo della tesi
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
+    public String getTitoloT(int idS) throws SQLException{
+        String sql="SELECT \"titolo\" FROM \"tesi\" WHERE ids=? AND \"stato\" = 'inAttesa' AND \"caricata\" = true ";
+        try(PreparedStatement getTitoloPS=connessione.prepareStatement(sql)){
+            getTitoloPS.setInt(1, idS);
+            ResultSet rs=getTitoloPS.executeQuery();
+            rs.next();
+            return  rs.getString("titolo");
+        }
+    }
+
+    /**
+     * Riceviamo il testo della tesi.
+     *
+     * @param idS l'identificativo della tesi
+     * @return il testo della tesi
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
+    public String getTestoT(int idS) throws SQLException{
+        String sql="SELECT \"testo\" FROM \"tesi\" WHERE ids=? AND \"stato\" = 'inAttesa' AND \"caricata\" = true ";
+        try(PreparedStatement getTitoloPS=connessione.prepareStatement(sql)){
+            getTitoloPS.setInt(1, idS);
+            ResultSet rs=getTitoloPS.executeQuery();
+            rs.next();
+            return rs.getString("testo");
+        }
+    }
+
+    /**
+     * Cambia lo stato della tesi.
+     *
+     * @param idS l'identificativo della tesi
+     * @param stato
+     * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
+     */
+    public void statoTesi(int idS, boolean stato) throws SQLException{
+        String sql="UPDATE \"tesi\" SET \"stato\"=? WHERE ids=? AND \"stato\" = 'inAttesa' AND \"caricata\" = true";
+        try(PreparedStatement statoTesiPS=connessione.prepareStatement(sql)) {
+            if (stato) {
+                statoTesiPS.setString(1, "Approvata");
+            } else {
+                statoTesiPS.setString(1, "Rifiutata");
+            }
+            statoTesiPS.setInt(2, idS);
+            statoTesiPS.executeUpdate();
+            statoTesiPS.close();
+        }
+    }
 }
