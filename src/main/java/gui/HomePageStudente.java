@@ -21,6 +21,8 @@ public class HomePageStudente{
     private JButton continuaTesiButton;
     private JButton creaRichiestaButton;
     private JButton esciButton;
+    private JLabel statoRichiesta;
+    private JLabel statoR;
 
     /**
      * Costruttore della GUI HomePageStudente.
@@ -37,6 +39,7 @@ public class HomePageStudente{
         nome.setText(controller.getNome(true));
         cognome.setText(controller.getCognome(true));
         dataSeduta.setText(controller.getDataSedutaScritta());
+        statoR.setText(controller.getStatoRichiesta());
 
 
         esciButton.addActionListener(new ActionListener(){

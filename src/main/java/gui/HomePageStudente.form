@@ -80,6 +80,22 @@
               <text value="Esci"/>
             </properties>
           </component>
+          <component id="4165b" class="javax.swing.JLabel" binding="statoRichiesta">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Stato Richiesta:"/>
+            </properties>
+          </component>
+          <component id="6c031" class="javax.swing.JLabel" binding="statoR">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Label"/>
+            </properties>
+          </component>
         </children>
       </grid>
     </children>

@@ -39,4 +39,6 @@ public interface RichiestaDAO {
      * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
      */
     public boolean verificaRichiesta(String nome,String cognome,String tirocinio, boolean stato) throws SQLException;
+
+    public ArrayList<Object> accediRichiesta(int idS) throws SQLException;
 }

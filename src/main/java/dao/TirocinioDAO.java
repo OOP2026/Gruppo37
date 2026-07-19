@@ -1,7 +1,5 @@
 package dao;
 
-import model.Tirocinio;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -17,9 +15,10 @@ public interface TirocinioDAO {
      * @param idD l'identificativo del docente
      * @param nome il nome del tirocinio
      * @param ente l'ente che amministra il tirocinio
+     * @param idA l'identificativo dell'azienda
      * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
      */
-    public void creaTirocinio(int idD, String nome, boolean ente)throws SQLException;
+    public void creaTirocinio(int idD, String nome, boolean ente, int idA)throws SQLException;
 
     /**
      * Ottiene i nomi di tutti i tirocini.

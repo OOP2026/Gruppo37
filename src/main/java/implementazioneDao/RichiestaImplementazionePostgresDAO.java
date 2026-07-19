@@ -117,4 +117,25 @@ public class RichiestaImplementazionePostgresDAO implements RichiestaDAO {
                     }}
                 }return false;
     }
+
+    public ArrayList<Object> accediRichiesta(int idS) throws SQLException{{
+        String sql="SELECT \"stato\",\"data\" FROM \"richiesta\" WHERE \"ids\"=? ORDER BY \"idr\"";
+        try (PreparedStatement accediRichiestaPS = connessione.prepareStatement(sql)) {
+            accediRichiestaPS.setInt(1, idS);
+            ResultSet rs = accediRichiestaPS.executeQuery();
+            ArrayList<Object> info = new ArrayList<>();
+            while (rs.next()) {
+                info.add(rs.getString("stato"));
+                info.add(rs.getObject("data"));
+            }
+            if(!info.isEmpty()){
+            int n=info.size();
+            ArrayList<Object> ric=new ArrayList<>();
+            ric.add(info.get(n-2));
+            ric.add(info.get(n-1));
+            return ric;
+            }
+            return null;
+        }}
+    }
 }

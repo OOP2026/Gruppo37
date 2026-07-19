@@ -43,6 +43,10 @@ public class Richiesta {
         this.docente=docente;
     }
 
+    public Richiesta(Date dataRichiesta, Stato stato) {
+        this.stato=stato;
+        this.dataRichiesta=dataRichiesta;
+    }
     /**
      * Aggiungie un tircoinio alla richiesta.
      *

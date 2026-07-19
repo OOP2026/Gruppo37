@@ -33,18 +33,21 @@ public class TirocinioImplementazionePostgresDAO implements TirocinioDAO{
      * @param idD l'identificativo del docente
      * @param nome il nome del tirocinio
      * @param ente l'ente che amministra il tirocinio
+     * @param idA l'identificativo dell'azienda
      * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
      */
-    public void creaTirocinio(int idD, String nome, boolean ente) throws SQLException{
-        String sql="INSERT INTO \"tirocinio\" (\"idd\",\"nometirocinio\", \"ente\", \"disponibile\", \"incorso\") " +
-                "VALUES (?,?,?,?,?);";
+    public void creaTirocinio(int idD, String nome, boolean ente, int idA) throws SQLException{
+        String sql="INSERT INTO \"tirocinio\" (\"idd\",\"nometirocinio\", \"ente\", \"disponibile\", \"incorso\", \"ida\") " +
+                "VALUES (?,?,?,?,?,?);";
         try (PreparedStatement aggiungiTirocinioPS=connessione.prepareStatement(sql)){
             aggiungiTirocinioPS.setInt(1,idD);
             aggiungiTirocinioPS.setString(2,nome);
             if (ente) {
-                aggiungiTirocinioPS.setString(3,"Interno" );
+                aggiungiTirocinioPS.setString(3,"Interno");
+                aggiungiTirocinioPS.setNull(6,java.sql.Types.INTEGER);
             }else {
                 aggiungiTirocinioPS.setString(3,"Esterno" );
+                aggiungiTirocinioPS.setInt(6,idA);
             }
             aggiungiTirocinioPS.setBoolean(4,true);
             aggiungiTirocinioPS.setBoolean(5,false);

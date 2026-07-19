@@ -24,6 +24,7 @@ public class Controller {
 	private TirocinioDAO tirocinioDAO=new TirocinioImplementazionePostgresDAO();
 	private RichiestaDAO richiestaDAO=new RichiestaImplementazionePostgresDAO();
 	private SedutaLaureaDAO sedutaLaureaDAO=new SedutaLaureaImplementazionePostgresDAO();
+	private AziendaDAO aziendaDAO=new AziendaImplementazionePostgresDAO();
 	
 
     /**
@@ -82,8 +83,14 @@ public class Controller {
 					studente = new Studente((String)info.get(1),(String) info.get(2), (String)info.get(3), (String)info.get(4),
 							(String)info.get(5),(String)info.get(6));
 					ArrayList<String> sed =sedutaLaureaDAO.accediSeduta((int)info.get(0));
+					ArrayList<Object> ric =richiestaDAO.accediRichiesta((int)info.get(0));
 					if(sed!=null) {
 						sedutaLaurea=new SedutaLaurea(sed.get(0),sed.get(1));
+					}
+					if(ric!=null) {
+						java.sql.Date dateS = (java.sql.Date) ric.get(1);
+						java.util.Date data = new java.util.Date(dateS.getTime());
+						richiesta = new Richiesta(data, Stato.valueOf((String) ric.get(0)));
 					}
 					return (int)info.get(0);
 			    }
@@ -210,15 +217,20 @@ public class Controller {
      *
      * @param nome il nome del tricoinio
      * @param ente l'ente del tricoinio
+	 * @param idA  l'identificativo dell'azienda
      * @return infroma se la creazione e' avvenuto con successo
      */
-    public boolean creaTirocinio(String nome, String ente,int idD){
+    public boolean creaTirocinio(String nome, String ente,int idA, int idD){
 		try{if("Interno".equals(ente)) {
-			tirocinioDAO.creaTirocinio(idD,nome,true);
+			tirocinioDAO.creaTirocinio(idD,nome,true, 0);
 			tirocinio = new Tirocinio(nome, Ente.Interno, true, false);
 		}else{
-			tirocinioDAO.creaTirocinio(idD,nome,false);
+			if(aziendaDAO.verificaAzienda(idA)){
+			tirocinioDAO.creaTirocinio(idD,nome,false, idA);
 			tirocinio = new Tirocinio(nome, Ente.Esterno, true, false);
+			} else {
+				return false;
+			}
 		}
 			return true;
 	} catch (SQLException e6) {
@@ -402,5 +414,19 @@ public class Controller {
 		throw new RuntimeException(e12);
 		}
 	}
+
+	/**
+	 * Riceve lo stato della richiesta
+	 *
+	 * @return lo stato della richiesta
+	 */
+	public String getStatoRichiesta(){
+		if(richiesta==null){
+			return"";
+		}
+		return String.valueOf(richiesta.getStato());
+	}
+
+
 }
 

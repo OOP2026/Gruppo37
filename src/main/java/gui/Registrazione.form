@@ -121,6 +121,7 @@
           <model>
             <item value="Studente"/>
             <item value="Docente"/>
+            <item value="Coordinatore"/>
           </model>
         </properties>
       </component>

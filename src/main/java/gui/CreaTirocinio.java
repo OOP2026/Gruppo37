@@ -16,6 +16,7 @@ public class CreaTirocinio extends JDialog {
     private JButton buttonCancel;
     private JTextField nomeS;
     private JComboBox ente;
+    private JTextField esternoS;
 
     /**
      * Costruttore della GUI CreaTirocinio.
@@ -36,7 +37,8 @@ public class CreaTirocinio extends JDialog {
                 if (nomeS.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(frame, "Non hai riempito il campo");
                 } else {
-                    if (controller.creaTirocinio(nomeS.getText(), (String) ente.getSelectedItem(),idD)) {
+                    int idA = Integer.parseInt(esternoS.getText());
+                    if (controller.creaTirocinio(nomeS.getText(), (String) ente.getSelectedItem(), idA ,idD)) {
                         frame.dispose();
                         frameHomeD.setVisible(true);
                         JOptionPane.showMessageDialog(frame, "Tirocinio creato con successo");

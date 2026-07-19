@@ -8,6 +8,10 @@ import java.util.ArrayList;
  */
 public class Azienda {
     /**
+     * Rappresenta la ragione sociale dell'azienda.
+     */
+    String ragioneSociale;
+    /**
      * Rappresenta il referente aziendale.
      */
     String referenteAziendale;
@@ -19,9 +23,11 @@ public class Azienda {
     /**
      * Costruttore della classe Azienda.
      *
+     * @param ragioneSociale la ragione sociale
      * @param referenteAziendale il referente aziendale
      */
-    public Azienda(String referenteAziendale) {
+    public Azienda(String ragioneSociale, String referenteAziendale) {
+        this.ragioneSociale = ragioneSociale;
         this.referenteAziendale = referenteAziendale;
     }
 }
