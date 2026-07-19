@@ -427,6 +427,14 @@ public class Controller {
 		return String.valueOf(richiesta.getStato());
 	}
 
+	public ArrayList<Object> recuperaInfo(int idD){
+		try{ArrayList<Object> info;
+			info=tirocinioDAO.recuperaInfo(idD);
+			return info;
+		}catch(SQLException e7){
+			throw new RuntimeException(e7);
+		}
+	}
 
 }
 

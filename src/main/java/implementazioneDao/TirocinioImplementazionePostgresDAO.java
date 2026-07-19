@@ -198,4 +198,22 @@ public class TirocinioImplementazionePostgresDAO implements TirocinioDAO{
         }
     }
 
+    public ArrayList<Object> recuperaInfo(int idD) throws SQLException{
+        String sql = "SELECT nometirocinio, ente, disponibile, incorso, ids " +
+                " FROM tirocinio t JOIN richiesta r ON t.idt=r.idt " +
+                " WHERE t.idd=? AND r.stato='Approvata' ";
+        try(PreparedStatement recupeaInfoPS=connessione.prepareStatement(sql)){
+            recupeaInfoPS.setInt(1, idD);
+            ResultSet rs = recupeaInfoPS.executeQuery();
+            ArrayList<Object> info=new ArrayList<>();
+            while (rs.next()) {
+                info.add(rs.getString("nometirocinio"));
+                info.add(rs.getString("ente"));
+                info.add(rs.getBoolean("disponibile"));
+                info.add(rs.getBoolean("incorso"));
+                info.add(rs.getInt("ids"));
+            }
+            return info;
+        }
+    }
 }

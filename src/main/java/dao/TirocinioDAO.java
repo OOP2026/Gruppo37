@@ -64,4 +64,6 @@ public interface TirocinioDAO {
      * @throws SQLException e' un errore che si verifica tramite un errato accesso al databse
      */
     public ArrayList<Integer> verificaNomeTirocinio(String nome) throws SQLException;
+
+    public ArrayList<Object> recuperaInfo(int idD) throws SQLException;
 }

@@ -35,17 +35,14 @@ public class VediTirocinio extends JDialog {
                 new Object[][]{
                 },
                 new String[]{
-                        "Nome", "Ente", "Disponibile", "In Corso"
+                        "Nome", "Ente", "Disponibile", "In Corso", "ID studente"
                 }
         ));
         DefaultTableModel model = (DefaultTableModel) table1.getModel();
-        ArrayList<String> nomeT = controller.leggiNomeTirocinio(idD);
-        ArrayList<String> ente=controller.leggiEnteTirocinio(idD);
-        ArrayList<Boolean> disponibile=controller.leggiDisponibilitaTirocinio(idD);
-        ArrayList<Boolean> inCorso=controller.leggiInCorsoTirocinio(idD);
-        if(nomeT != null && ente != null && disponibile != null && inCorso != null)
-            for (int i = 0; i < nomeT.size(); i++)
-                model.addRow(new Object[]{nomeT.get(i), ente.get(i), disponibile.get(i), inCorso.get(i)});
+        ArrayList<Object> info = controller.recuperaInfo(idD);
+        if(info != null)
+                for (int i = 0; i < info.size(); i++)
+                    model.addRow(new Object[]{info.get(i), info.get(++i), info.get(++i), info.get(++i), info.get(++i)});
 
 
         buttonEsci.addActionListener(new ActionListener() {
